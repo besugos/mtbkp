@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="mt-4"><%= Service.human_attribute_name(:service_address) %>:</h4>
+    </div>
+
+    <div class="col-12 col-md-8">
+        <%= f.association :selected_address, collection: Address.by_ownertable_type("User").where(ownertable_id: @current_user.id).by_address_area_id(AddressArea::ENDERECO_SAIDA_ID), as: :select, include_blank: Service.human_attribute_name(:new_address) %>
+    </div>
+</div>
+
+<div id="new-address" <%= "hidden" if !f.object.selected_address.nil? %>>
+    <%= render 'common_pages/addresses/address', f: f, show_name: true, show_geolocation_data: show_geolocation_data %>
+</div>

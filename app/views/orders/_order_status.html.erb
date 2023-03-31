@@ -1,0 +1,16 @@
+<div class="table-actions">
+	<%
+		if record.order_status_id == OrderStatus::EM_ABERTO_ID || record.order_status_id == OrderStatus::EM_ABERTO_COMPRA_PLANOS_ID
+			span_class = "bg-info"
+		elsif record.order_status_id == OrderStatus::AGUARDANDO_PAGAMENTO_ID
+			span_class = "bg-warning text-black"
+		elsif record.order_status_id == OrderStatus::PAGAMENTO_REALIZADO_ID
+			span_class = "bg-success"
+		end
+		span_text = record.order_status.name
+	%>
+	<span class="badge <%= span_class %>"><%= span_text %></span>
+	<% if policy(record).destroy? %>
+		<%= link_to "Excluir", order_path(record), method: :delete, data: {confirm: "Você tem certeza?"} %>
+	<% end %>
+</div>

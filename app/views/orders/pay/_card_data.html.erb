@@ -1,0 +1,52 @@
+<div class="col-12 payment-datas">
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <label><%= Order.human_attribute_name(:installments) %></label>
+            <%
+                # Definindo a quantida de parcelas permitidas
+                installments = current_order.order_status_id == OrderStatus::EM_ABERTO_ID ? @system_configuration.maximum_installments : @system_configuration.maximum_installment_plans
+            %>
+            <%= f.input :installments,
+            as: :select,
+            collection: Order.get_installments(current_order, installments),
+            label: false, input_html: { class: 'form-control' },
+            include_blank: false %>
+
+        </div>
+    </div>
+
+    <% if defined?(use_my_card) %>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <label><%= Order.human_attribute_name(:use_my_card) %></label>
+            <%= f.input :card_id,
+            as: :select,
+            collection: Card.by_ownertable_type(ActiveModel::Name.new(User).to_s).by_ownertable_id(current_order.user.id),
+            label_method: :get_formatted_name,
+            label: false, input_html: { class: 'form-control' },
+            include_blank: t('model.select_option') %>
+
+        </div>
+    </div>
+    <% end %>
+
+    <div class="row">
+
+        <% f.object.build_card if f.object.card.nil? %>
+
+        <%= f.fields_for :card do |card| %>
+            <%= render 'orders/pay/card_field', f: f, card: card %>
+        <% end %>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button id="payment-button" type="button" class="btn btn-sm btn-primary d-block mt-3 text-white">
+                <%= Order.human_attribute_name(:confirm_card_data) %>
+            </button>
+        </div>
+    </div>
+
+</div>

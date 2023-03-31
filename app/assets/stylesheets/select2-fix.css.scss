@@ -1,0 +1,41 @@
+.select2-container--default .select2-selection--single {
+  border-radius: 0 !important;
+  border: 1px solid #ced4da !important;
+}
+
+.select2-container .select2-selection--single {
+  height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-top: 4px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 14px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 5px !important;
+  right: 5px !important;
+}
+.datagrid-form {
+  .select2-container .select2-selection--single {
+    height: 30px !important;
+  }
+
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-top: 1px !important;
+  }
+
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 2px !important;
+  }
+}
+
+.select2-selection__rendered img {
+  width: 25px;
+}
+
+// End of file select2-fix.scss
+// Path: ./app/assets/stylesheets/select2-fix.scss

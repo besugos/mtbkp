@@ -1,0 +1,188 @@
+pt-BR:
+  activerecord:
+    models:
+      order:
+        one: "Venda de produto"
+        other: "Vendas de produtos"
+    attributes:
+      order:
+        id: "ID"
+        created_at: 'Data da compra'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        price: 'Valor total'
+        user_id: 'Cliente'
+        user: 'Cliente'
+        order_status_id: 'Status'
+        order_status: 'Status'
+        use_my_card: 'Usar um dos meus cartões'
+        use_my_address: "Usar um dos meus endereços ou cadastrar um novo (Clique para selecionar)"
+        payment_order: 'Pagamento'
+        confirm_payment: 'Confirmar pagamento'
+        add_failed: 'Falha ao adicionar!'
+        add_success: 'Adicionado com sucesso!'
+        remove_failed: 'Falha ao remover!'
+        remove_success: 'Removido com sucesso!'
+        add_item: 'Adicionar ao carrinho'
+        show_order_cart: "Carrinho"
+        cart: "Carrinho"
+        installments: 'Parcelas'
+        payment_type_id: 'Tipo de pagamento'
+        payment_type: 'Tipo de pagamento'
+        pdf_invoice_link: 'Boleto'
+        checkout: 'Finalizar compra'
+        alter_payment_type: 'Alterar Meio de Pagamento'
+        data_saved: 'Dados salvos com sucesso!'
+        address_saved_sucess: 'Endereço salvo com sucesso!'
+        values: 'Valores'
+        total_value_products: 'Valor total dos produtos'
+        total_freight_value: 'Frete total'
+        freight: "Frete"
+        total_value: 'Total da Compra'
+        close_order: 'Fechar compra'
+        user_data: 'Dados do comprador'
+        address_data: 'Endereço'
+        payment_data: 'Pagamento'
+        go_to_address: 'Avançar para endereço'
+        go_to_payment: 'Avançar para pagamento'
+        confirm_card_data: 'Confirmar dados do cartão'
+        empty_order: 'Seu carrinho está vazio'
+        check_payment_status: 'Verificar status de pagamento'
+        item: 'Item'
+        description: 'Descrição'
+        quantity_ab: 'Qtde.'
+        unity_price: 'Valor unitário'
+        subtotal: 'Subtotal'
+        pay: 'Pagar'
+        keep_buying: 'Continuar comprando'
+        access_invoice: "Acessar boleto"
+        calculate_freight_value: "Calcular frete e prazo de entrega"
+        text_zipcode: "Digite o CEP"
+        insert_seller_coupon: "Inserir cupom de desconto"
+        insert_discount_coupon: "Aplicar"
+        seller_coupon: "Cupom de desconto"
+        seller_coupon_id: "Cupom de desconto"
+        discount_by_seller_coupon: "Desconto pelo cupom"
+        sell_value: "Valor da compra"
+        coupon: "Cupom"
+        total_discount: "Desconto total"
+        sold_products: "Minhas vendas de produtos"
+        my_shopping: "Minhas compras"
+        seller_coupon_added_with_success: "Cupom de desconto (vendedor) adicionado com sucesso!"
+        seller_coupon_added_with_failed: "Cupom de desconto (vendedor) não encontrado. Tente novamente!"
+        discount_coupon_added_with_success: "Cupom de desconto adicionado com sucesso!"
+        discount_coupon_added_with_failed: "Cupom de desconto não encontrado. Tente novamente!"
+        remove_seller_coupon: "Remover cupom de desconto"
+        remove_discount_coupon: "Remover"
+        needs_approvation_to_buy_plan: "Você precisa ter seu perfil profissional preenchido e aprovado pelo Mercado Topográfico para comprar planos."
+        next_payment: "Próximo pagamento"
+        plan_id: "Plano"
+        plan_product_id: "Plano de produtos"
+        plan_service_id: "Plano de serviços"
+        bought_plans: "Compras de planos"
+        original_price: "Valor original"
+        zipcode_delivery: "CEP para entrega"
+        my_orders: "Meus pedidos"
+        freight_necessary: "Necessário selecionar opção de frete para a compra para todos os vendedores."
+        limit_cancel_order: "Limite data cancelamento de compra"
+        order_type_recurrent_id: "Tipo de compra"
+        order_type_recurrent: "Tipo de compra"
+        validate_date: "Plano válido até"
+        order: "Pedido"
+        orders: "Pedidos"
+        chat: "Chat"
+        seller_avaliation: "Avalie o vendedor"
+en:
+  activerecord:
+    models:
+      order:
+        one: "Venda de produto"
+        other: "Vendas de produtos"
+    attributes:
+      order:
+        id: "ID"
+        created_at: 'Data da compra'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        price: 'Valor total'
+        user_id: 'Cliente'
+        user: 'Cliente'
+        order_status_id: 'Status'
+        order_status: 'Status'
+        use_my_card: 'Usar um dos meus cartões'
+        use_my_address: "Usar um dos meus endereços ou cadastrar um novo (Clique para selecionar)"
+        payment_order: 'Pagamento'
+        confirm_payment: 'Confirmar pagamento'
+        add_failed: 'Falha ao adicionar!'
+        add_success: 'Adicionado com sucesso!'
+        remove_failed: 'Falha ao remover!'
+        remove_success: 'Removido com sucesso!'
+        add_item: 'Adicionar ao carrinho'
+        show_order_cart: "Carrinho"
+        cart: "Carrinho"
+        installments: 'Parcelas'
+        payment_type_id: 'Tipo de pagamento'
+        payment_type: 'Tipo de pagamento'
+        pdf_invoice_link: 'Boleto'
+        checkout: 'Finalizar compra'
+        alter_payment_type: 'Alterar Meio de Pagamento'
+        data_saved: 'Dados salvos com sucesso!'
+        address_saved_sucess: 'Endereço salvo com sucesso!'
+        values: 'Valores'
+        total_value_products: 'Valor total dos produtos'
+        total_freight_value: 'Frete total'
+        freight: "Frete"
+        total_value: 'Total da Compra'
+        close_order: 'Fechar compra'
+        user_data: 'Dados do comprador'
+        address_data: 'Endereço'
+        payment_data: 'Pagamento'
+        go_to_address: 'Avançar para endereço'
+        go_to_payment: 'Avançar para pagamento'
+        confirm_card_data: 'Confirmar dados do cartão'
+        empty_order: 'Seu carrinho está vazio'
+        check_payment_status: 'Verificar status de pagamento'
+        item: 'Item'
+        description: 'Descrição'
+        quantity_ab: 'Qtde.'
+        unity_price: 'Valor unitário'
+        subtotal: 'Subtotal'
+        pay: 'Pagar'
+        keep_buying: 'Continuar comprando'
+        access_invoice: "Acessar boleto"
+        calculate_freight_value: "Calcular frete e prazo de entrega"
+        text_zipcode: "Digite o CEP"
+        insert_seller_coupon: "Inserir cupom de desconto"
+        insert_discount_coupon: "Aplicar"
+        seller_coupon: "Cupom de desconto"
+        seller_coupon_id: "Cupom de desconto"
+        discount_by_seller_coupon: "Desconto pelo cupom"
+        sell_value: "Valor da compra"
+        coupon: "Cupom"
+        total_discount: "Desconto total"
+        sold_products: "Minhas vendas de produtos"
+        my_shopping: "Minhas compras"
+        seller_coupon_added_with_success: "Cupom de desconto (vendedor) adicionado com sucesso!"
+        seller_coupon_added_with_failed: "Cupom de desconto (vendedor) não encontrado. Tente novamente!"
+        discount_coupon_added_with_success: "Cupom de desconto adicionado com sucesso!"
+        discount_coupon_added_with_failed: "Cupom de desconto não encontrado. Tente novamente!"
+        remove_seller_coupon: "Remover cupom de desconto"
+        remove_discount_coupon: "Remover"
+        needs_approvation_to_buy_plan: "Você precisa ter seu perfil profissional preenchido e aprovado pelo Mercado Topográfico para comprar planos."
+        next_payment: "Próximo pagamento"
+        plan_id: "Plano"
+        plan_product_id: "Plano de produtos"
+        plan_service_id: "Plano de serviços"
+        bought_plans: "Compras de planos"
+        original_price: "Valor original"
+        zipcode_delivery: "CEP para entrega"
+        my_orders: "Meus pedidos"
+        freight_necessary: "Necessário selecionar opção de frete para a compra para todos os vendedores."
+        limit_cancel_order: "Limite data cancelamento de compra"
+        order_type_recurrent_id: "Tipo de compra"
+        order_type_recurrent: "Tipo de compra"
+        validate_date: "Plano válido até"
+        order: "Pedido"
+        orders: "Pedidos"
+        chat: "Chat"
+        seller_avaliation: "Avalie o vendedor"

@@ -1,0 +1,22 @@
+<div id="service_step_1">
+	<div class="width-adjust">
+		<div class="row pt-5">
+			<div class="col-12">
+				<h3><%= Service.human_attribute_name(:site_service_type) %></h3>
+				<%= select_tag "service_goal_id", options_from_collection_for_select(ServiceGoal.all.order(:id), "id", "name", params[:service_goal_id]), include_blank: t("model.select_option"), class: "form-select" %>	
+				<div class="custom-error-service_goal_id"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row pt-5">
+		<div class="col-12">
+			<button type="button" id="go-to-step-2" class="btn btn-p col-12 next-step"><%= t("model.next") %></button>
+		</div>
+		<%= render "visitors/home/renders/index/services/show_all_services" %>
+	</div>
+</div>
+
+<%
+# End of file _step_1.html.erb
+# Path: ./app/views/visitors/home/renders/index/services/_step_1.html.erb
+%>

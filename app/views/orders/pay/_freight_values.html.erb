@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-12 col-md-6">
+		<label for="freight-zipcode-calculate"><%= Order.human_attribute_name(:calculate_freight_value) %></label>
+	</div>
+	<% if !@current_user.nil? %>
+		<div class="col-12 mt-2">
+            <label><%= Order.human_attribute_name(:use_my_address) %></label>
+            <%= f.input :address_id,
+	            as: :select,
+	            collection: Address.by_ownertable_type(ActiveModel::Name.new(User).to_s).by_ownertable_id(@current_user.id)
+	            .by_address_area_ids([AddressArea::ENDERECO_ENTREGA_ID, AddressArea::GENERAL_ID]),
+	            label_method: :get_address_value_until_district,
+	            label: false, input_html: { class: 'form-control change_address_to_order' },
+	            include_blank: t('model.select_option') 
+	        %>
+		</div>
+	<% end %>
+	<div class="col-12">
+		<div class="d-flex">
+			<%= text_field_tag "freight-zipcode-calculate-order-cart", current_order.zipcode_delivery, placeholder: Order.human_attribute_name(:text_zipcode), class: "wd-input cep" %>
+			<button type="button" class="btn btn-link text-reset text-white input-group-text border" id="search-freight-zipcode-calculate-order-cart">
+				<i class="bi bi-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+
+<%= f.fields_for :freight_orders do |freight_order| %>
+	<%= freight_order.input :id, as: :hidden, input_html:{value: freight_order.object.id} %>
+	<div class="row mt-2">
+		<div class="col-12">
+			<b><%= Order.human_attribute_name(:freight) %>: <%= freight_order.object.seller.name %></b>
+		</div>
+		<div class="col-12 col-md-8 mb-3 border border-1">
+			<%= freight_order.fields_for :freight_order_options, freight_order.object.freight_order_options.sort_by{|item| item.price}  do |freight_order_option| %>
+				<%= freight_order_option.input :id, as: :hidden, input_html:{value: freight_order_option.object.id} %>
+				<div class="row mt-2">
+					<div class="col-1">
+						<%= freight_order_option.radio_button(:selected, freight_order_option.object.selected, 
+						class: "mb-1 freight_order_option freight_order_option_"+freight_order.object.id.to_s, 
+							checked: freight_order_option.object.selected,
+							id: "freight_order_option_"+freight_order.object.id.to_s+"_"+freight_order_option.object.id.to_s
+							)
+						%>
+					</div>
+					<div class="col text-start">
+						<span class="ms-2"><%= freight_order_option.object.name %></span>
+					</div>
+					<div class="col">
+						<span class="ms-2"><%= freight_order_option.object.delivery_time %> dia(s)</span>
+					</div>
+					<div class="col text-end">
+						<span class="ms-2"><%= CustomHelper.to_currency(freight_order_option.object.price) %></span>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+<% end %>

@@ -1,0 +1,17 @@
+<% if current_order.user_id == @current_user.id || @current_user.admin? %>
+	<div class="col-12 p-3 d-flex justify-content-between">
+		<div class="mt-3">
+			<span><b><%= Order.human_attribute_name(:seller_avaliation) %></b></span>
+			<br>
+		</div>
+	</div>
+	<div class="col-12">
+		<%
+			professional_avaliation = current_order.professional_avaliations.select{|item| item.professional_id == seller.id}.first
+			if professional_avaliation.nil?
+				professional_avaliation = current_order.professional_avaliations.create(professional_id: seller.id, client_id: current_order.user_id)
+			end
+		%>
+		<%= render "orders/show/professional_avaliation_form", professional_avaliation: professional_avaliation, current_id: current_order.id %>
+	</div>
+<% end %>

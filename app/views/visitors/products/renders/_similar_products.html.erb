@@ -1,0 +1,11 @@
+<div class="row mb-3">
+	<div class="col-12">
+		<h4 class="mt-4"><%= Product.human_attribute_name(:similar_products) %></h4>
+	</div>
+
+	<% @similar_products.each do |product| %>
+		<div class="col-12 col-md-3">
+			<%= render "visitors/home/renders/products/product_card", product: product %>
+		</div>
+	<% end %>
+</div>

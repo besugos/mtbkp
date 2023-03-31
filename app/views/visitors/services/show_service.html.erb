@@ -1,0 +1,37 @@
+<%
+	if @service.instance_of?(Service)
+		service = @service
+		distance_value = nil
+	else
+		distance_value = @service[:distance_value]
+		service = @service[:service]
+	end
+	breadcrumbs = [
+		{active: false, href: root_path, text: t('menu.initial_page')},
+		{active: false, href: services_by_all_filters_path, text: t('site.services')},
+		{active: false, href: "#", text: service.nil? ? "" : service.name}
+	]
+%>
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+
+<!-- Conteúdo central -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="row">
+				<div class="d-none d-md-block text-center">
+					<%= render 'common_pages/breadcrumb', links: breadcrumbs %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= render "visitors/home/renders/index/filter_by_text" %>
+	<%= render "visitors/home/renders/index/top_banners" %>
+	<%= render "visitors/services/service_detailed", service: service, distance_value: distance_value %>
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

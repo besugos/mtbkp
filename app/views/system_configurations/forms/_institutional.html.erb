@@ -1,0 +1,33 @@
+<div class="row">
+	<!-- CNPJ -->
+	<div class="col-12 col-md-3 mb-3">
+		<%= f.input :cnpj, input_html: {class: 'cnpj', type: "tel"} %>
+	</div>
+	<!-- E-mail de notificação -->
+	<div class="col-12 col-md-6 mb-3">
+		<%= f.input :notification_mail, input_html: {type: "email"} %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :percent_order_products, input_html: {type: "tel"} %>
+	</div>
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :maximum_installments, input_html: {type: "tel"} %>
+	</div>
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :maximum_installment_plans, input_html: {type: "tel"} %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<%= f.input :footer_text, as: :string %>
+	</div>
+</div>
+
+<%
+# End of file _institutional.html.erb
+# Path: ./app/views/system_configurations/forms/_institutional.html.erb
+%>

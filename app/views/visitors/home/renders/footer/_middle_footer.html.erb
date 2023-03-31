@@ -1,0 +1,18 @@
+<div class="container-fluid bg-primary">
+	<div class="row pt-5 pb-5">
+		<div class="col-12 col-md-6 text-center">
+			<figure>
+				<% if @system_configuration.footer_image.attached? %>
+					<img src="<%= @system_configuration.footer_image.url %>" alt="" width="150" height="70">
+				<% else %>
+					<img src="https://via.placeholder.com/150x70" alt="">
+				<% end %>
+			</figure>
+			<p class="mb-0 text-white"><%= @system_configuration.footer_text %></p>
+		</div>
+		<%= render "visitors/home/renders/footer/contact_data", title: t("site.client_contact"), phone: @system_configuration.client_contact_phone, cellphone: @system_configuration.client_cellphone, email: @system_configuration.client_contact_mail, text_color: "text-white" %>
+
+		<%= render "visitors/home/renders/footer/contact_data", title: t("site.contact_to_seller_profession"), phone: @system_configuration.professional_contact_phone, cellphone: @system_configuration.professional_cellphone, email: @system_configuration.professional_contact_mail, text_color: "text-white" %>
+
+	</div>
+</div>

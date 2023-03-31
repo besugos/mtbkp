@@ -1,0 +1,19 @@
+<div class="container mt-3"> 
+	<div class="row">
+		<% if !service.nil? %>
+			<div class="col-12 col-md-8 bg-detail-product p-4">
+				<%= render "visitors/services/renders/service_data", service: service, distance_value: distance_value %>
+			</div>
+			<div class="col-12 col-md-4">
+				<%= render "visitors/services/renders/cart_data", service: service, distance_value: distance_value %>
+			</div>
+			<div class="col-12">
+				<%= render "visitors/services/renders/similar_services", service: service %>
+			</div>
+		<% else %>
+			<div class="col-12 text-center">
+				<h3><%= t("site.no_one_service") %></h3>
+			</div>
+		<% end %>
+	</div>
+</div>

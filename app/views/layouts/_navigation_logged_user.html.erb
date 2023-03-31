@@ -1,0 +1,34 @@
+<% if show_navigattion_logger_user? %>
+    <div class="shadow-sm mb-3">
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+
+                <%= render 'layouts/logo', width: 200, height: 37 %>
+
+                <div>
+                    <span class="me-2">
+                        <%= t('session.welcome') %>, <b><%= @current_user.get_name %></b>
+                    </span>
+
+                    <button
+                        class="btn btn-primary text-white"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight">
+                        <i class="bi bi-list"></i>
+                        <%= t("menu.menu") %>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'layouts/side_menu' %>
+
+<%
+# End of file _navigation_logged_user.html.erb
+# Path: ./app/views/layouts/_navigation_logged_user.html.erb
+%>

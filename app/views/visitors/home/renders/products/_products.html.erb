@@ -1,0 +1,21 @@
+<div class="row mt-5 ">
+	<% if products.length > 0 %>
+		<div class="col-12 text-start">
+			<!-- Texto buscado -->
+			<h3><b><%= params[:product_text] %></b></h3>
+		</div>
+		<% products.each do |product| %>
+			<div class="col-12 col-md-3">
+				<%= render "visitors/home/renders/products/product_card", product: product %>
+			</div>
+		<% end %>
+
+		<div class="col-12">
+			<%= paginate products %>
+		</div>
+	<% else %>
+		<div class="col-12 text-center">
+			<h3><%= t("site.no_one_product") %></h3>
+		</div>
+	<% end %>
+</div>

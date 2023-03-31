@@ -1,0 +1,79 @@
+<% payment_transaction = current_order.payment_transactions.last %>
+<% if !payment_transaction.nil? %>
+
+	<div class="row">
+		<div class="col-12 text-center">
+			<b class="text-white"><%= Order.human_attribute_name(:price) %>:</b><br>
+			<b class="text-white"><%= CustomHelper.to_currency(current_order.price) %></b> 
+		</div>
+	</div>
+
+	<div class="row" >
+		<hr>
+		<% if current_order.payment_type_id == PaymentType::BOLETO_ID %>
+			<!-- Pagamento via boleto -->
+			<div class="col-12 text-center">
+				<b class="text-white"><%= PaymentTransaction.human_attribute_name(:invoice_barcode) %>:</b><br>
+				<input type="text" id="link_text" value="<%= payment_transaction.invoice_barcode_formatted %>" readonly="true" style="width: 450px;">
+				<br>
+				<a href="#" class="btn btn-primary pointer text-white mt-2" id="copy_text">Copiar código de barras</a>
+			</div>
+			<div class="col-12 pt-3 text-center">
+				<a class="btn btn-primary text-white" href="<%= payment_transaction.pdf_link %>" target="_blank">
+					<i class="bi bi-file-earmark-pdf"></i>
+					<%= PaymentTransaction.human_attribute_name(:download_pdf) %>
+				</a>
+			</div>
+		<% elsif current_order.payment_type_id == PaymentType::PIX_ID %>
+
+			<div class="new-payment" <%= "hidden" if payment_transaction.pix_limit_payment_date.nil? || payment_transaction.pix_limit_payment_date >= DateTime.now %>>
+				<div class="col-12 text-center">
+					<span class="badge bg-danger">Pagamento anterior não realizado</span>
+				</div>
+
+				<%= simple_form_for current_order, url: make_payment_path(id: current_order.id), method: :post do |f| %>
+					<%= f.input_field :id, value: current_order.id, as: :hidden %>
+					<div class="col-12 text-center mb-3 mt-3">
+						<button type="submit" class="btn btn-primary">
+							Gerar novo PIX para pagamento
+						</button>
+					</div>
+				<% end %>
+			</div>
+
+			<div class="current-payment" <%= "hidden" if !payment_transaction.pix_limit_payment_date.nil? && payment_transaction.pix_limit_payment_date < DateTime.now %>>
+				<!-- Pagamento via PIX -->
+				<div class="col-12 text-center">
+					<%= image_tag payment_transaction.pix_qrcode_link, width: 200, height: 200 %>
+				</div>
+
+				<div class="col-12 pt-3 text-center">
+
+					<pre class="text-wrap w-100">
+						<code><%= payment_transaction.pix_text %></code>
+					</pre>
+
+					<input class="input-hidden" id="link_text" value="<%= payment_transaction.pix_text %>" readonly="true">
+					<button class="btn btn-primary pointer text-white mt-2" id="copy_text">
+						Copiar texto QRCode
+					</button>
+
+					<br>
+					<div class="mt-2 mb-2">
+						<small>
+							<%= PaymentTransaction.human_attribute_name(:pix_limit_payment_date) %> <b><%= CustomHelper.get_text_date(payment_transaction.pix_limit_payment_date, "datetime", :full) unless payment_transaction.pix_limit_payment_date.nil? %></b>
+						</small>
+					</div>
+
+				</div>
+			</div>
+		<% end %>
+		<hr>
+	</div>
+	
+<% end %>
+
+<%
+# End of file _details.html.erb
+# Path: ./app/views/orders/_details.html.erb
+%>

@@ -1,0 +1,20 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: coupons_to_seller_path, text: SellerCoupon.human_attribute_name(:coupons_to_seller)},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: SellerCoupon.human_attribute_name(:coupons_to_seller),
+		url_new_path: new_seller_coupon_path(coupon_area_id: CouponArea::CUPOM_VENDEDOR_ID),
+		policy_true: policy(SellerCoupon).new?,
+		objects: @seller_coupons,
+		objects_path: coupons_to_seller_path,
+		object_name: SellerCoupon.human_attribute_name(:coupon_to_seller),
+		breadcrumbs: breadcrumbs
+	}
+%>

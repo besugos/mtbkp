@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="mt-4"><%= Attachment.human_attribute_name(:images) %>:</h4>
+    </div>
+
+    <div class="col-12 col-md-4">
+        <%= f.input :images, as: :file, input_html: { multiple: 'multiple'}, label: false %>
+    </div>
+</div>
+
+<div class="row">
+    <%= f.fields_for :attachments do |im| %>
+        <div class="col-12 mt-4 col-md-2">
+            <%
+                begin
+                    concat link_to image_tag(im.object.attachment.variant(resize_to_limit: [300, 300]).processed.url), im.object.attachment.url, target: "_blank"
+                rescue Exception => e
+                    Rails.logger.error e.message    
+                end
+            %>
+        </div>
+        <div class="col-12 mt-4 col-md-2">
+            <div class="row">
+                <%= render 'common_pages/delete_multiple_relation', remove_path: delete_attachment_path(model_id: im.object.id), object: im.object, object_text: 'attachment'  %>
+            </div>
+        </div>
+    <% end %>   
+</div>

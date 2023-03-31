@@ -1,0 +1,17 @@
+<div class="row pt-5 pt-lg-0 pb-4">
+	<div class="col-12 text-center">
+		<h4><%= plan.name %></h4>
+		<span><%= plan.plan_periodicity.name %></span>
+	</div>
+	<div class="col-12 text-center">
+		<b><span><%= CustomHelper.to_currency(plan.price) %></span></b>
+	</div>
+	<div class="col-12 text-center hg-plan d-flex align-items-center justify-content-center">
+		<span ><%= plan.description %></span>
+	</div>
+	<div class="col-12 text-center">
+		<a class="btn btn-primary text-white" href="<%= add_plan_to_buy_path(ownertable_type: 'Plan', ownertable_id: plan.id, quantity: 1) %>">
+			<%= Plan.human_attribute_name(:buy_plan) %>
+		</a>
+	</div>
+</div>

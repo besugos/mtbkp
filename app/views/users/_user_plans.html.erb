@@ -1,0 +1,9 @@
+<%= render 'users/modals/show_user_plans', user: record %>
+<button class="btn btn-link btn-sm text-decoration-none" data-bs-toggle="modal" data-bs-target="#show_user_plans_<%=record.id%>">
+	<%= t('model.show_details') %>
+</button>
+
+<%
+# End of file _show_user_plans.html.erb
+# Path: ./app/views/categories/_show_user_plans.html.erb
+%>

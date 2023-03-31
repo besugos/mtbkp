@@ -1,0 +1,18 @@
+<%
+    if !record.data_professional.nil?
+        text = record.data_professional.professional_document_status.name
+        if record.data_professional.professional_document_status_id == ProfessionalDocumentStatus::EM_ANALISE_ID
+            i_class = "bi bi-exclamation-triangle-fill text-warning"
+        elsif record.data_professional.professional_document_status_id == ProfessionalDocumentStatus::REPROVADO_ID
+            i_class = "bi bi-x-circle-fill text-danger"
+        elsif record.data_professional.professional_document_status_id == ProfessionalDocumentStatus::VALIDADO_ID
+            i_class = "bi bi-check-circle-fill  text-success"
+        end
+    end
+%>
+<% if !record.data_professional.nil? %>
+    <i class="<%= i_class %>">
+        <%= text %>
+    </i>
+<% end %>
+

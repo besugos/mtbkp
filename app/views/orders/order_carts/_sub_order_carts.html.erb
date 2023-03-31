@@ -1,0 +1,53 @@
+<div class="row border-bottom border-light py-2">
+    <%
+        freight_name = nil
+        freight_value = nil
+        current_freight = current_order.freight_orders.select{|item| item.seller_id == seller.id}.first
+        if current_freight
+            current_freight_option = current_freight.freight_order_options.select{|item| item.selected}.first
+            if current_freight_option
+                freight_name = current_freight_option.name
+                freight_value = current_freight_option.price
+                @total_freight_value_seller += freight_value
+                @total_freight_value_all_sellers += freight_value
+            end
+        end
+    %>
+
+    <!-- Cupom/Frete/Sub-total -->
+    <div class="col-12 col-md-7 text-end">
+        <small>
+            <% if @total_discount_value_seller > 0 %>
+                <b><span><%= Order.human_attribute_name(:coupon) %></span></b><br>
+            <% end %>
+            <b><span><%= Order.human_attribute_name(:freight) %></span></b><br>
+            <b><span><%= Order.human_attribute_name(:subtotal) %></span></b>
+        </small>
+    </div>
+
+    <div class="col-12 col-md-3 text-end d-none d-lg-block">
+        <small>
+            <% if @total_discount_value_seller > 0 %>
+                <span class="text-muted"><%= @discount_text_seller.upcase %></span>
+                <a data-confirm="<%= t("model.confirm_action") %>" class="text-decoration-none text-danger" href="<%= remove_discount_coupon_path(seller_coupon_id: @discount_seller_id) %>"><%= Order.human_attribute_name(:remove_discount_coupon) %></a>
+                <br>
+            <% end %>
+            <% if !freight_name.nil? %>
+                <span class="text-muted"><%= freight_name %></span>
+            <% end %>
+        </small>
+    </div>
+
+    <div class="col-12 col-md-2 text-end">
+        <small>
+            <% if @total_discount_value_seller > 0 %>
+                <span class="text-danger"><%= CustomHelper.to_currency(@total_discount_value_seller) %></span><br>
+            <% end %>
+            <% if !freight_name.nil? %>
+                <span class="text-success"><%= CustomHelper.to_currency(freight_value) %></span><br>
+            <% end %>
+            <span><%= CustomHelper.to_currency(@total_value_seller) %></span>
+        </small>
+    </div>
+
+</div>

@@ -1,0 +1,60 @@
+<%
+    if @current_user.admin?
+        if @current_order.user_id == @current_user.id
+            initial_label = Order.human_attribute_name(:my_orders)
+            initial_path = my_orders_path
+        else
+            initial_label = Order.model_name.human(count: 2)
+            initial_path = orders_path
+        end
+    else
+        if @current_order.user_id == @current_user.id
+            initial_label = Order.human_attribute_name(:my_orders)
+            initial_path = my_orders_path
+        else
+            initial_label = Order.human_attribute_name(:sold_products)
+            initial_path = sold_products_path
+        end
+    end
+
+    breadcrumbs = [
+        {active: false, href: root_path, text: t('menu.initial_page')},
+        {active: false, href: initial_path, text: initial_label},
+        {active: false, href: order_path(@current_order), text: "#"+@current_order.id.to_s}
+    ]
+%>
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="d-none d-md-block col-md-10 text-center">
+            <%= render 'common_pages/breadcrumb', links: breadcrumbs %>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4">
+            <div class="row border border-1 bg-warning-transparent border-warning text-center py-1 mx-1">
+                <div class="col-12">
+                    <%= hidden_field_tag "current_order_id", @current_order.id %>
+                    Número do pedido: #<%= @current_order.id.to_s %> | 
+                    Última mensagem: 
+                    <span class="last-message-datetime">
+                        <% if !@last_message.nil? %>
+                            <%= CustomHelper.get_text_date(@last_message.created_at, "datetime", :full) %> 
+                        <% end %>
+                    </span>
+                    | 
+                    <a target="_blank" href="<%= order_path(@current_order) %>" class="text-decoration-none">Ver detalhes do pedido</a>
+                </div>
+            </div>
+            <%= render "orders/chat/user_chat" %>
+        </div>
+    </div>
+</div>
+
+<%
+# End of file _first_container.html.erb
+# Path: ./app/views/common_pages/index/_first_container.html.erb
+%>

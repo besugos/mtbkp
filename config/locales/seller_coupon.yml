@@ -1,0 +1,52 @@
+pt-BR:
+  activerecord:
+    models:
+      seller_coupon:
+        one: "Cupom"
+        other: "Cupons"
+    attributes:
+      seller_coupon:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        coupon_type_id: "Tipo de desconto"
+        coupon_type: "Tipo de desconto"
+        coupon_area: "Área do cupom"
+        coupon_area_id: "Área do cupom"
+        name: "Nome"
+        quantity: "Quantidade"
+        validate_date: "Validade"
+        value: "Valor do desconto"
+        coupons_to_seller: "Cupons de vendedor"
+        coupons_to_discount: "Cupons de desconto"
+        coupon_to_seller: "Cupom de vendedor"
+        coupon_to_discount: "Cupom de desconto"
+        users: "Vendedores"
+        quantity_months: "Quantidade de meses a ser utilizado"
+en:
+  activerecord:
+    models:
+      seller_coupon:
+        one: "Cupom"
+        other: "Cupons"
+    attributes:
+      seller_coupon:
+        id: "ID"
+        created_at: 'Created at'
+        updated_at: 'Updated at'
+        actions: "Actions"
+        coupon_type_id: "Tipo de desconto"
+        coupon_type: "Tipo de desconto"
+        coupon_area: "Área do cupom"
+        coupon_area_id: "Área do cupom"
+        name: "Nome"
+        quantity: "Quantidade"
+        validate_date: "Validade"
+        value: "Valor do desconto"
+        coupons_to_seller: "Cupons de vendedor"
+        coupons_to_discount: "Cupons de desconto"
+        coupon_to_seller: "Cupom de vendedor"
+        coupon_to_discount: "Cupom de desconto"
+        users: "Vendedores"
+        quantity_months: "Quantidade de meses a ser utilizado"

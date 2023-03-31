@@ -1,0 +1,57 @@
+<%
+	if freight_order.cancel_order.nil?
+		freight_order.create_cancel_order(order_id: freight_order.order_id)
+	end
+	cancel_order = freight_order.cancel_order
+
+	if cancel_order.order.user_id == @current_user.id
+		user_id = seller.id
+	else
+		user_id = cancel_order.order.user_id
+	end
+%>
+
+<% if cancel_order.cancel_order_reason_id.nil? %>
+	<div class="row py-5">
+		<div class="col">
+			<button class="btn bg-dark text-white border border-3 border-primary rounded show-cancel-form" id="show-cancel-form-<%= cancel_order.id.to_s %>" type="button" >Arrependimento de compra</button>
+		</div>
+	</div>
+<% else %>
+	<div class="row py-5">
+		<div class="col">
+			<a class="btn btn-danger show-cancel-form" href="<%= chats_path(id: cancel_order.order.id, user_id: user_id) %>">Acompanhar arrependimento de compra</a>
+		</div>
+	</div>
+<% end %>
+
+<div id="div-cancel-order-<%= cancel_order.id.to_s %>" style="display: <%= cancel_order.cancel_order_reason_id.nil? ? 'none' : 'block' %>">
+	<%= simple_form_for cancel_order, url: request_cancel_order_path(id: cancel_order.id), method: :post, html: {id: "form-cancel-order-"+cancel_order.id.to_s} do |f| %>
+		<%= f.input :id, as: :hidden, input_html: {value: f.object.id} %>
+	    <div class="row">
+	        <div class="col-12 mb-3 text-center">
+	        	<label><%= CancelOrder.human_attribute_name(:cancel_order_reason_id) %></label>
+	        	<br>
+	            <%= f.association :cancel_order_reason, 
+		            collection: CancelOrderReason.all.order(:id), 
+		            as: :select, 
+		            label: false,
+		            include_blank: false,
+		            input_html: {id: "cancel-order-reason-order-"+cancel_order.id.to_s},
+		            disabled: !cancel_order.cancel_order_reason_id.nil?
+	        	%>
+	        </div>
+	        <div class="col-12 mb-3">
+	            <%= f.input :reason_text, input_html: {id: "reason-text-order-"+cancel_order.id.to_s},
+		            disabled: !cancel_order.cancel_order_reason_id.nil? %>
+	        </div>
+
+	        <% if cancel_order.cancel_order_reason_id.nil? %>
+		        <div class="col-12 text-center">
+		        	<!-- Botão de salvar -->
+		        	<%= f.button :submit, class: "text-white bg-danger", id: 'save-cancel-order-'+cancel_order.id.to_s, value: "Enviar" %>
+		        </div>
+	        <% end %>
+	    </div>
+	<% end %>
+</div>

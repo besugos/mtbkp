@@ -1,0 +1,25 @@
+<%
+	url_helper = Rails.application.routes.url_helpers
+	link = url_helper.show_text_url(text_to_show: SystemConfiguration::POLITICA_USO)
+%>
+
+$(document).ready(function(){
+	window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+			"palette": {
+				"popup": {
+					"background": "#EF3735",
+					"text": "#ffffff"
+				},
+				"button": {
+					"background": "#000000"
+				}
+			},
+			"content": {
+				"message": "Usamos cookies para armazenar informações sobre como você usa o nosso site e as páginas que visita. Tudo para tornar sua experiência a mais agradável possível. Ao clicar em 'Aceitar', você consente com a utilização de cookies.",
+				"dismiss": "Aceitar",
+				"href": "<%= link %>",
+				"link": 'Saiba mais'
+			}
+		})});
+});

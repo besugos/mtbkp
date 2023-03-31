@@ -1,0 +1,23 @@
+<% if false %>
+    <div class="my-3">
+        <!-- pt-br -->
+        <div class="form-check d-inline-block">
+            <input class="form-check-input change_locale" type="radio" name="locale-check" id="pt-BR" <%= 'checked' if session[:locale].nil? || session[:locale] == 'pt-BR' %>>
+            <label class="form-check-label" for="pt-BR">
+                <small><%= t('session.locale_ptbr') %></small>
+            </label>
+        </div>
+
+        <!-- en-us -->
+        <div class="form-check d-inline-block">
+            <input class="form-check-input change_locale" type="radio" name="locale-check" id="en" <%= 'checked' if !session[:locale].nil? && session[:locale] == 'en' %>>
+            <label class="form-check-label" for="en">
+                <small><%= t('session.locale_en') %></small>
+            </label>
+        </div>
+    </div>
+<% end %>
+<%
+# End of file _locale.html.erb
+# Path: ./app/views/sessions/_locale.html.erb
+%>

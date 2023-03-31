@@ -1,0 +1,19 @@
+<div class="row">
+	<% if policy(User).change_seller_verified? %>
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :seller_verified, as: :select, collection: CustomHelper.return_select_options_true_false, include_blank: false, label: User.human_attribute_name(:seller_verified) %>
+	</div>
+	<% end %>
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :publish_professional_profile, as: :select, collection: CustomHelper.return_select_options_true_false, include_blank: false, label: User.human_attribute_name(:publish_professional_profile) %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12 mb-3">
+		<%= f.input :description %>
+	</div>
+	<div class="col-12 mb-3">
+		<%= f.input :work_experience %>
+	</div>
+</div>

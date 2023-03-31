@@ -1,0 +1,74 @@
+pt-BR:
+  activerecord:
+    models:
+      payment_transaction:
+        one: "Transação"
+        other: "Transações"
+    attributes:
+      payment_transaction:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        ownertable_id: 'Objeto'
+        ownertable: 'Objeto'
+        value: 'Valor'
+        payment_message: 'Mensagem'
+        payment_code: 'Código do pagamento'
+        invoice_id: 'ID do boleto'
+        invoice: 'ID do boleto'
+        invoice_barcode: 'Código de barras'
+        invoice_barcode_formatted: 'Código de barras formatado'
+        due_date: 'Data de vencimento'
+        pdf_link: 'Link do PDF'
+        png_link: 'Link do PNG'
+        payment_status_id: 'Status do pagamento'
+        payment_status: 'Status do pagamento'
+        paid: 'Pagamento realizado com sucesso!'
+        unpaid: 'Pagamento não realizado'
+        invoice_generated: 'Seu boleto foi gerado com sucesso'
+        failed: 'Falha na busca'
+        waiting_payment: 'Aguardando pagamento'
+        pix_generated: 'PIX gerado com sucesso'
+        pix_order_id: "PIX order ID"
+        pix_text: "Copia/cola PIX texto"
+        pix_qrcode_link: "Link QRCode PIX"
+        download_pdf: "Baixar boleto em PDF"
+        pix_limit_payment_date: "Data/hora limite para pagamento"
+en:
+  activerecord:
+    models:
+      payment_transaction:
+        one: "Transação"
+        other: "Transações"
+    attributes:
+      payment_transaction:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        ownertable_id: 'Objeto'
+        ownertable: 'Objeto'
+        value: 'Valor'
+        payment_message: 'Mensagem'
+        payment_code: 'Código do pagamento'
+        invoice_id: 'ID do boleto'
+        invoice: 'ID do boleto'
+        invoice_barcode: 'Código de barras'
+        invoice_barcode_formatted: 'Código de barras formatado'
+        due_date: 'Data de vencimento'
+        pdf_link: 'Link do PDF'
+        png_link: 'Link do PNG'
+        payment_status_id: 'Status do pagamento'
+        payment_status: 'Status do pagamento'
+        paid: 'Pagamento realizado com sucesso!'
+        unpaid: 'Pagamento não realizado'
+        invoice_generated: 'Seu boleto foi gerado com sucesso'
+        failed: 'Falha na busca'
+        waiting_payment: 'Aguardando pagamento'
+        pix_generated: 'PIX gerado com sucesso'
+        pix_order_id: "PIX order ID"
+        pix_text: "Copia/cola PIX texto"
+        pix_qrcode_link: "Link QRCode PIX"
+        download_pdf: "Baixar boleto em PDF"
+        pix_limit_payment_date: "Data/hora limite para pagamento"

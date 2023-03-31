@@ -1,0 +1,21 @@
+
+<div class="container mt-3">
+	<div class="row">
+		<% if !product.nil? %>
+			<%= hidden_field_tag "current_product_id", product.id %>
+			<div class="col-12 col-md-8 bg-detail-product p-4">
+				<%= render "visitors/products/renders/product_data", product: product %>
+			</div>
+			<div class="col-12 col-md-4">
+				<%= render "visitors/products/renders/cart_data", product: product %>
+			</div>
+			<div class="col-12">
+				<%= render "visitors/products/renders/similar_products", product: product %>
+			</div>
+		<% else %>
+			<div class="col-12 text-center">
+				<h3><%= t("site.no_one_product") %></h3>
+			</div>
+		<% end %>
+	</div>
+</div>

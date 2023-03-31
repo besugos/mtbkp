@@ -1,0 +1,69 @@
+<%= simple_form_for @product do |f| %>
+
+    <div class="row">
+        <% if @current_user.admin? %>
+            <div class="col-12 col-md-3">
+                <%= f.association :user, collection: User.user.order(:name), as: :select, include_blank: I18n.t('model.select_option') %>
+            </div>
+        <% else %>
+            <%= f.input_field :user_id, as: :hidden, value: @current_user.id %>
+        <% end %>
+        <div class="col-12 col-md-3">
+            <%= f.association :category, collection: Category.by_category_type_id(CategoryType::PRODUTOS_ID).order(:name), as: :select, include_blank: I18n.t('model.select_option') %>
+        </div>
+        <div class="col-12 col-md-3">
+            <%= f.association :sub_category, collection: SubCategory.all.order(:name), as: :select, include_blank: I18n.t('model.select_option') %>
+        </div>
+        <div class="col-12 col-md-3">
+            <%= f.association :product_condition, collection: ProductCondition.all.order(:name), as: :select, include_blank: false %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-3 col-md-8">
+            <%= f.input :title %>
+        </div>
+        <div class="col-12 mb-3 col-md-4">
+            <%= f.input :quantity_stock %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-3 col-md-2">
+            <%= f.input :price, input_html: {class: 'money', value: CustomHelper.to_currency(f.object.price), type: "tel"}, as: :string %>
+        </div>
+        <div class="col-12 mb-3 col-md-2">
+            <%= f.input :promotional_price, input_html: {class: 'money', value: CustomHelper.to_currency(f.object.promotional_price), type: "tel"}, as: :string %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <%= render "products/product_table_values_with_tax", f: f %>
+        </div>
+    </div>
+
+    <div class="row">
+        <%= render "products/dimensions", f: f %>
+        <div class="col-12 ">
+            <%= f.input :description %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-3 col-md-4">
+            <%= render "common_pages/image_input", image: f.object.principal_image, form: f, label: Product.human_attribute_name(:principal_image), attribute: :principal_image %>
+        </div>
+    </div>
+
+    <%= render "common_pages/images/images", f: f %>
+
+    <%= render "products/address", f: f %>
+    
+    <%= render 'common_pages/save', f: f, return_path: products_path %>
+<% end %>
+
+<%
+# End of file _form.html.erb
+# Path: ./app/views/products/_form.html.erb
+%>

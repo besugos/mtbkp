@@ -1,0 +1,54 @@
+<%
+	can_cancel = false
+	freight_order = Order.get_freight_order_object_by_seller(current_order, seller)
+	with_duedate = false
+	if freight_order && (!freight_order.limit_cancel_order.nil? && !freight_order.limit_cancel_order.blank?)
+		cancel_data = getting_time_to_cancel_order(current_order, seller)
+		distance_days = cancel_data[0]
+		distance_hours = cancel_data[1]
+		distance_minutes = cancel_data[2]
+		limit_cancel_order = cancel_data[3]
+		with_duedate = true
+		if freight_order.limit_cancel_order < DateTime.now
+			can_cancel = false
+			distance_days = 0
+			distance_hours = 0
+			distance_minutes = 0
+		else
+			can_cancel = true
+		end
+	elsif current_order.order_status_id == OrderStatus::PAGAMENTO_REALIZADO_ID
+		can_cancel = true
+		with_duedate = false
+	end
+%>
+
+<% if can_cancel %>
+	<!-- Se pode cancelar -->
+	<div class="col-12 text-center mb-2">
+		<div class="p-3 border ms-auto me-auto" style="width: 80%;">
+			<div>
+				<p class="text-danger mb-0">Arrependimento da compra</p>
+			</div>
+			<% if with_duedate %>
+				<!-- Se está com o prazo ativado de 7 dias -->
+				<div class="mt-3">
+					<p class="mb-0 fs-5">
+						<span class="days-time-cancel-order days-time-cancel-order-<%=current_order.id.to_s%>-<%= seller.id.to_s %>">
+							<b><%= distance_days %></b> dia(s), 
+						</span>
+						<span class="hours-time-cancel-order hours-time-cancel-order-<%=current_order.id.to_s%>-<%= seller.id.to_s %>">
+							<b><%= distance_hours %></b> hora(s), 
+						</span>
+						<span class="minutes-time-cancel-order minutes-time-cancel-order-<%=current_order.id.to_s%>-<%= seller.id.to_s %>">
+							<b><%= distance_minutes %></b> minuto(s)
+						</span>
+						<br>
+						<small>Data limite: <%= CustomHelper.get_text_date(limit_cancel_order, "datetime", :full) %></small>
+					</p>
+				</div>
+			<% end %>
+			<%= render "orders/form/cancel_order_form", freight_order: freight_order, seller: seller %>
+		</div>
+	</div>
+<% end %>

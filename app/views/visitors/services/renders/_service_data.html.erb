@@ -1,0 +1,47 @@
+<div class="row mt-2">
+	<div class="col-12 col-md-4">
+		<%= render "visitors/home/renders/index/swiper/swiper_banners", banners_to_show: @array_images %>
+	</div>
+	<div class="col-12 col-md-8">
+		<div class="mt-3">
+			<span><b><%= service.name %></b></span>
+		</div>
+		<div class="mt-3">
+			<a class="text-decoration-none text-primary" href="<%= show_professional_path(id: service.user_id) %>">
+				<%= service.user.name %>
+			</a>
+		</div>
+
+		<div class="mt-3">
+			<% render "common_pages/rating", rating: service.avaliation_value %>
+		</div>
+
+		<div class="mt-3">
+			<% current_address = service.get_correct_address %>
+			<% if !current_address.nil? %>
+		 		<span><b><%= Address.model_name.human %>:</b> <%= current_address.get_city_and_state %></span>
+		 		<br>
+		 	<% end %>
+		</div>
+
+	 	<div class="mt-3">
+	 		<b><%= Service.human_attribute_name(:radius_service_id) %>:</b>
+	 		<br>
+	 		<%= service.radius_service.name unless service.radius_service.nil? %>
+	 	</div>
+
+	 	<% if defined?(distance_value) && (!distance_value.nil? && !distance_value.blank?) %>
+		 	<div class="mt-3">
+		 		<b><%= Service.human_attribute_name(:current_distance) %>:</b>
+		 		<%= (distance_value/1000).to_f.round(0) %> Km
+		 	</div>
+	 	<% end %>
+	 	
+	</div>
+</div>
+<div class="col-12 mt-3">
+	<b><%= Service.human_attribute_name(:description) %>:</b>
+	<br>
+	<br>
+	<%= service.description %>
+</div>

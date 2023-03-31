@@ -1,0 +1,79 @@
+<%= simple_form_for current_order, html: {class: "form-show-current-order"} do |f| %>
+
+    <div class="container border border-light rounded my-3 bg-cart">
+        <%
+            order_carts_sellers = Order.get_order_formatted_by_sellers(current_order)
+            @total_discount_value_all_sellers = 0
+            @total_freight_value_all_sellers = 0
+            total_value = 0
+        %>
+
+        <% order_carts_sellers.each do |order_carts_seller| %>
+            <%= render 'orders/order_carts/header', open: open, seller: order_carts_seller %>
+            
+            <%
+                # Valor total do vendedor
+                @total_value_seller = 0
+
+                # Valor total do frete do vendedor
+                @total_freight_value_seller = 0
+
+                # Valor total do disconto do vendedor
+                @total_discount_value_seller = 0
+
+                # Texto do cupom (caso exista)
+                @discount_text_seller = f.object.order_carts.select{|item| item.ownertable.user_id == order_carts_seller.id}.map(&:discount_coupon_text).first
+                @discount_seller_id = f.object.order_carts.select{|item| item.ownertable.user_id == order_carts_seller.id}.map(&:seller_coupon_id).first
+            %>
+
+            <%= f.fields_for :order_carts, f.object.order_carts.select{|item| item.ownertable.user_id == order_carts_seller.id} do |order_cart| %>
+                <%
+                    @total_discount_value_seller += order_cart.object.discount_coupon_value
+                    @total_discount_value_all_sellers += order_cart.object.discount_coupon_value
+                %>
+                <%= render 'orders/order_carts/itens', open: open, total_value: total_value, order_cart: order_cart %>
+            <% end %>
+            <hr>
+            <%= render 'orders/order_carts/sub_order_carts', open: open, seller: order_carts_seller, current_order: current_order %>
+            <% @total_discount_value_seller = 0 %>
+        <% end %>
+    </div>
+
+    <hr>
+
+    <%= render 'orders/order_price_details', current_order: current_order %>
+
+    <% if open %>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <%= render "orders/pay/discount_coupon" %>
+                    <%= render "orders/pay/freight_values", f: f, current_order: current_order %>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row my-3">
+                        <!-- Continuar comprando: desktop -->
+                        <div class="col-12 col-md-9 d-none d-md-block text-end my-2">
+                            <a href="<%= root_path %>" class="text-auxiliar" style="text-decoration: underline;">
+                                <small><%= Order.human_attribute_name(:keep_buying) %></small>
+                            </a>
+                        </div>
+                        <!-- Pagar -->
+                        <div class="col-12 col-md-3 text-md-end text-center">
+                            <a href="<%= pay_order_path(id: current_order.id) %>" class="btn btn-primary btn-block text-white col-8">
+                                <%= Order.human_attribute_name(:pay) %>
+                            </a>
+                        </div>
+                        <!-- Continuar comprando: mobile -->
+                        <div class="col-12 d-block d-md-none">
+                            <a href="<%= root_path %>" class="text-auxiliar d-block text-center py-3 " style="text-decoration: underline;">
+                                <small><%= Order.human_attribute_name(:keep_buying) %></small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+<% end %>

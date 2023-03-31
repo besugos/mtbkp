@@ -1,0 +1,46 @@
+<div class="row p-0">
+	<div class="col-12 col-md-2">
+		<a href="<%= service.get_image %>" target="_blank">
+			<figure>
+				<%= image_tag service.get_image, width: 50, height: 50, class: "rounded-circle" %>
+			</figure>
+		</a>
+	</div>
+	<div class="col-12 col-md-10">
+		<b><%= service.name %></b>
+		<br>
+		<%= service.user.name unless service.user.nil? || @current_user.user? %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<%= Service.human_attribute_name(:price) %>: <b><%= CustomHelper.to_currency(service.price) %></b> 
+		<br>
+		<% 
+			if service.active 
+				current_class =  "success"
+			else
+				current_class =  "danger"
+			end
+		%>
+		<%= Service.human_attribute_name(:status) %>: <span class="text-<%= current_class %>"><%= service.get_actived? %></span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12 col-md-6">
+		<%= link_to edit_service_path(service), method: :get, data: {title: t('model.edit')} do %>
+		<small>
+			<%= t('model.edit') %>
+		</small>
+		<% end if policy(service).edit? %>
+		|
+		<%= link_to service_path(service), method: :delete, data: {title: t('model.delete'), confirm: t('model.confirm_action')} do %>
+		<small>
+			<%= t('model.delete') %>
+		</small>
+		<% end if policy(service).destroy? %>
+
+	</div>
+</div>

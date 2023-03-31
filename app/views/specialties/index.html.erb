@@ -1,0 +1,20 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: specialties_path, text: Specialty.model_name.human(count: 2)},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: Specialty.model_name.human(count: 2),
+		url_new_path: new_specialty_path,
+		policy_true: policy(Specialty).new?,
+		objects: @specialties,
+		objects_path: specialties_path,
+		object_name: Specialty.model_name.human,
+		breadcrumbs: breadcrumbs
+	}
+%>

@@ -1,0 +1,28 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: '#', text: t('site.buy_plan')}
+]
+%>
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+
+<!-- Conteúdo central -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="row">
+				<div class="d-none d-md-block text-center">
+					<%= render 'common_pages/breadcrumb', links: breadcrumbs %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= render "visitors/home/renders/index/filter_by_text" %>
+	<%= render "visitors/home/renders/buy_plan/plans" %>
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

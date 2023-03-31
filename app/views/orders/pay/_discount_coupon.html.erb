@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-12 col-md-6">
+        <div class="py-3">
+            <label><%= Order.human_attribute_name(:seller_coupon) %></label>
+            <div class="d-flex">
+                <%= text_field_tag "text-discount-coupon", nil, class: "wd-input no-space text-uppercase" %>
+                <button type="button" class="btn btn-primary text-white input-group-text border ms-2" id="insert-discount-coupon">
+                    <%= Order.human_attribute_name(:insert_discount_coupon) %>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<%
+array_links = [
+  {
+    link_path: edit_product_path(record),
+    link_method: :get,
+    link_title: t('model.edit'),
+    confirm: nil,
+    link_image: 'bi bi-pencil-fill',
+    text_action: t('model.edit'),
+    link_policy: policy(record).edit?,
+    class: 'dropdown-item'
+  },
+  {
+    link_path: product_path(record),
+    link_method: :delete,
+    link_title: t('model.delete'),
+    confirm: t('model.confirm_action'),
+    link_image: 'bi bi-trash-fill',
+    text_action: t('model.delete'),
+    link_policy: policy(record).destroy?,
+    class: 'dropdown-item'
+  },
+  # {
+  #   link_path: add_item_to_order_path(ownertable_type: 'Product', ownertable_id: record.id, quantity: 1),
+  #   link_method: :get,
+  #   link_title: Order.human_attribute_name(:add_item),
+  #   confirm: nil,
+  #   link_image: 'bi bi-cart-fill',
+  #   text_action: Order.human_attribute_name(:add_item),
+  #   link_policy: (@order.nil? ? false : policy(@order).add_item_to_order? unless @order.nil?),
+  #   class: 'dropdown-item'
+  # }
+]
+%>
+<%= render 'common_pages/datagrid_actions', array_links: array_links %>

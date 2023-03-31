@@ -1,0 +1,43 @@
+<%= simple_form_for(@plan) do |f| %>
+
+<%= f.input_field :plan_periodicity_id, as: :hidden, value: PlanPeriodicity::MENSAL_ID %>
+<%= f.input_field :plan_type_id, as: :hidden, value: @plan.plan_type_id %>
+
+<div class="row">
+    <div class="col-12 col-md-6 mb-3">
+        <%= f.input :name %>
+    </div>
+    <div class="col-12 col-md-3 mb-3">
+        <%= f.input :price, input_html: {class: 'money', value: CustomHelper.to_currency(f.object.price), type: "tel"}, as: :string %>
+    </div>
+    <% if @plan.plan_type_id == PlanType::PARA_PRODUTOS_ID %>
+    <div class="col-12 col-md-3 mb-3">
+        <%= f.input :limit_products %>
+    </div>
+    <% elsif @plan.plan_type_id == PlanType::PARA_SERVICOS_ID %>
+    <div class="col-12 col-md-3 mb-3">
+        <%= f.input :limit_service_categories %>
+    </div>
+    <% end %>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <%= f.input :description %>
+    </div>
+</div>
+
+<div class="row">   
+    <div class="col-12 mb-3 col-md-3">
+        <%= f.input :active %>
+    </div>
+</div>
+
+<%= render 'common_pages/save', f: f, return_path: plans_path(plan_type_id: @plan.plan_type_id) %>
+
+<% end %>
+
+<%
+# End of file _form.html.erb
+# Path: ./app/views/plans/_form.html.erb
+%>

@@ -1,0 +1,23 @@
+<!-- No caso de grid com muitas colunas, é utilizada a class 'container-fluid' enviadar por parâmetro na hora do render -->
+<div class="container<%='-fluid' if defined?(attributes[:fluid]) && attributes[:fluid] %>">
+
+    <% if defined?(attributes[:custom_table_data]) && !attributes[:custom_table_data].nil? %>
+        <%= attributes[:custom_table_data] %>
+    <% elsif !defined?(attributes[:custom_table_data]) || attributes[:custom_table_data].nil? %>
+        <!-- Tabela de dados -->
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive" style="padding-bottom: 10em;">
+                    <%= datagrid_table attributes[:objects], html: { class: 'table table-sm table-hover' } %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+    <%= render "common_pages/index/pagination", attributes: attributes %>
+</div>
+
+<%
+# End of file _second_container.html.erb
+# Path: ./app/views/common_pages/index/_second_container.html.erb
+%>

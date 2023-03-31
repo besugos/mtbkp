@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    models:
+      plan_service:
+        one: "Serviço do plano"
+        other: "Serviços do plano"
+    attributes:
+      plan_service:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        title: "Título"
+        show: "Mostrar?"
+en:
+  activerecord:
+    models:
+      plan_service:
+        one: "Serviço do plano"
+        other: "Serviços do plano"
+    attributes:
+      plan_service:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        title: "Título"
+        show: "Mostrar?"

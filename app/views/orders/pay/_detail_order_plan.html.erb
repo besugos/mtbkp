@@ -1,0 +1,75 @@
+<!-- Barra lateral -->
+<aside class="col-12 col-md-3">
+
+	<!-- Título -->
+	<h5><%= Order.human_attribute_name(:values) %></h5>
+	<br>
+
+	<%
+		current_plan = order.order_carts.first.ownertable
+	%>
+
+	<% if !current_plan.nil? %>
+		<%= Plan.model_name.human %> <%= current_plan.plan_type.name.downcase %>: <%= current_plan.get_name %>
+	<% end %>
+	
+	<% if !order.seller_coupon.nil? %>
+		<br>
+		<%= Order.human_attribute_name(:seller_coupon_id) %>:
+		<b class="text-secondary">
+			<%= order.seller_coupon.name %> <span class="text-success"><%= CustomHelper.to_currency(order.discount_by_seller_coupon) %></span>
+		</b>
+		<br>
+		<a href="<%= remove_seller_coupon_path(id: order.id) %>" class="text-danger text-decoration-none text-center" data-confirm="<%= t("model.confirm_action") %>"><%= Order.human_attribute_name(:remove_seller_coupon) %></a>
+	<% end %>
+	
+	<br>
+	<div class="mt-3">
+		<%= Order.human_attribute_name(:total_value) %>:
+		<b class="text-secondary"><%= CustomHelper.to_currency(order.get_total_price) %></b>
+	</div>
+
+	<!-- Título -->
+	<h5 class="mt-5"><%= Order.human_attribute_name(:close_order) %></h5>
+
+	<%
+		dados_comprador = Order.human_attribute_name(:user_data).upcase
+		dados_endereco = Order.human_attribute_name(:address_data).upcase
+		pagamento = Order.human_attribute_name(:payment_data).upcase
+		links = {
+		dados_comprador  => pay_order_path(id: order.id, show_data_user: true),
+		dados_endereco => pay_order_path(id: order.id, show_address_data: true),
+		pagamento => pay_order_path(id: order.id)
+		} 
+	%>
+
+	<%
+		show_arrow = false
+		already_show = false 
+	%>
+
+	<ul class="list-group">
+		<% links.each do |label, href| %>
+			<%
+				if (!order.user.is_valid_to_buy? || !params[:show_data_user].nil?) && label == dados_comprador
+					show_arrow = true
+					already_show = true
+				elsif (!order.is_address_valid? || !params[:show_address_data].nil?) && label == dados_endereco && !already_show
+					show_arrow = true
+					already_show = true
+				elsif label == pagamento && !already_show
+					show_arrow = true
+				end 
+			%>
+
+			<a href="<%= href %>" class="list-group-item list-group-item text-decoration-none <%= show_arrow ? 'text-primary' : 'text-auxiliar' %>">
+				<small class="<%= 'font-weight-bold' if show_arrow %>"><%= label %></small>
+			</a>
+
+			<% show_arrow = false %>
+		<% end %>
+	</ul>
+
+	<br>
+
+</aside>

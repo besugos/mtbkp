@@ -1,0 +1,5 @@
+<% if order.order_status_id == OrderStatus::EM_ABERTO_COMPRA_PLANOS_ID %>
+	<%= render "orders/pay/detail_order_plan", order: order %>
+<% elsif order.order_status_id == OrderStatus::EM_ABERTO_ID %>
+	<%= render "orders/pay/detail_order_product", order: order %>
+<% end %>

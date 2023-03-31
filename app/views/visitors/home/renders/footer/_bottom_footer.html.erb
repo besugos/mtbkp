@@ -1,0 +1,28 @@
+<div class="container-fluid bg-bt-footer">
+	<div class="container pt-2 pb-2">
+		<div class="row d-flex align-items-center">
+			<div class="col-12 col-lg-9 text-white ">
+				<%= t("session.project") %>
+				 - 
+				<%= SystemConfiguration.human_attribute_name(:cnpj) %>: <%= @system_configuration.cnpj %>
+				<br>
+				<% if !@system_configuration.address.nil? %>
+					<%= @system_configuration.address.get_address_value %>
+					<br>
+				<% end %>
+				<i class="bi bi-c-circle"></i>
+				<%= Date.today.year %>
+				<%= t("site.all_rights_reserved") %>
+			</div>
+			<div class="col-12 col-lg-3">
+				<div class="text-center redes-footer">
+				    <a class="m-2" href="<%= @system_configuration.linkedin_link %>" target="_blank"><i class="bi bi-linkedin"></i></a>
+	                <a class="m-2" href="<%= @system_configuration.youtube_link %>" target="_blank"><i class="bi bi-youtube"></i></a>
+	                <a class="m-2" href="<%= @system_configuration.instagram_link %>" target="_blank"><i class="bi bi-instagram"></i></a>
+	                <a class="m-2" href="<%= @system_configuration.facebook_link %>" target="_blank"><i class="bi bi-facebook"></i></a>
+	                <a class="m-2" href="<%= @system_configuration.twitter_link %>" target="_blank"><i class="bi bi-twitter"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	

@@ -1,0 +1,106 @@
+<%= f.fields_for :data_professional do |data_professional| %>
+    <div class="row">
+
+        <div class="col-12">
+            <h4 class="mt-4 mb-4"><%= User.human_attribute_name(:data_professional).upcase %></h4>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <%= data_professional.input :email, type: "email" %>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <%= data_professional.input :phone, input_html: {class: 'complete-phone-ddd', type: "tel"} %>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <%= data_professional.input :site %>
+        </div>
+        <div class="col-12 col-md-3 mb-3">
+            <%= data_professional.input :profession %>
+        </div>
+        <div class="col-12 col-md-3 mb-3">
+            <%= data_professional.input :register_type %>
+        </div>
+        <div class="col-12 col-md-3 mb-3">
+            <%= data_professional.input :register_number %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <label><%= DataProfessional.human_attribute_name(:specialties) %></label>
+            <%= data_professional.association :specialties, collection: Specialty.order(:name), as: :check_boxes, include_blank: false, legend_tag: false, input_html: {class: 'form-control'} %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <%= data_professional.input :files, as: :file, input_html: { multiple: 'multiple'} %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <%= data_professional.fields_for :attachments do |attach| %>
+                <div class="col-12 col-md-4">
+                    <%= link_to attach.object.attachment.filename, attach.object.attachment.url, target: "_blank" %>
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="row">
+                        <%= render 'common_pages/delete_multiple_relation', remove_path: delete_attachment_path(model_id: attach.object.id), object: attach.object, object_text: 'attachment'  %>
+                    </div>
+                </div>
+            <% end %>               
+        </div>
+        <% if policy(f.object).can_view_approve_documents? %>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <%
+                        text = data_professional.object.professional_document_status.name
+                            if data_professional.object.professional_document_status_id == ProfessionalDocumentStatus::EM_ANALISE_ID
+                                i_class = "border-warning bi bi-exclamation-triangle-fill text-warning"
+                            elsif data_professional.object.professional_document_status_id == ProfessionalDocumentStatus::REPROVADO_ID
+                                i_class = "border-danger bi bi-x-circle-fill text-danger"
+                            elsif data_professional.object.professional_document_status_id == ProfessionalDocumentStatus::VALIDADO_ID
+                                i_class = "border-success bi bi-check-circle-fill  text-success"
+                            end
+                        %>
+                        <i class="border p-3 <%= i_class %> fs-4">
+                            <%= text %>
+                        </i>
+                        <% if data_professional.object.professional_document_status_id == ProfessionalDocumentStatus::REPROVADO_ID %>
+                            <div class="mt-1 text-start">
+                                <span>
+                                    <br>
+                                    <label>
+                                        <b><%= DataProfessional.human_attribute_name(:repprovation_reason) %>:</b>
+                                    </label>
+                                    <br>
+                                    <%= simple_format(data_professional.object.repprovation_reason) %>
+                                </span>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <% if policy(f.object).can_approve_documents? %>
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <%= data_professional.association :professional_document_status, collection: ProfessionalDocumentStatus.all, as: :select, include_blank: false %>
+            </div>
+            <div class="col-12 col-md-3">
+                <%= data_professional.input :repprovation_reason %>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-12">
+            <h4 class="mt-4"><%= Address.model_name.human.upcase %></h4>
+        </div>
+    </div>
+    <%= render 'common_pages/addresses/address', f: data_professional %>
+    
+<% end %>

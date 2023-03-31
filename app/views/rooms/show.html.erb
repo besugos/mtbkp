@@ -1,0 +1,46 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: "#", text: "Chat"},
+	{active: true, href: '#', text: @receiver.get_name},
+]
+%>
+
+<div class="container">
+
+	<%= hidden_field_tag 'receiver_id', params[:receiver_id] %>
+	<%= hidden_field_tag 'sender_id', @current_user.id %>
+
+	<div class="row mb-3">
+		<div class="d-none d-md-block col-md-10 text-center">
+			<%= render 'common_pages/breadcrumb', links: breadcrumbs %>
+		</div>
+	</div>
+
+	<!-- Tabela de dados -->
+	<div class="row">
+		<div class="col-12">
+			<div id="div_messages">
+				<% @messages.each do |message| %>
+				<div class="row <%= @current_user.id == message.sender_id ? 'text-end' : 'text-start' %>">
+					<div class="col">
+						<span><%= message.content %></span>
+						<span style="font-size: 10px;" class="text-muted ms-2"><%= CustomHelper.get_text_date(message.created_at, 'datetime', :just_hour_minute) %></span>
+					</div>
+				</div>
+				<br>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<br><br>
+	<div class="row">
+		<div class="col">
+			<form>
+				<input type="text" data-behavior="room_speaker">
+			</form>
+		</div>
+	</div>
+
+</div>

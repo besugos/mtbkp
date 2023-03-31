@@ -1,0 +1,30 @@
+<%= form_tag sessions_path, novalidate: true do %>
+
+<h3><%= t('session.enter') %></h3>
+
+<!-- E-mail/login de acesso -->
+<div class="mb-3">
+    <label class="form-label" for="email"><%= t('session.user') %></label>
+    <%= text_field_tag :email, params[:email], class: "form-control text-lowercase no-space", autofocus: true, autocomplete: 'username', type: "email" %>
+</div>
+
+<!-- Senha de acesso -->
+<div class="mb-3">
+    <label class="form-label" for="password"><%= t('session.password') %></label>
+    <%= password_field_tag :password, params[:password], class: "form-control input_password", autocomplete: 'current-password' %>
+</div>
+
+<!-- Botão de submeter -->
+<button class="btn btn-primary text-white" type="submit"><%= t('session.log_in') %></button>
+
+<!-- Link para recuperação de senha -->
+<a class="btn btn-link" href="<%= recovery_pass_path %>"><%= t('session.forgot_password') %></a>
+
+<%= render 'sessions/locale' %>
+
+<% end %>
+
+<%
+# End of file _session_form.html.erb
+# Path: ./app/views/sessions/_session_form.html.erb
+%>

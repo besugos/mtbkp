@@ -1,0 +1,82 @@
+pt-BR:
+  activerecord:
+    models:
+      product:
+        one: "Produto do vendedor"
+        other: "Produtos do vendedor"
+    attributes:
+      product:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        title: 'Nome'
+        price: 'Preço'
+        description: 'Descrição'
+        principal_image: "Imagem principal"
+        images: "Imagens"
+        category_id: "Categoria"
+        category: "Categoria"
+        sub_category_id: "Sub-categoria"
+        sub_category: "Sub-categoria"
+        user: "Vendedor"
+        user_id: "Vendedor"
+        product_condition: "Condição"
+        product_condition_id: "Condição"
+        quantity_stock: "Quantidade em estoque"
+        promotional_price: "Preço promocional"
+        width: "Largura"
+        height: "Altura"
+        depth: "Profundidade"
+        weight: "Peso"
+        selected_address_id: "Nome do endereço a ser usado"
+        selected_address: "Nome do endereço a ser usado"
+        product_output_address: "Usar um dos meus endereços ou cadastrar um novo (Clique para selecionar)"
+        new_address: "Novo endereço"
+        avaliation_value: "Avaliação"
+        units_in_stock: "Unidades em estoque"
+        dimensions: "Dimensões"
+        similar_products: "Produtos semelhantes"
+        payment_methods: "Formas de pagamento"
+en:
+  activerecord:
+    models:
+      product:
+        one: "Produto do vendedor"
+        other: "Produtos do vendedor"
+    attributes:
+      product:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        title: 'Nome'
+        price: 'Preço'
+        description: 'Descrição'
+        principal_image: "Imagem principal"
+        images: "Imagens"
+        category_id: "Categoria"
+        category: "Categoria"
+        sub_category_id: "Sub-categoria"
+        sub_category: "Sub-categoria"
+        user: "Vendedor"
+        user_id: "Vendedor"
+        product_condition: "Condição"
+        product_condition_id: "Condição"
+        quantity_stock: "Quantidade em estoque"
+        promotional_price: "Preço promocional"
+        width: "Largura"
+        height: "Altura"
+        depth: "Profundidade"
+        weight: "Peso"
+        selected_address_id: "Nome do endereço a ser usado"
+        selected_address: "Nome do endereço a ser usado"
+        product_output_address: "Usar um dos meus endereços ou cadastrar um novo (Clique para selecionar)"
+        new_address: "Novo endereço"
+        avaliation_value: "Avaliação"
+        units_in_stock: "Unidades em estoque"
+        dimensions: "Dimensões"
+        similar_products: "Produtos semelhantes"
+        payment_methods: "Formas de pagamento"
+
+

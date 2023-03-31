@@ -1,0 +1,56 @@
+pt-BR:
+  activerecord:
+    models:
+      banner:
+        one: "Banner"
+        other: "Banners"
+    attributes:
+      banner:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        image: "Imagem (1140x280)"
+        image_mobile: "Imagem (responsivo) (400x200)"
+        link: "Link"
+        title: "Título"
+        position: "Posição"
+        banner_area: "Área"
+        banner_area_id: "Área"
+        status: "Visibilidade"
+        active: "Ativo"
+        is_active: "Ativo"
+        inactive: "Inativo"
+        visible: "Visível"
+        hidden: "Oculto"
+        disponible_date: "Disponível até"
+        set_inactive: "Inativar"
+        set_active: "Ativar"
+en:
+  activerecord:
+    models:
+      banner:
+        one: "Banner"
+        other: "Banners"
+    attributes:
+      banner:
+        id: "ID"
+        created_at: 'Created at'
+        updated_at: 'Updated at'
+        actions: "Actions"
+        image: "Imagem (1140x280)"
+        image_mobile: "Imagem (responsivo) (400x200)"
+        link: "Link"
+        title: "Título"
+        position: "Posição"
+        banner_area: "Área"
+        banner_area_id: "Área"
+        status: "Visibilidade"
+        active: "Ativo"
+        is_active: "Ativo"
+        inactive: "Inativo"
+        visible: "Visível"
+        hidden: "Oculto"
+        disponible_date: "Disponível até"
+        set_inactive: "Inativar"
+        set_active: "Ativar"

@@ -1,0 +1,42 @@
+<div class="shadow mt-3 card-custom">
+	<div class="p-3">
+		<div>
+			<% if product.principal_image.attached? %>
+				<% 
+					begin
+						image_url = product.principal_image.variant(resize_to_limit: [217,200]).processed.url
+					rescue StandardError => e
+						image_url = "https://via.placeholder.com/217x200"
+					end
+				%>
+				<img src="<%= image_url %>" alt="" class="img-fluid" style="width: 217px !important; height: 200px !important;">
+			<% else %>
+	        	<img src="https://via.placeholder.com/400x200" alt="" class="img-fluid">
+			<% end %>
+	    </div>
+	    <div>
+	        <div>
+	           	<div>
+	              	<div class="pt-3 hg-80">
+	                 	<span class="" title="<%= product.title %>"><a class="title-product" href="<%= show_product_path(id: product.id) %>"><%= product.title.truncate(35) %></a></span>
+	              	</div>
+	           	</div>
+	           	<div class="text-start">
+					<% if !product.promotional_price.nil? && !product.promotional_price.blank? && product.promotional_price > 0 %>
+						<small><s><%= CustomHelper.to_currency(product.price) %></s></small>
+						<br>
+					<% end %>
+					<b><%= CustomHelper.to_currency(product.get_price) %></b>
+				</div>
+	          	<div>
+	          		<a class="btn btn-primary text-white col-12 mt-2" href="<%= add_item_to_order_path(ownertable_type: 'Product', ownertable_id: product.id, quantity: 1) %>">
+						<%= t("site.buy") %>
+					</a>
+	          	</div>
+	        </div>
+    	</div>
+	</div>
+</div>
+
+
+

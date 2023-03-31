@@ -1,0 +1,22 @@
+<!-- Navegação estruturada -->
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent py-2 mb-0">
+
+		<% links.each do |link| %>
+			<li class="breadcrumb-item <%= 'active' if link[:active] %>">
+				<a
+					href="<%= link[:href] %>"
+					aria-current="page"
+					target="<%= defined?(target) ? target : "_self" %>">
+					<small><%= link[:text].upcase %></small>
+				</a>
+			</li>
+		<% end %>
+		
+	</ol>
+</nav>
+
+<%
+# End of file _breadcrumb.html.erb
+# Path: ./app/views/common_pages/_breadcrumb.html.erb
+%>

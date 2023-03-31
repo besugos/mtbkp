@@ -1,0 +1,38 @@
+<% if freight_order_option %>
+	<div class="mt-3">
+		<span>Código de rastreio:
+			<% tracking_code = FreightOrderOption.getting_tracking_code(freight_order_option) %>
+			<% if !tracking_code.blank? %>
+				<%= link_to tracking_code, "https://www.melhorrastreio.com.br/rastreio/"+tracking_code, target: "_blank" %>
+			<% end %>
+		</span>
+		<br>
+		<span>
+			<b>Postado em: <%= CustomHelper.get_text_date(FreightOrderOption.getting_posted_at(freight_order_option), "datetime", :full) %></b>
+			<br>
+			<b>Entregue em: <%= CustomHelper.get_text_date(FreightOrderOption.getting_delivered_at(freight_order_option), "datetime", :full) %></b>
+		</span>
+		<% if current_order.user_id != @current_user.id %>
+			<%= simple_form_for current_order, method: :post, url: update_freight_path(id: current_order.id) do |f| %>
+				<%= f.fields_for :freight_orders, f.object.freight_orders.select{|item| item.seller_id == seller.id}.first do |freight_order| %>
+					<%= freight_order.fields_for :freight_order_options, freight_order.object.freight_order_options.select{|item| item.selected }.first do |freight_order_option| %>
+						<div class="row mt-3">
+							<div class="col-12">
+								<%
+									link_print = FreightOrderOption.get_url_print(freight_order_option.object)
+									if link_print.blank?
+										Order.checkout_data_in_cart_melhor_envio(freight_order_option.object)
+										link_print = FreightOrderOption.get_url_print(freight_order_option.object)
+									end
+								%>
+								<% if !link_print.blank? %>
+									<%= link_to "Imprimir etiqueta de envio", link_print, target: "_blank", class: "btn btn-primary text-white" %>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

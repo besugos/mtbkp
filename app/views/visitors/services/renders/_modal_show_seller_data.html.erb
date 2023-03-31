@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div class="modal fade" id="show_seller_contact_data_<%=seller.id%>" tabindex="-1">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Cabeçalho -->
+            <div class="modal-header">
+
+                <!-- Título -->
+                <h5 class="modal-title" id="show_seller_contact_data_label_<%=seller.id%>">
+                    <small class="text-muted"><%= User.human_attribute_name(:seller_contact_data) %></small>
+                </h5>
+
+                <!-- Botão fechar -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="modal-body">
+                <div class="row">
+                    <% if !seller.data_professional.nil? %>
+                        <div class="col-12 mt-3">
+                            <%= DataProfessional.human_attribute_name(:email) %>: 
+                            <%= link_to seller.data_professional.email, "mailto:"+seller.data_professional.email, target: "_blank" %>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <%= DataProfessional.human_attribute_name(:phone) %>: 
+                            <%= link_to seller.data_professional.phone, "tel:"+seller.data_professional.phone, target: "_blank" %>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <%= DataProfessional.human_attribute_name(:site) %>: 
+                            <%= link_to seller.data_professional.site, "http://#{format_site_http(seller.data_professional.site)}", target: "_blank" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%
+# End of file _show_sub_categories.html.erb
+# Path: ./app/views/categories/modals/_show_sub_categories.html.erb
+%>

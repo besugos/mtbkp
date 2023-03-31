@@ -1,0 +1,22 @@
+<div class="row my-2">
+	<div class="col-12">
+		<input class="input-find-users border border-1 border-primary bg-primary-transparent py-1 ps-2 fs-14 input-pesquisar-height" id="find_users_to_talk" type="text" placeholder="Pesquise">
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<% users_already_talk = get_users_already_talk %>
+		<div style="max-height: 62vh; overflow-y: scroll; overflow-x: hidden !important;">
+			<div class="border border-1">
+				<div class="row">
+					<div id="with-user-cards">
+						<% users_already_talk.each do |user| %>
+							<%= render "orders/chat/user_card", user: user[:user], last_message_date: user[:data_message_formatted] %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

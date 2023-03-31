@@ -1,0 +1,35 @@
+<div id="service_step_4" hidden>
+	<div class="row pt-5">
+		<div class="col-12">
+			<h3><%= Service.human_attribute_name(:site_service_informations) %></h3>
+			<label>Tamanho do terreno?</label>
+			<br>
+			<div class="w-100">
+				Até: <%= number_field_tag :ground_size, "", class: "wd-90" %>
+				<%= select_tag :service, options_for_select([ "m", "km", "Ha" ], "m") %>
+			</div>
+			<br>
+			<label>Quando pretende realizar o serviço?</label>
+			<br>
+			<%= text_field_tag :ground_date, "", class: 'w-100 datepicker' %>
+			<br> <br>
+			<label>Tem mais alguma informação importante? Escreva aqui:</label>
+			<br>
+			<%= text_area_tag :informations, "", class: 'w-100 ' %>
+		</div>
+	</div>
+	<div class="row pt-5">
+		<div class="col-12 col-sm-6">
+			<button type="button" id="back-to-step-3" class="btn btn-v col-12 back-to-step"><%= t("model.back") %></button>
+		</div>
+		<div class="col-12 col-sm-6">
+			<button type="submit" id="go-to-step-5" class="btn btn-p col-12 next-step"><%= t("site.get_professionals") %></button>
+		</div>
+		<%= render "visitors/home/renders/index/services/show_all_services" %>
+	</div>
+</div>
+
+<%
+# End of file _step_4.html.erb
+# Path: ./app/views/visitors/home/renders/index/services/_step_4.html.erb
+%>

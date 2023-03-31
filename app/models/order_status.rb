@@ -1,0 +1,9 @@
+class OrderStatus < ApplicationRecord
+
+	EM_ABERTO_ID = 1
+	PAGAMENTO_REALIZADO_ID = 2
+	CANCELADA_ID = 3
+	AGUARDANDO_PAGAMENTO_ID = 4
+	EM_ABERTO_COMPRA_PLANOS_ID = 5
+
+end

@@ -1,0 +1,10 @@
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - /bin/bash deploy/production.sh
+    staging:
+      - step:
+          script:
+            - /bin/bash deploy/staging.sh

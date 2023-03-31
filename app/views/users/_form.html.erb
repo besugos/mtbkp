@@ -1,0 +1,50 @@
+<%= simple_form_for @user do |f| %>
+
+	<!-- ID do perfil de usuário -->
+	<%= f.input :profile_id, as: :hidden, input_html: {value: f.object.profile_id} %>
+
+	<div class="row">
+		<!-- Título -->
+		<div class="col-12 col-md-4">
+			<h4 class="mt-4"><%= User.human_attribute_name(:personal_data).upcase %></h4>
+		</div>
+		<% if f.object.persisted? && f.object.user? %>
+			<div class="col-12 col-md-8 text-end">
+				<%= t("model.add_edit") %>
+				<a target="_blank" class="btn btn-primary text-white" href="<%= user_addresses_path(ownertable_type: "User", ownertable_id: f.object.id, address_area_id: AddressArea::ENDERECO_ENTREGA_ID, page_title: User.human_attribute_name(:delivery_addresses)) %>">
+					<%= User.human_attribute_name(:delivery_addresses) %>
+				</a>
+				<a target="_blank" class="btn btn-primary text-white" href="<%= user_addresses_path(ownertable_type: "User", ownertable_id: f.object.id, address_area_id: AddressArea::ENDERECO_SAIDA_ID, page_title: User.human_attribute_name(:output_addresses)) %>">
+					<%= User.human_attribute_name(:output_addresses) %>
+				</a>
+				<a target="_blank" class="btn btn-primary text-white" href="<%= user_cards_path(ownertable_type: "User", id: f.object.id, page_title: Card.model_name.human(count: 2)) %>">
+					<%= Card.model_name.human(count: 2) %>
+				</a>
+			</div>
+		<% end %>
+	</div>
+
+	<%= render 'users/forms/profile_image', f: f %>
+
+	<%= render 'users/forms/personal_data', f: f %>
+
+	<%= render 'users/forms/user_form', f: f %>
+
+	<div class="div-data-professional" <%= "hidden" if !f.object.publish_professional_profile %>>
+		<%= render 'users/forms/data_professional_form', f: f %>
+	</div>
+
+	<% if !f.object.persisted? %>
+		<%= render 'users/forms/access_data', f: f %>
+	<% end %>
+
+	<%= render "users/forms/accept_therm", f: f %>
+
+	<%= render 'common_pages/save', f: f, return_path: users_user_path %>
+
+<% end %>
+
+<%
+# End of file _form.html.erb
+# Path: ./app/views/users/_form.html.erb
+%>

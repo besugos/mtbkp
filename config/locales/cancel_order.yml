@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      cancel_order:
+        one: "Cancelamento de compra"
+        other: "Cancelamento de compra"
+    attributes:
+      cancel_order:
+        cancel_order_reason_id: "Motivo do cancelamento"
+        cancel_order_reason: "Motivo do cancelamento"
+        reason_text: "Descreva o motivo"
+en:
+  activerecord:
+    models:
+      cancel_order:
+        one: "Cancelamento de compra"
+        other: "Cancelamento de compra"
+    attributes:
+      cancel_order:
+        cancel_order_reason_id: "Motivo do cancelamento"
+        cancel_order_reason: "Motivo do cancelamento"
+        reason_text: "Descreva o motivo"

@@ -1,0 +1,80 @@
+<%= simple_form_for professional_avaliation, url: update_professional_avaliation_path, method: :post, defaults: { input_html: { class: 'form-control' } }, remote: true do |f| %>
+	
+	<%= f.input :id, as: :hidden, input_html: {value: f.object.id} %>
+	<%= f.input :order_id, as: :hidden, input_html: {value: f.object.order_id} %>
+	<%= f.input :professional_id, as: :hidden, input_html: {value: f.object.professional_id} %>
+	<%= f.input :client_id, as: :hidden, input_html: {value: f.object.client_id} %>
+	<%= f.input :deadline_avaliation, as: :hidden, input_html: {id: "avaliation_deadline_avaliation_"+f.object.professional_id.to_s+"-"+current_id.to_s} %>
+	<%= f.input :quality_avaliation, as: :hidden, input_html: {id: "avaliation_quality_avaliation_"+f.object.professional_id.to_s+"-"+current_id.to_s} %>
+	<%= f.input :problems_solution_avaliation, as: :hidden, input_html: {id: "avaliation_problems_solution_avaliation_"+f.object.professional_id.to_s+"-"+current_id.to_s} %>
+
+	<div class="row mb-3">
+		<div class="col-12 col-md-4">
+			<!-- Estrelinhas -->
+			<div class="form-group">
+				<label for=""><%= ProfessionalAvaliation.human_attribute_name(:deadline_avaliation) %></label>
+				<br>
+				<% for i in 1..5 %>
+					<% 
+						if professional_avaliation.persisted? && !professional_avaliation.deadline_avaliation.nil? && professional_avaliation.deadline_avaliation >= i
+							fill = "-fill"
+						else
+							fill = ""
+						end
+					%>
+					<i id="<%= f.object.professional_id %>-<%= current_id %>-deadline_avaliation-start-position-<%=i%>" class="<%= f.object.professional_id %>-<%= current_id %>-deadline_avaliation bi bi-star<%=fill%> change-selection-start text-primary"></i>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-12 col-md-4">
+			<!-- Estrelinhas -->
+			<div class="form-group">
+				<label for=""><%= ProfessionalAvaliation.human_attribute_name(:quality_avaliation) %></label>
+				<br>
+				<% for i in 1..5 %>
+					<% 
+						if professional_avaliation.persisted? && !professional_avaliation.quality_avaliation.nil? && professional_avaliation.quality_avaliation >= i
+							fill = "-fill"
+						else
+							fill = ""
+						end
+					%>
+					<i id="<%= f.object.professional_id %>-<%= current_id %>-quality_avaliation-start-position-<%=i%>" class="<%= f.object.professional_id %>-<%= current_id %>-quality_avaliation bi bi-star<%=fill%> change-selection-start text-primary"></i>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-12 col-md-4">
+			<!-- Estrelinhas -->
+			<div class="form-group">
+				<label for=""><%= ProfessionalAvaliation.human_attribute_name(:problems_solution_avaliation) %></label>
+				<br>
+				<% for i in 1..5 %>
+					<% 
+						if professional_avaliation.persisted? && !professional_avaliation.problems_solution_avaliation.nil? && professional_avaliation.problems_solution_avaliation >= i
+							fill = "-fill"
+						else
+							fill = ""
+						end
+					%>
+					<i id="<%= f.object.professional_id %>-<%= current_id %>-problems_solution_avaliation-start-position-<%=i%>" class="<%= f.object.professional_id %>-<%= current_id %>-problems_solution_avaliation bi bi-star<%=fill%> change-selection-start text-primary"></i>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="col-12">
+			<!-- Comentário -->
+			<div class="form-group">
+				<%= f.input :comment, label: false %>
+			</div>
+		</div>
+
+		<div class="col-12 text-center">
+			<!-- Botão de salvar -->
+			<%= f.button :submit, class: "text-white", id: 'save-avaliation-'+current_id.to_s, value: ProfessionalAvaliation.human_attribute_name(:send) %>
+		</div>
+	</div>
+
+	<hr>
+<% end %>
+<% # End of file _avaliation_form.html.erb %>
+<% # Path: ./app/views/visitors/products/_avaliation_form.html.erb %>

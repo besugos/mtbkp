@@ -1,0 +1,40 @@
+<%
+	breadcrumbs = [
+		{active: false, href: root_path, text: t('menu.initial_page')},
+		{active: false, href: products_path, text: Product.model_name.human(count: 2)},
+		{active: true, href: '#', text: t('model.list')},
+	]
+
+	if @current_user.user?
+		render_plan_table_data = (render "common_pages/my_plan_data", plan_type: PlanType::PRODUTOS_NAME, professional: @current_user)
+	else
+		render_plan_table_data = false
+	end
+
+	if policy(Product).create?
+		url_new_path = new_product_path
+		policy_true = policy(Product).new?
+		add_new_text = t('model.add_new')
+	else
+		url_new_path = buy_plan_path
+		policy_true = true
+		add_new_text = t("site.buy_plan")
+	end
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: Product.model_name.human(count: 2),
+		url_new_path: url_new_path,
+		policy_true: policy_true,
+		add_new_text: add_new_text,
+		objects: @products,
+		objects_path: products_path,
+		object_name: Product.model_name.human,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: products_path(format: "csv", products_grid: (params[:products_grid].nil? ? "" : params[:products_grid].to_enum.to_h)),
+		objects_path_export: false,
+		render_plan_table_data: render_plan_table_data
+	}
+%>

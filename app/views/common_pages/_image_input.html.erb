@@ -1,0 +1,20 @@
+<%
+  if !image.nil?
+    image_url = image.url
+  else
+    image_url = ''
+  end
+
+  if defined?(accept)
+    accept = accept
+  else
+    accept = ".jpeg, .jpg, .png"
+  end
+%>
+
+<%= form.input attribute, input_html: {accept: accept}, label: label %>
+<% if !image_url.blank? %>
+  <a href="<%= image_url %>" target="_blank">
+    <%= image_tag image_url, width: 200, height: 200 %>
+  </a>
+<% end %>

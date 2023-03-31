@@ -1,0 +1,23 @@
+<%
+label = @current_user.admin? ? Order.model_name.human(count: 2) : Order.human_attribute_name(:sold_products)
+
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: sold_products_path, text: label},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: label,
+		url_new_path: nil,
+		policy_true: false,
+		objects: @orders,
+		objects_path: sold_products_path,
+		object_name: label,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: sold_products_path(format: "csv", sold_products_grid: (params[:sold_products_grid].nil? ? "" : params[:sold_products_grid].to_enum.to_h))
+	}
+%>

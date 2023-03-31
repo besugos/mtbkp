@@ -1,0 +1,39 @@
+<div class="col-12 mt-3">
+	<h1>
+		<%= Service.human_attribute_name(:find_your_service) %>
+	</h1>
+
+	<div class="row mt-4">
+		<div class="col-12">
+			<div class="card-serv-full p-5">
+				<div class="progress">
+				  	<div class="progress-bar progress-bar-striped progress-bar-animated" id="form-service-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<div class="text-center pt-5">
+					<h2><%= t("site.explain_what_you_need") %></h2>
+				</div>
+
+				<%= form_tag services_by_all_filters_path, id: "filter-services-by-data", method: :get, validate: true do %>
+					<%= render "visitors/home/renders/index/services/step_1" %>
+					<%= render "visitors/home/renders/index/services/step_2" %>
+					<%= render "visitors/home/renders/index/services/step_3" %>
+					<%= render "visitors/home/renders/index/services/step_4" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-12 mt-5">
+			<h2>
+				O que é o Mercado Topográfico?
+			</h2>
+			<p class="mt-3 mb-0">
+				O Mercado Topográfico é uma empresa de tecnologia que te ajuda a encontrar profissionais da topografia próximos a você. Nosso objetivo é oferecer os melhores serviços e soluções capazes de potencializar e impulsionar o desenvolvimento da topografia.
+			</p>
+		</div>
+	</div>
+
+</div>
+
+<%
+# End of file _services.html.erb
+# Path: ./app/views/visitors/home/renders/index/_services.html.erb
+%>

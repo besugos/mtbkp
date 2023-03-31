@@ -1,0 +1,41 @@
+<!-- Endereços cadastro múltiplo -->
+<script>
+  multi_address('address', true);
+</script>
+
+<!-- Endereços -->
+<div class="row">
+
+  <!-- Título -->
+  <div class="col-12">
+    <h4 class="mt-4"><%= Address.model_name.human(count: 2) %></h4>
+  </div>
+
+  <!-- Campos multiplos dinamicos -->
+  <div class="col-12 multi-address-block">
+
+    <!-- Contador -->
+    <input type="hidden" value="<%= f.object.addresses.length.to_s %>" class="multi-address-cont" disabled>
+
+    <%= f.fields_for :addresses do |address| %>
+
+      <%= address.input :id, as: :hidden, input_html: {value: address.object.id} %>
+
+      <div class="row multi-address">
+        <div class="col-12">
+          <%= render 'common_pages/addresses/address_fields', f: f, address: address %>
+          <%= render 'common_pages/delete_multiple_relation', remove_path: delete_address_path(model_id: address.object.id), object: address.object, object_text: 'address'  %>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <!-- Botão de adicionar -->
+  <div class="col-12">
+    <%= render 'common_pages/add_multiple_relation', object_text: 'address' %>
+  </div>
+
+</div>
+<!-- Fim endereços cadastro múltiplo -->

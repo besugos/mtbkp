@@ -1,0 +1,51 @@
+<div class="row mt-4 d-flex justify-content-center">
+	<div class="col-12 col-md-6 p-2">
+		<div class="border shadow p-3">
+			<div class="p-3">
+				<div class="d-flex justify-content-between">
+					<h4><%= Plan.human_attribute_name(:product_plans) %></h4>
+				</div>
+			</div>
+			<div class="row">
+				<% Plan.active.by_plan_type_id(PlanType::PARA_PRODUTOS_ID).each do |plan| %>
+					<div class="col-12 col-lg-4">
+						<%= render "visitors/home/renders/plan/plan_card", plan: plan %>
+					</div>
+				<% end %>
+				<div class="col-12 text-center">
+					<p class="mb-0">
+						Tarifa por venda 
+						<a href="" class="text-decoration-none text-reset" data-bs-toggle="tooltip" data-bs-placement="bottom" title="A tarifa é calculada sobre o total da venda.">
+							<i class="bi bi-info-circle-fill text-secondary"></i>
+						</a>:
+					</p>
+					<p>
+						10%
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="col-12 col-md-6 p-2">
+		<div class="border shadow p-3">
+			<div class="p-3">
+				<div class="d-flex justify-content-between">
+					<h4><%= Plan.human_attribute_name(:service_plans) %></h4>
+				</div>
+			</div>
+			<div class="row">
+				<% Plan.active.by_plan_type_id(PlanType::PARA_SERVICOS_ID).each do |plan| %>
+					<div class="col-12 col-lg-4">
+						<%= render "visitors/home/renders/plan/plan_card", plan: plan %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<%
+# End of file _plans.html.erb
+# Path: ./app/views/visitors/home/renders/buy_plan/_plans.html.erb
+%>

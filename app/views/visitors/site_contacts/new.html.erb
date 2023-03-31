@@ -1,0 +1,50 @@
+<%= render "visitors/home/renders/index/header" %>
+
+<div  class="container pt-5 pb-5">
+    <div class="row">
+        
+        <div class="col-12">
+            <div class="">
+                <h2 class="text-primary"><%= t("site.talk_with_us") %></h2>
+            </div>
+        </div>
+
+        <%= render "visitors/site_contacts/form" %>
+
+        <div class="col-4 mt-5">
+            <!-- <h6><%= t("site.make_contact").upcase %></h6> -->
+            <div class="mt-4 text-primary">
+                <%= render "visitors/home/renders/footer/contact_data_fields", title: t("site.client_contact"), phone: @system_configuration.client_contact_phone, cellphone: @system_configuration.client_cellphone, email: @system_configuration.client_contact_mail, text_color: "text-black" %>
+            </div>
+            <div class="mt-4">
+                <%= render "visitors/home/renders/footer/contact_data_fields", title: t("site.contact_to_seller_profession"), phone: @system_configuration.professional_contact_phone, cellphone: @system_configuration.professional_cellphone, email: @system_configuration.professional_contact_mail, text_color: "text-black" %>
+            </div>
+        </div>
+
+        <% if !@system_configuration.address.nil? %>
+            <div class="col-4 mt-5">
+                <h6><%= Address.model_name.human %></h6>
+                <div class="mt-4">
+                    <iframe src="https://www.google.com/maps/embed?<%=@system_configuration.address.get_complete_address_google%>" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p><%= @system_configuration.address.get_address_value %></p>
+                </div>
+            </div>
+        <% end %>
+
+        <div class="col-4 mt-5">
+            <h6><%= t("site.follow_social_media") %></h6>
+            <div class=" redes-footer mt-4">
+                <a class="m-2" href="<%= @system_configuration.linkedin_link %>" target="_blank"><i class="fs-2 bi bi-linkedin"></i></a>
+                <a class="m-2" href="<%= @system_configuration.youtube_link %>" target="_blank"><i class="fs-2 bi bi-youtube"></i></a>
+                <a class="m-2" href="<%= @system_configuration.instagram_link %>" target="_blank"><i class="fs-2 bi bi-instagram"></i></a>
+                <a class="m-2" href="<%= @system_configuration.facebook_link %>" target="_blank"><i class="fs-2 bi bi-facebook"></i></a>
+                <a class="m-2" href="<%= @system_configuration.twitter_link %>" target="_blank"><i class="fs-2 bi bi-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

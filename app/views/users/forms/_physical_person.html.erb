@@ -1,0 +1,45 @@
+<!-- Dados de pessoa física -->
+<div class="div_with_person_type_physical" <%= 'hidden' if f.object.person_type_id != PersonType::FISICA_ID %>>
+    <div class="row">
+
+        <!-- Título -->
+        <div class="col-12">
+            <h4 class="mt-4"><%= User.human_attribute_name(:personal_data) %></h4>
+        </div>
+
+        <!-- Gênero -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.association :sex, collection: Sex.all, as: :select, include_blank: false %>
+        </div>
+
+        <!-- Gênero -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.association :civil_state, collection: CivilState.all, as: :select, include_blank: t("model.select_option") %>
+        </div>
+
+        <!-- CPF -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.input :cpf, input_html: {class: 'cpf', type: "tel"} %>
+        </div>
+
+        <!-- RG -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.input :rg, input_html: {class: 'rg'} %>
+        </div>
+
+        <!-- Data de nascimento -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.input :birthday, as: :string, input_html: {class: 'datepicker', :value => CustomHelper.get_text_date(f.object.birthday, 'date', :default), autocomplete: :off, type: "tel"} %>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <%= f.input :profession %>
+        </div>
+
+    </div>
+</div>
+
+<%
+# End of file _physical_person.html.erb
+# Path: ./app/views/users/forms/_physical_person.html.erb
+%>

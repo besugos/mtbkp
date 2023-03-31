@@ -1,0 +1,20 @@
+<% 
+	payment_transaction = current_order.payment_transactions.last 
+	order_cart = current_order.order_carts.first
+%>
+<% if !payment_transaction.nil? %>
+	
+	<% if payment_transaction.payment_status_id != PaymentStatus::PAGO_ID %>
+		<%= render 'orders/pay/unpaid_orders', current_order: current_order %>
+	<% elsif !order_cart.nil? && order_cart.ownertable_type == "Product" %>
+		<%= render 'orders/pay/detail_paid_order', current_order: current_order, order_cart: order_cart %>
+	<% elsif !order_cart.nil? && order_cart.ownertable_type == "Plan" %>
+		<%= render "visitors/home/renders/sold_order_details/order_status", current_order: current_order, order_cart: order_cart %>
+	<% end %>
+	
+<% end %>
+
+<%
+# End of file _details.html.erb
+# Path: ./app/views/orders/_details.html.erb
+%>

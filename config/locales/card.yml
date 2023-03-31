@@ -1,0 +1,44 @@
+pt-BR:
+  activerecord:
+    models:
+      card:
+        one: "Cartão"
+        other: "Cartões"
+    attributes:
+      card:
+        nickname: "Apelido do cartão"
+        name: "Nome impresso no cartão"
+        number: "Número do cartão"
+        validate_date_month: "Validade (Mês)"
+        validate_date_year: "Validade (Ano)"
+        expiration_date: "Data de Validade"
+        ccv_code: "CCV (Código)"
+        card_banner_id: "Bandeira"
+        card_banner: "Bandeira"
+        actions: "Ações"
+        principal: 'Principal'
+        card_data: 'Dados do cartão'
+        new_card: 'Novo cartão'
+        already_saved: "Cartões de crédito cadastrados"
+en:
+  activerecord:
+    models:
+      card:
+        one: "Cartão"
+        other: "Cartões"
+    attributes:
+      card:
+        nickname: "Apelido do cartão"
+        name: "Nome impresso no cartão"
+        number: "Número do cartão"
+        validate_date_month: "Validade (Mês)"
+        validate_date_year: "Validade (Ano)"
+        expiration_date: "Data de Validade"
+        ccv_code: "CCV (Código)"
+        card_banner_id: "Bandeira"
+        card_banner: "Bandeira"
+        actions: "Ações"
+        principal: 'Principal'
+        card_data: 'Dados do cartão'
+        new_card: 'Novo cartão'
+        already_saved: "Cartões de crédito cadastrados"

@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      email:
+        one: "E-mail"
+        other: "E-mails"
+    attributes:
+      email:
+        email: "E-mail"
+        email_type_id: "Tipo"
+        email_type: "Tipo"
+en:
+  activerecord:
+    models:
+      email:
+        one: "E-mail"
+        other: "E-mails"
+    attributes:
+      email:
+        email: "E-mail"
+        email_type_id: "Tipo"
+        email_type: "Tipo"

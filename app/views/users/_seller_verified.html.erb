@@ -1,0 +1,8 @@
+<%
+	if record.seller_verified
+		icon_class = "bi bi-check-circle-fill text-secondary"
+	else
+		icon_class = "bi bi-x-circle-fill text-danger"
+	end
+%>
+<i class="<%= icon_class %>"></i>

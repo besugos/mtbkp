@@ -1,0 +1,53 @@
+<div class="bg-product-cart p-4">
+	<div class="row ">
+		<div class="col-12">
+			<% if !product.promotional_price.nil? && !product.promotional_price.blank? && product.promotional_price > 0 %>
+				<small><s><%= CustomHelper.to_currency(product.price) %></s></small>
+				<br>
+			<% end %>
+		</div>
+		<div class="col-12">
+			<h3><%= CustomHelper.to_currency(product.get_price) %></h3>
+		</div>
+		<div class="col-12">
+			<%= Product.human_attribute_name(:payment_methods) %>
+			<br>
+			<ul>
+				<% PaymentType.order(:id).reverse.each do |payment_type| %>
+					<li>
+						<%= payment_type.name %>
+					</li>
+				<% end %>
+			</ul> 
+		</div>
+
+		<div class="col-12">
+			<div>
+				<label for="freight-zipcode-calculate"><%= Order.human_attribute_name(:calculate_freight_value) %></label>
+				<div class="d-flex " >
+					<%= text_field_tag "freight-zipcode-calculate-order-cart", nil, placeholder: Order.human_attribute_name(:text_zipcode), class: "wd-input cep" %>
+					<button type="button" class="btn btn-link text-reset text-white input-group-text border" id="search-freight-zipcode-calculate-order-cart">
+						<i class="bi bi-search"></i>
+					</button>
+				</div>
+			</div>
+			<div class="mt-3">
+				<label><%= Product.human_attribute_name(:quantity_stock) %>: </label>
+				<%= hidden_field_tag "product-quantity-stock", product.quantity_stock %>
+				<%= product.quantity_stock %>
+			</div>
+			<div class="mt-3">
+				<label for="quantity-product-calculate"><%= OrderCart.human_attribute_name(:quantity) %></label>
+				<%= number_field_tag "quantity-product-calculate", 1, class: "wp-input-qt", min: 1, max: product.quantity_stock %>
+			</div>
+		</div>
+		<div class="col-12 mt-4 text-center">
+			<button type="button" class="btn btn-primary text-white" id="add-product-to-cart">
+				<i class="bi bi-cart text-white"></i>
+				<%= Order.human_attribute_name(:add_item) %>
+			</button>
+		</div>
+	</div>
+</div>
+
+

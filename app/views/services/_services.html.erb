@@ -1,0 +1,20 @@
+<%
+	if @current_user.user?
+		render_plan_table_data = (render "common_pages/my_plan_data", plan_type: PlanType::SERVICOS_NAME, professional: @current_user)
+	else
+		render_plan_table_data = false
+	end
+%>
+<% if !render_plan_table_data.nil? && render_plan_table_data %>
+	<%= render_plan_table_data %>
+<% end %>
+
+<div class="row">
+	<% services.each do |service| %>
+		<div class="col-12 col-md-3 mb-2 mt-2 ">
+			<div class="m-1 border p-2 bg-light">
+				<%= render "services/service_card", service: service %>
+			</div>
+		</div>
+	<% end %>
+</div>

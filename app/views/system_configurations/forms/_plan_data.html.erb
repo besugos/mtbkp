@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-8">&nbsp;</div>
+
+	<!-- Título -->
+	<div class="col-12">
+		<h4><%= SystemConfiguration.human_attribute_name(:plan_data) %>:</h4>
+	</div>
+
+	<!-- Site -->
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :plan_name %>
+	</div>
+
+	<!-- YouTube -->
+	<div class="col-12 col-md-4 mb-3">
+		<%= f.input :plan_price, input_html: {class: 'money', value: CustomHelper.to_currency(f.object.plan_price), type: "tel"}, as: :string %>
+	</div>
+
+	<!-- Instagram -->
+	<div class="col-12 mb-3">
+		<%= f.input :plan_description %>
+	</div>
+
+</div>
+
+<%
+# End of file _social_media.html.erb
+# Path: ./app/views/system_configurations/forms/_social_media.html.erb
+%>

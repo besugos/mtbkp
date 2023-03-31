@@ -1,0 +1,42 @@
+<a href="<%= chats_path(user_id: user.id) %>" class="text-decoration-none user-card" id="user-chat-card-<%=@current_user.id.to_s%>-<%= user.id.to_s %>">
+	<%
+		if !@current_user_chat.nil? && @current_user_chat.id == user.id 
+			class_light = "bg-light"
+		else
+			class_light = ""
+		end
+	%>
+	<div class="border border-1 <%= class_light %> m-2 p-1">
+		<div class="col-12">
+			<!-- Imagem perfil -->
+			<%= render "orders/chat/profile_image", user: user %>
+
+			<!-- Nome -->
+			<span class="user-to-talk text-dark fs-14">
+				<%= user.get_name_chat.truncate(30) %>
+			</span>
+			<% 
+				messages = Message.where(receiver_id: @current_user.id, sender_id: user.id).unread(@current_user)
+				if messages.length > 0
+					span_class = "badge bg-danger"
+				else
+					span_class = ""
+				end 
+			%>
+			<!-- Quantidade de mensagens não lidas -->
+			<span class="mx-1 rounded-circle d-inline-block align-middle <%= span_class %>" id="user-cards-unread-count-<%=@current_user.id.to_s%>-<%= user.id.to_s %>">
+				<% if messages.length > 0 %>
+					<%= messages.length %>
+				<% end %>
+			</span>
+
+			<!-- Data -->
+			<div class="text-end">
+				<span class="fs-10 text-dark mx-1">
+					<%= CustomHelper.get_text_date(last_message_date, "datetime", :full) %>
+				</span>
+			</div>
+		</div>
+
+	</div>
+</a>

@@ -1,0 +1,21 @@
+<%= link_to "#"+record.id.to_s, order_path(record), target: "_blank" %>
+<br>
+<hr>
+<a class="text-decoration-none" href="<%= chats_path(id: record.id, user_id: record.user_id) %>">
+	<% 
+		messages = Message.where(order_id: record.id)
+		.where(receiver_id: @current_user.id, sender_id: record.user_id)
+		.unread(@current_user)
+		if messages.length > 0
+			span_class = "badge bg-danger"
+		else
+			span_class = ""
+		end 
+	%>
+	<i class="bi bi-chat"></i>
+	<span class="mx-1 rounded-circle d-inline-block align-middle <%= span_class %>" id="user-cards-unread-count-<%=@current_user.id.to_s%>-<%= record.user_id.to_s %>">
+		<% if messages.length > 0 %>
+			<%= messages.length %>
+		<% end %>
+	</span>
+</a>

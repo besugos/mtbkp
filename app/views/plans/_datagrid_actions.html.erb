@@ -1,0 +1,35 @@
+<%
+array_links = [
+  {
+    link_path: edit_plan_path(record),
+    link_method: :get,
+    link_title: t('model.edit'),
+    confirm: nil,
+    link_image: 'bi bi-pencil-fill',
+    text_action: t('model.edit'),
+    link_policy: policy(record).edit?,
+    class: 'dropdown-item'
+  },
+  {
+    link_path: plan_path(record),
+    link_method: :delete,
+    link_title: t('model.delete'),
+    confirm: t('model.confirm_action'),
+    link_image: 'bi bi-trash-fill',
+    text_action: t('model.delete'),
+    link_policy: policy(record).destroy?,
+    class: 'dropdown-item'
+  },
+  {
+    link_path: block_plan_path(record),
+    link_method: :put,
+    link_title: record.text_blocked,
+    confirm: t('model.confirm_action'),
+    link_image: (record.active? ? 'bi bi-lock-fill' : 'bi bi-unlock-fill'),
+    text_action: (!record.active? ? Plan.human_attribute_name(:set_active) : Plan.human_attribute_name(:set_inactive)),
+    link_policy: policy(record).block?,
+    class: 'dropdown-item'
+  }
+]
+%>
+<%= render 'common_pages/datagrid_actions', array_links: array_links %>

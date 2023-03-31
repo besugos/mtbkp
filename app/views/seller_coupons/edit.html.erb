@@ -1,0 +1,25 @@
+<%
+
+if @seller_coupon.coupon_area_id == CouponArea::CUPOM_DESCONTO_ID
+	text = SellerCoupon.human_attribute_name(:coupons_to_discount)
+	link_path = coupons_to_discount_path
+else
+	text = SellerCoupon.human_attribute_name(:coupons_to_seller)
+	link_path = coupons_to_seller_path
+end
+
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: link_path, text: text},
+	{active: false, href: edit_seller_coupon_path(@seller_coupon), text: @seller_coupon.get_text_name},
+	{active: true, href: '#', text: t('model.edit')},
+]
+%>
+
+<%= 
+render 'common_pages/edit', 
+objects_path: link_path, 
+page_title: text, 
+form_to_render: 'seller_coupons/form',
+breadcrumbs: breadcrumbs
+%>

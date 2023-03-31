@@ -1,0 +1,23 @@
+<%
+label = Order.human_attribute_name(:my_orders)
+
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: my_orders_path, text: label},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: label,
+		url_new_path: nil,
+		policy_true: false,
+		objects: @orders,
+		objects_path: my_orders_path,
+		object_name: label,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: my_orders_path(format: "csv", my_orders_grid: (params[:my_orders_grid].nil? ? "" : params[:my_orders_grid].to_enum.to_h))
+	}
+%>

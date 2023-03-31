@@ -1,0 +1,73 @@
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="d-none d-md-block col-md-10 text-center">
+            <%= render 'common_pages/breadcrumb', links: attributes[:breadcrumbs] %>
+        </div>
+
+        <!-- Botão adicionar -->
+        <div class="col-12 col-md-2 d-flex">
+            <%= link_to attributes[:url_new_path], class: 'btn btn-secondary ms-auto mb-auto text-white' do %>
+                <% if defined?(attributes[:add_new_text]) && !attributes[:add_new_text].nil? %>
+                    <%= attributes[:add_new_text] %>
+                <% else %>
+                    <%= t('model.add_new') %>
+                <% end %>
+            <% end if attributes[:policy_true] %>
+        </div>
+    </div>
+
+    <% if defined?(attributes[:show_file_import]) && attributes[:show_file_import] %>
+        <%= 
+            render "common_pages/file_import", 
+            url_import: attributes[:url_import], 
+            url_download_file_model: attributes[:url_download_file_model], 
+            attribute_file: attributes[:attribute_file],
+            text_model: attributes[:text_model],
+            text_bottom_model: attributes[:text_bottom_model],
+            text_instructions: attributes[:text_instructions],
+            text_bottom_import_file: attributes[:text_bottom_import_file],
+            show_file_model: attributes[:show_file_model]
+        %>
+    <% end %>
+
+    <div class="row">
+
+        <!-- Filtros -->
+        <% if defined?(attributes[:custom_filter_form]) && !attributes[:custom_filter_form].nil? %>
+                <div class="col-12 mb-3">
+                    <div class="p-3 bg-light">
+                        <%= render attributes[:custom_filter_form] %>
+                    </div>
+                </div>
+        <% elsif !defined?(attributes[:custom_filter_form]) || attributes[:custom_filter_form].nil? %>
+            <div class="col-12 mb-3">
+                <div class="p-3 bg-light">
+                    <%= datagrid_form_for attributes[:objects], method: :get, url: attributes[:objects_path] %>
+                </div>
+            </div>
+        <% end %>
+
+        <% if defined?(attributes[:render_plan_table_data]) && attributes[:render_plan_table_data] %>
+            <%= attributes[:render_plan_table_data] %>
+        <% end %>
+
+        <!-- Botões complementares -->
+        <% if defined?(attributes[:objects_path_export]) && attributes[:objects_path_export] != false %>
+        <div class="col-12 d-flex justify-content-end">
+            <!-- Baixar em excel -->
+            <a href="<%= attributes[:objects_path_export] %>" class="btn btn-success btn-sm">
+                <i class="bi bi-file-earmark-excel-fill"></i>
+                <%= t('model.export_excel') %>
+            </a>
+        </div>
+        <% end %>
+
+    </div>
+
+</div>
+
+<%
+# End of file _first_container.html.erb
+# Path: ./app/views/common_pages/index/_first_container.html.erb
+%>

@@ -1,0 +1,26 @@
+
+
+<div class="container-fluid mt-5 bg-footer" >
+	<div class="container bg-top-footer mb-3">
+		<div class="row p-2">
+			<div class="col-12 text-center">
+				<a class="text-decoration-none btn btn-sm" href="<%= show_text_path(text_to_show: SystemConfiguration::SOBRE) %>">
+					<%= SystemConfiguration.human_attribute_name(:about) %>
+				</a>
+				<a class="text-decoration-none btn btn-sm" href="<%= show_text_path(text_to_show: SystemConfiguration::POLITICA_USO) %>">
+					<%= SystemConfiguration.human_attribute_name(:use_policy) %>
+				</a>
+				<a class="text-decoration-none btn btn-sm" href="<%= show_text_path(text_to_show: SystemConfiguration::POLITICA_PRIVACIDADE) %>">
+					<%= SystemConfiguration.human_attribute_name(:privacy_policy) %>
+				</a>
+				<a class="text-decoration-none btn btn-sm" href="<%= show_text_path(text_to_show: SystemConfiguration::TROCAS_DEVOLUCOES) %>">
+					<%= SystemConfiguration.human_attribute_name(:exchange_policy) %>
+				</a>
+				<a class="text-decoration-none btn btn-sm" href="<%= login_path %>">
+					<%= t("site.administrative_access") %>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+</div>

@@ -1,0 +1,37 @@
+<div class="row">
+
+	<!-- Título -->
+	<div class="col-12">
+		<h4 class="mt-5"><%= SystemConfiguration.human_attribute_name(:institutional_texts) %>:</h4>
+	</div>
+
+	<div class="col-12 col-md-8 mb-3 ">
+		<label><%= SystemConfiguration.human_attribute_name(:about) %></label>
+		<%= f.input :about, label: false, input_html: { class: 'ck-editor' } %>
+	</div>
+
+	<div class="col-12 col-md-2 mb-3">
+		<%= render "common_pages/image_input", image: f.object.about_image, form: f, label: SystemConfiguration.human_attribute_name(:about_image), attribute: :about_image %>
+	</div>
+
+	<div class="col-12 mb-3">
+		<label><%= SystemConfiguration.human_attribute_name(:use_policy) %></label>
+		<%= f.input :use_policy, label: false, input_html: { class: 'ck-editor' } %>
+	</div>
+
+	<div class="col-12 mb-3">
+		<label><%= SystemConfiguration.human_attribute_name(:privacy_policy) %></label>
+		<%= f.input :privacy_policy, label: false, input_html: { class: 'ck-editor' } %>
+	</div>
+
+	<div class="col-12 mb-3">
+		<label><%= SystemConfiguration.human_attribute_name(:exchange_policy) %></label>
+		<%= f.input :exchange_policy, label: false, input_html: { class: 'ck-editor' } %>
+	</div>
+
+</div>
+
+<%
+# End of file _editable_texts.html.erb
+# Path: ./app/views/system_configurations/forms/_editable_texts.html.erb
+%>

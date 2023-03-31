@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <!-- Google Analytics -->
+      <%= render 'layouts/google_analytics', current_id: get_current_id_google_analytics %>
+
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KCJ2WL9');</script>
+      <!-- End Google Tag Manager -->
+
+      <meta name="google-site-verification" content="pCsw29XpZAqoPP5rH9MwnHQ_r5zoe5JyOwLidxLGoxs" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+      <title><%= get_head_title %></title>
+      <meta name="description" content="<%= get_head_description %>">
+
+      <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+      <%= stylesheet_link_tag 'application', media: 'all', integrity: true %>
+
+      <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+      <%= javascript_include_tag 'application', integrity: true %>
+      
+      <%= render 'layouts/favicon' %>
+
+      <!-- POPPINS FONT -->
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+      <meta name="facebook-domain-verification" content="pbet0wtgdtsjyfqqmpvwuvunh1dl2s"/>
+
+   </head>
+
+   <body>
+
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCJ2WL9"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+      <%= render 'layouts/flash' %>
+      <%= render 'layouts/firebase' %>
+
+      <!-- Descomentar caso queira timeout da conexão -->
+      <%# if @current_user %>
+      <%# auto_session_timeout_js %>
+      <%# end %>
+
+      <% if @current_user.nil? %>
+         <% if controller?("visitors/home") %>
+            <%= render 'layouts/navigation_public' %>
+         <% end %>
+      <% else %>
+         <%= hidden_field_tag 'current_logged_user_id', @current_user.id %>
+         <%= render 'layouts/navigation_logged_user' %>
+      <% end %>
+
+      <%= gflash %>
+      <%= yield %>
+
+      <script src="/assets/ckeditor5-34/build/ckeditor.js"></script>
+      <script src="https://assets.pagseguro.com.br/checkout-sdk-js/rc/dist/browser/pagseguro.min.js"></script>
+      
+      <%= csrf_meta_tags %>
+      <%= action_cable_meta_tag %>
+
+   </body>
+
+</html>
+
+<%
+# End of file application.html.erb
+# Path: ./app/views/layouts/application.html.erb
+%>

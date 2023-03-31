@@ -1,0 +1,22 @@
+<div class="col-12 col-md-3">
+    <span class="mb-3"><b><%= address.name %></b></span>
+    <br>
+    <span><%= Address.human_attribute_name(:zipcode) %>: <%= address.zipcode %></span>
+    <br>
+    <span><%= address.get_address_value_until_district %></span>
+    <br>
+    <span class="mb-3"><%= address.get_city_and_state %></span>
+    <br>
+    <%= link_to edit_user_address_path(id: address.id, page_title: @page_title), method: :get, data: {title: t('model.edit')} do %>
+        <small>
+            <i class="bi bi-pencil-fill"></i>
+            <%= t('model.edit') %>
+        </small>
+    <% end if policy(address.ownertable).edit_user_address?(address) %>
+    <%= link_to destroy_user_address_path(id: address.id), method: :delete, data: {title: t('model.delete'), confirm: t('model.confirm_action')} do %>
+        <small>
+            <i class="bi bi-trash-fill"></i>
+            <%= t('model.delete') %>
+        </small>
+    <% end if policy(address.ownertable).destroy_user_address?(address) %>
+</div>

@@ -1,0 +1,16 @@
+<div class="row mt-2">
+	<div class="col-12 border">
+		<div class="p-3">
+			<div class="d-flex justify-content-between">
+				<h4><%= ProfessionalAvaliation.model_name.human(count: 2) %></h4>
+			</div>
+			<div class="row">
+				<% professional.my_avaliations.order("RAND()").limit(12).each do |professional_avaliation| %>
+					<div class="col-12 col-md-6">
+						<%= render "visitors/home/renders/professional/avaliation_card", professional_avaliation: professional_avaliation %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

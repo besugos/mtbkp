@@ -1,0 +1,92 @@
+<%
+	data_professional = professional.data_professional
+	
+	if !professional.nil? && !professional.data_professional.nil?
+		if plan_type == PlanType::PRODUTOS_NAME
+			to_register = DataProfessional.human_attribute_name(:quantity_products_to_register)
+			to_register_attribute = data_professional.quantity_products_to_register
+			active = DataProfessional.human_attribute_name(:quantity_products_active)
+			active_attribute = data_professional.quantity_products_active
+			left = DataProfessional.human_attribute_name(:quantity_products_left)	
+			left_attribute = data_professional.quantity_products_left
+			current_plan = professional.data_professional.product_plan unless professional.data_professional.product_plan.nil?
+		elsif plan_type == PlanType::SERVICOS_NAME	
+			to_register = DataProfessional.human_attribute_name(:quantity_services_to_register)
+			to_register_attribute = data_professional.quantity_services_to_register
+			active = DataProfessional.human_attribute_name(:quantity_services_active)
+			active_attribute = data_professional.quantity_services_active
+			left = DataProfessional.human_attribute_name(:quantity_services_left)
+			left_attribute = data_professional.quantity_services_left
+			current_plan = professional.data_professional.service_plan unless professional.data_professional.service_plan.nil?
+		end
+
+		if !current_plan.nil?
+			plan_name = current_plan.name
+			plan_name += " ("+CustomHelper.to_currency(current_plan.price)+")"
+		else
+			plan_name = ""
+		end
+		
+		if !current_plan.nil?
+			user_plan = professional.user_plans.select{|item| item.plan_id == current_plan.id}.last
+		end
+		if !user_plan.nil?
+			next_payment = user_plan.next_payment
+			if user_plan.use_discount_coupon
+				quantity_mounths_discount = user_plan.quantity_months_discount
+				validate_date = (user_plan.initial_date + quantity_mounths_discount.months)
+			else
+				validate_date = user_plan.validate_date
+			end
+		else
+			next_payment = ""
+			validate_date = ""
+		end
+
+	else
+		to_register_attribute = 0
+		active_attribute = 0
+		left_attribute = 0
+	end
+
+%>
+
+<div class="mb-4 table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead class="table-secondary">
+			<tr>
+				<th scope="col"><%= Plan.model_name.human %></th>
+				<th scope="col"><%= Order.human_attribute_name(:next_payment) %></th>
+				<th scope="col"><%= Order.human_attribute_name(:validate_date) %></th>
+				<th scope="col"><%= to_register %></th>
+				<th scope="col"><%= active %></th>
+				<th scope="col"><%= left %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="text-center"><%= plan_name %></td>
+				<td class="text-center">
+					<%= CustomHelper.get_text_date(next_payment, "date", :default) %>
+					<% if !next_payment.blank? %>
+						<br>
+						<% if @current_user.admin? %>
+							<a href="<%= cancel_user_plan_path(id: user_plan.id) %>" class="text-danger text-decoration-none" data-confirm="Você tem certeza que deseja cancelar?">
+								Cancelar plano
+							</a>
+						<% else %>
+							<a class="text-decoration-none ms-2 text-danger" href="https://api.whatsapp.com/send?phone=55<%=format_phone(@system_configuration.professional_cellphone)%>&text=<%= get_service_message_to_whatsapp_cancel_plan %>" target="_blank">
+								<i class="bi bi-whatsapp"></i>
+								Cancelar plano
+							</a>
+						<% end %>
+					<% end %>
+				</td>
+				<td class="text-center"><%= CustomHelper.get_text_date(validate_date, "date", :default) %></td>
+				<td class="text-center"><%= to_register_attribute %></td>
+				<td class="text-center"><%= active_attribute %></td>
+				<td class="text-center"><%= left_attribute %></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,52 @@
+
+
+
+<!-- Banner Desktop -->
+<% uniqueHashDesktop = 'swiper_' + Digest::MD5.hexdigest(rand.to_s) %>
+<div id="carouselExampleControls-<%= uniqueHashDesktop %>" class="carousel slide mg-banner-home mobile-none" data-bs-ride="carousel">
+	<div class="carousel-inner" >
+		<% banners_to_show.each_with_index do |banner, index| %>
+			<div class="carousel-item <%= 'active' if index == 0 %>">
+				<div>
+					<a href="<%= banner[:link] %>" target="_blank">
+						<!-- <img class="img-fluid" src="https://via.placeholder.com/1400x600" class="d-block w-100" alt="..."> -->
+						<img class="img-fluid d-block w-100" src="<%= banner[:image] %>" style="width: 1140px; height: 280px"  alt="..."> 
+					</a>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-<%= uniqueHashDesktop %>" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-<%= uniqueHashDesktop %>" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	</button>
+</div>
+
+<!-- Banner Mobile -->
+<% uniqueHashMobile = 'swiper_' + Digest::MD5.hexdigest(rand.to_s) %>
+<div id="carouselExampleControls-<%= uniqueHashMobile %>" class="carousel slide mg-banner-home desktop-none" data-bs-ride="carousel">
+	<div class="carousel-inner">
+		<% banners_to_show.each_with_index do |banner, index| %>
+			<div class="carousel-item <%= 'active' if index == 0 %>">
+				<div>
+					<a href="<%= banner[:link] %>" target="_blank">
+						<!-- <img class="img-fluid" src="https://via.placeholder.com/450x600" class="d-block w-100" alt="..."> -->
+						<img class="img-fluid d-block w-100" src="<%= banner[:image_mobile] %>" style="width: 400px; height: 200px"  alt="..."> 
+					</a>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-<%= uniqueHashMobile %>" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-<%= uniqueHashMobile %>" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	</button>
+</div>

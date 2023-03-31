@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    attributes:
+      phone:
+        phone_code: 'DDD'
+        phone: "Número"
+        phone_type_id: "Tipo"
+        phone_type: "Tipo"
+        is_whatsapp: 'É WhatsApp?'
+        responsible: 'Nome do responsável'
+en:
+  activerecord:
+    attributes:
+      phone:
+        phone_code: 'DDD'
+        phone: "Número"
+        phone_type_id: "Tipo"
+        phone_type: "Tipo"
+        is_whatsapp: 'É WhatsApp?'
+        responsible: 'Nome do responsável'

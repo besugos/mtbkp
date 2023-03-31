@@ -1,0 +1,64 @@
+<% 
+
+sizes57x57 = image_url('favicon/apple-icon-57x57.png')
+sizes60x60 = image_url('favicon/apple-icon-60x60.png')
+sizes72x72 = image_url('favicon/apple-icon-72x72.png')
+sizes76x76 = image_url('favicon/apple-icon-76x76.png')
+sizes114x114 = image_url('favicon/apple-icon-114x114.png')
+sizes120x120 = image_url('favicon/apple-icon-120x120.png')
+sizes144x144 = image_url('favicon/apple-icon-144x144.png')
+sizes152x152 = image_url('favicon/apple-icon-152x152.png')
+sizes180x180 = image_url('favicon/apple-icon-180x180.png')
+sizes192x192 = image_url('favicon/android-icon-192x192.png')
+sizes32x32 = image_url('favicon/favicon-32x32.png') 
+sizes96x96 = image_url('favicon/favicon-96x96.png') 
+sizes16x16 = image_url('favicon/favicon-16x16.png') 
+
+if !@system_configuration.nil? && @system_configuration.favicon.attached?
+	favicon = @system_configuration.favicon
+	sizes57x57 = favicon.variant(resize_to_limit: [57, 57]).processed.url
+	sizes60x60 = favicon.variant(resize_to_limit: [60, 60]).processed.url
+	sizes72x72 = favicon.variant(resize_to_limit: [72, 72]).processed.url
+	sizes76x76 = favicon.variant(resize_to_limit: [76, 76]).processed.url
+	sizes114x114 = favicon.variant(resize_to_limit: [114, 114]).processed.url
+	sizes120x120 = favicon.variant(resize_to_limit: [120, 120]).processed.url
+	sizes144x144 = favicon.variant(resize_to_limit: [144, 144]).processed.url
+	sizes152x152 = favicon.variant(resize_to_limit: [152, 152]).processed.url
+	sizes180x180 = favicon.variant(resize_to_limit: [180, 180]).processed.url
+	sizes192x192 = favicon.variant(resize_to_limit: [192, 192]).processed.url
+	sizes32x32 = favicon.variant(resize_to_limit: [32, 32]).processed.url
+	sizes96x96 = favicon.variant(resize_to_limit: [96, 96]).processed.url
+	sizes16x16 = favicon.variant(resize_to_limit: [16, 16]).processed.url
+end
+
+%>
+
+<!-- Definições de ícones de favoritos -->
+<link rel="apple-touch-icon" sizes="57x57" href="<%= sizes57x57 %>">
+<link rel="apple-touch-icon" sizes="60x60" href="<%= sizes60x60 %>">
+<link rel="apple-touch-icon" sizes="72x72" href="<%= sizes72x72 %>">
+<link rel="apple-touch-icon" sizes="76x76" href="<%= sizes76x76 %>">
+<link rel="apple-touch-icon" sizes="114x114" href="<%= sizes114x114 %>">
+<link rel="apple-touch-icon" sizes="120x120" href="<%= sizes120x120 %>">
+<link rel="apple-touch-icon" sizes="144x144" href="<%= sizes144x144 %>">
+<link rel="apple-touch-icon" sizes="152x152" href="<%= sizes152x152 %>">
+<link rel="apple-touch-icon" sizes="180x180" href="<%= sizes180x180 %>">
+<link rel="icon" type="image/png" sizes="192x192" href="<%= sizes192x192 %>">
+<link rel="icon" type="image/png" sizes="32x32" href="<%= sizes32x32 %>">
+<link rel="icon" type="image/png" sizes="96x96" href="<%= sizes96x96 %>">
+<link rel="icon" type="image/png" sizes="16x16" href="<%= sizes16x16 %>">
+<link rel="manifest" href="<%= image_url('favicon/manifest.json') %>">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="<%= sizes144x144 %>">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Definições padrões do OpenGraph para funcionar em qualquer dispositivo que faça compartilhamento -->
+<meta property="og:url" content="<%= root_url %>">
+<meta property="og:title" content="<%= get_head_title %>">
+<meta property="og:site_name" content="<%= get_head_title %>">
+<meta property="og:description" content="<%= get_head_description %>">
+<meta property="og:image" content="<%= sizes192x192 %>">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="192">
+<meta property="og:image:height" content="192">
+<meta property="og:type" content="website">

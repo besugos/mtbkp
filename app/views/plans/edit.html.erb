@@ -1,0 +1,16 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: plans_path(plan_type_id: @plan.plan_type_id), text: Plan.model_name.human(count: 2)},
+	{active: false, href: edit_plan_path(@plan), text: @plan.get_text_name},
+	{active: true, href: '#', text: t('model.edit')},
+]
+%>
+
+<%= 
+	render 'common_pages/edit', 
+	objects_path: plans_path(plan_type_id: @plan.plan_type_id), 
+	page_title: Plan.model_name.human(count: 2), 
+	form_to_render: 'plans/form',
+	breadcrumbs: breadcrumbs
+%>

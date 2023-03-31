@@ -1,0 +1,189 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+    attributes:
+      user:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        access_data: 'Dados de acesso'
+        status: "Status de acesso"
+        name: "Nome"
+        email: "E-mail"
+        access_user: 'Usuário de acesso'
+        password: "Senha"
+        is_blocked: "Bloqueado?"
+        password_confirmation: "Confirmação de senha"
+        profile_id: "Perfil de usuário"
+        profile: "Perfil de usuário"
+        phone: 'Telefone'
+        cpf: 'CPF/CNPJ'
+        rg: 'RG'
+        birthday: 'Data de Nascimento'
+        admin_user: 'Administrador'
+        admin_users: 'Administradores'
+        common_user: 'Usuário'
+        common_users: 'Usuários'
+        reactived: 'Reativado'
+        active: 'Ativo'
+        inactive: 'Bloqueado'
+        set_active: 'Reativar'
+        set_inactive: 'Bloquear'
+        cpf_cnpj: 'CPF / CNPJ'
+        person_type_id: 'Tipo de pessoa'
+        person_type: 'Tipo de pessoa'
+        cnpj: 'CNPJ'
+        social_name: 'Razão Social'
+        fantasy_name: 'Nome Fantasia'
+        my_data: 'Meus dados'
+        company_data: 'Dados da empresa'
+        personal_data: 'Dados pessoais'
+        sex_id: 'Sexo'
+        sex: 'Sexo'
+        users: 'Usuários'
+        profile_image: 'Imagem de perfil'
+        accept_therm: 'Termos'
+        current_password: 'Senha atual'
+        invalid_password: 'Senha inválida'
+        change_access_data: 'Alterar dados de acesso'
+        wrong_current_password: 'Senha atual incorreta'
+        civil_state: "Estado civil"
+        civil_state_id: "Estado civil"
+        cellphone: "Celular"
+        profession: "Profissão"
+        provider: "Provider Login Social"
+        uid: "UID Login Social"
+        invalid_current_password: 'Senha atual incorreta'
+        payment_type: "Tipo de pagamento"
+        payment_type_id: "Tipo de pagamento"
+        seller_verified: "Vendedor verificado?"
+        publish_professional_profile: "Publicar perfil profissional?"
+        description: "Descrição"
+        work_experience: "Experiência de trabalho"
+        deadline_avaliation: "Prazo"
+        quality_avaliation: "Qualidade"
+        problems_solution_avaliation: "Solução de problemas"
+        delivery_addresses: "Endereços de entrega"
+        output_addresses: "Endereços de saída"
+        avaliations: "Avaliações"
+        data_professional: "Informações de contato profissional"
+        professional_register: "Registro profissional"
+        seller_contact_data: "Entre em contato"
+        professional_not_found: "Profissional não encontrado"
+        seller_data: "Dados do vendedor/prestador"
+        show_contacts: "Ver contatos"
+        show_all: "Ver todos"
+        icms_contribution: "Contribuinte de ICMS"
+        icms_contribution_id: "Contribuinte de ICMS"
+        service_provider: "Prestador de serviço"
+        user_plans: "Planos do usuário"
+      user/cards:
+        id: 'ID'
+        nickname: "Apelido do cartão"
+        name: "Nome impresso no cartão"
+        number: "Número do cartão"
+        validate_date_month: "Validade (Mês)"
+        validate_date_year: "Validade (Ano)"
+        expiration_date: "Data de Validade"
+        ccv_code: "CCV (Código)"
+        card_banner_id: "Bandeira"
+        card_banner: "Bandeira"
+        principal: 'Principal'
+en:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+    attributes:
+      user:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        access_data: 'Dados de acesso'
+        status: "Status de acesso"
+        name: "Nome"
+        email: "Email"
+        password: "Senha"
+        is_blocked: "Bloqueado?"
+        password_confirmation: "Confirmação de senha"
+        profile_id: "Perfil de usuário"
+        profile: "Perfil de usuário"
+        phone: 'Telefone'
+        cpf: 'CPF/CNPJ'
+        rg: 'RG'
+        birthday: 'Data de Nascimento'
+        admin_user: 'Administrador'
+        admin_users: 'Administradores'
+        common_user: 'Usuário'
+        common_users: 'Usuários'
+        reactived: 'Reativado'
+        active: 'Ativo'
+        inactive: 'Bloqueado'
+        set_active: 'Reativar'
+        set_inactive: 'Bloquear'
+        cpf_cnpj: 'CPF / CNPJ'
+        person_type_id: 'Tipo de pessoa'
+        person_type: 'Tipo de pessoa'
+        cnpj: 'CNPJ'
+        social_name: 'Razão Social'
+        fantasy_name: 'Nome Fantasia'
+        my_data: 'Meus dados'
+        company_data: 'Dados da empresa'
+        personal_data: 'Dados pessoais'
+        sex_id: 'Sexo'
+        sex: 'Sexo'
+        users: 'Usuários'
+        profile_image: 'Imagem de perfil'
+        accept_therm: 'Termos'
+        current_password: 'Senha atual'
+        invalid_password: 'Senha inválida'
+        change_access_data: 'Alterar dados de acesso'
+        wrong_current_password: 'Senha atual incorreta'
+        civil_state: "Estado civil"
+        civil_state_id: "Estado civil"
+        cellphone: "Celular"
+        profession: "Profissão"
+        provider: "Provider Login Social"
+        uid: "UID Login Social"
+        invalid_current_password: 'Senha atual incorreta'
+        payment_type: "Tipo de pagamento"
+        payment_type_id: "Tipo de pagamento"
+        seller_verified: "Vendedor verificado?"
+        publish_professional_profile: "Publicar perfil profissional?"
+        description: "Descrição"
+        work_experience: "Experiência de trabalho"
+        deadline_avaliation: "Prazo"
+        quality_avaliation: "Qualidade"
+        problems_solution_avaliation: "Solução de problemas"
+        delivery_addresses: "Endereços de entrega"
+        output_addresses: "Endereços de saída"
+        avaliations: "Avaliações"
+        data_professional: "Informações de contato profissional"
+        professional_register: "Registro profissional"
+        seller_contact_data: "Entre em contato"
+        professional_not_found: "Profissional não encontrado"
+        seller_data: "Dados do vendedor/prestador"
+        show_contacts: "Ver contatos"
+        show_all: "Ver todos"
+        icms_contribution: "Contribuinte de ICMS"
+        icms_contribution_id: "Contribuinte de ICMS"
+        service_provider: "Prestador de serviço"
+        user_plans: "Planos do usuário"
+      user/cards:
+        id: 'ID'
+        nickname: "Apelido do cartão"
+        name: "Nome impresso no cartão"
+        number: "Número do cartão"
+        validate_date_month: "Validade (Mês)"
+        validate_date_year: "Validade (Ano)"
+        expiration_date: "Data de Validade"
+        ccv_code: "CCV (Código)"
+        card_banner_id: "Bandeira"
+        card_banner: "Bandeira"
+        principal: 'Principal'

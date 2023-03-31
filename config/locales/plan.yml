@@ -1,0 +1,78 @@
+pt-BR:
+  activerecord:
+    models:
+      plan:
+        one: "Plano"
+        other: "Planos"
+    attributes:
+      plan:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        name: 'Nome'
+        price: 'Preço'
+        old_price: 'Preço antigo'
+        active: 'Ativo?'
+        image: "Imagem"
+        category_id: "Categoria"
+        category: "Categoria"
+        sub_category_id: "Sub-categoria"
+        sub_category: "Sub-categoria"
+        description: "Descrição"
+        observations: "Observações"
+        banner_image: "Imagem de banner"
+        plan_periodicity: "Periodicidade"
+        plan_periodicity_id: "Periodicidade"
+        product_plans: "Planos de produtos"
+        service_plans: "Planos de serviços"
+        plan_type: "Tipo de plano"
+        plan_type_id: "Tipo de plano"
+        products: "Produtos"
+        services: "Serviços"
+        limit_products: "Limite de produtos"
+        limit_service_categories: "Limite de categorias/serviços"
+        inactive: "Inativado"
+        reactived: "Reativado"
+        set_active: "Ativar"
+        set_inactive: "Inativar"
+        actived: "Ativo"
+        buy_plan: "Anuncie aqui"
+en:
+  activerecord:
+    models:
+      plan:
+        one: "Plano"
+        other: "Planos"
+    attributes:
+      plan:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        name: 'Nome'
+        price: 'Preço'
+        old_price: 'Preço antigo'
+        active: 'Ativo?'
+        image: "Imagem"
+        category_id: "Categoria"
+        category: "Categoria"
+        sub_category_id: "Sub-categoria"
+        sub_category: "Sub-categoria"
+        description: "Descrição"
+        observations: "Observações"
+        banner_image: "Imagem de banner"
+        plan_periodicity: "Periodicidade"
+        plan_periodicity_id: "Periodicidade"
+        product_plans: "Planos de produtos"
+        service_plans: "Planos de serviços"
+        plan_type: "Tipo de plano"
+        plan_type_id: "Tipo de plano"
+        limit_products: "Limite de produtos"
+        limit_service_categories: "Limite de categorias/serviços"
+        inactive: "Inativado"
+        reactived: "Reativado"
+        set_active: "Ativar"
+        set_inactive: "Inativar"
+        actived: "Ativo"
+        buy_plan: "Anuncie aqui"

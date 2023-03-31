@@ -1,0 +1,39 @@
+<!-- Cabeçalho -->
+<div class="row header-cart">
+    <div class="col-12">
+        <b><%= seller.name %></b>
+    </div>
+</div>
+<div class="row border-bottom border-light py-2 ">
+
+    <!-- Imagem -->
+    <div class="col-2 d-none d-lg-block">
+        <small><%= Product.human_attribute_name(:item) %></small>
+    </div>
+
+    <!-- Descrição -->
+    <div class="col-5 col-lg-4">
+        <small><%= Product.human_attribute_name(:title) %></small>
+    </div>
+
+    <!-- Quantidade -->
+    <div class="col-2 text-center">
+        <small><%= Order.human_attribute_name(:quantity_ab) %></small>
+    </div>
+
+    <% if open %>
+        <!-- Remover -->
+        <div class="col-2 text-center">
+            <small class="d-none d-sm-block"><%= t('model.delete') %></small>
+        </div>
+    <% end %>
+
+    <div class="col-1 text-center d-none d-lg-block">
+        <small><%= Order.human_attribute_name(:unity_price) %></small>
+    </div>
+
+    <div class="col-3 col-lg-1 text-center">
+        <small><%= Order.human_attribute_name(:subtotal) %></small>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+<!-- Logo -->
+<a href="<%= root_path %>" class="ml-3">
+    <figure class="m-0 logo-css">
+        <% 
+            begin
+                concat image_tag @system_configuration.client_logo.url, width: width, height: height, class: "img-fluid"
+            rescue Exception => e
+                concat image_tag "https://via.placeholder.com/"+width+"/000000/FFFFFF"
+            end
+        %>
+    </figure>
+</a>
+
+<%
+# End of file _logo.html.erb
+# Path: ./app/views/layouts/_logo.html.erb
+%>

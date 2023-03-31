@@ -1,0 +1,11 @@
+// Arquivo para realizar adequações no datagrid para arrumar imperfeições
+// que não foram possível por falta de tempo ou incapacidade do plugin
+.datagrid-form {
+  .from,
+  .to {
+    width: 45%;
+  }
+}
+
+// End of file datagrid-fix.scss
+// Path: ./app/assets/stylesheets/datagrid-fix.scss

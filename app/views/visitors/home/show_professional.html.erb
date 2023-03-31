@@ -1,0 +1,44 @@
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+<%= render "visitors/home/renders/index/filter_by_text" %>
+
+<div class="container mt-5">
+	
+	<% if !@professional.nil? %>
+		
+		<div class="row">
+			<div class="col-12 text-center">
+				<figure class="photo-professional">
+					<img class="img-fluid" src="<%= User.get_profile_image_url(@professional) %>" alt="" style="width: 150px !important; height: 150px !important;">
+				</figure>
+				<div class="d-flex justify-content-center">
+					<h5><%= @professional.get_name %> </h5>
+					<% if @professional.seller_verified %>
+						<i class="bi bi-check-circle-fill text-info ms-2"></i>
+					<% end %>
+				</div>
+				<%= render "common_pages/rating", rating: @professional.get_average_avaliation %>
+			</div>
+		</div>
+
+		<%= render "visitors/home/renders/professional/seller_data", professional: @professional %>
+		<%= render "visitors/home/renders/professional/seller_products", professional: @professional %>
+		<%= render "visitors/home/renders/professional/seller_services", professional: @professional %>
+		<%= render "visitors/home/renders/professional/seller_avaliations", professional: @professional %>
+
+	<% else %>
+		<div class="row">
+			<div class="col-12 text-center">
+				<div class="d-flex justify-content-center">
+					<h5><%= User.human_attribute_name(:professional_not_found) %></h5>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

@@ -1,0 +1,16 @@
+@media (max-width: 724px){
+	.mobile-none {
+		display: none !important;
+	}
+
+	.hg-plan {
+		height: 50px;
+	}
+	
+}
+
+@media (min-width: 725px){
+	.desktop-none {
+		display: none !important;
+	}
+}

@@ -1,0 +1,48 @@
+<%
+	if !f.object.promotional_price.nil? && !f.object.promotional_price.blank? && f.object.promotional_price > 0
+		product_price = f.object.promotional_price
+	else
+		product_price = f.object.price
+	end
+	product_values = Product.getting_all_values_with_tax(product_price)
+%>
+
+<h5>
+	Valor líquido que você vai receber de acordo com o pagamento do cliente no momento da compra
+	<%= render 'products/modals/show_product_tax_detail' %>
+	<span class="pointer" data-bs-toggle="modal" data-bs-target="#show_product_tax_detail">
+		<i class="bi bi-question-circle-fill"></i>
+	</span>
+</h5>
+<table class="table table-bordered table-striped">
+	<thead class="table-secondary">
+		<tr class="text-center">
+			<% for i in 1..10 %>
+				<th scope="col">Cartão <%= (i.to_s+"x") %></th>
+			<% end %>
+			<th scope="col">Boleto</th>
+			<th scope="col">PIX</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="text-center">
+			<% for i in 0..9 %>
+				<td scope="col" id="payment-value-parcel-<%=i.to_s%>">
+					<% if product_values.length > 0 %>
+						<%= (product_values[i][:value_formatted]) %>
+					<% end %>
+				</td>
+			<% end %>
+			<td scope="col" id="payment-value-invoice">
+				<% if product_values.length > 0 %>
+					<%= (product_values[10][:value_formatted]) %>
+				<% end %>
+			</td>
+			<td scope="col" id="payment-value-pix">
+				<% if product_values.length > 0 %>
+					<%= (product_values[11][:value_formatted]) %>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>

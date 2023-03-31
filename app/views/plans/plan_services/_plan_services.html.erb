@@ -1,0 +1,37 @@
+<script>
+    multi('plan-service', true);
+</script>
+
+<!-- E-mail: múltiplo -->
+<div class="row">
+
+    <!-- Título -->
+    <div class="col-12">
+        <h4 class="mt-4"><%= PlanService.model_name.human(count: 2) %>:</h4>
+    </div>
+
+    <!-- Campos multiplos dinamicos (plan_services) -->
+    <div class="col-12 multi-plan-service-block">
+
+        <!-- Contador -->
+        <input type="hidden" value="<%= f.object.plan_services.length.to_s %>" class="multi-plan-service-cont" disabled>
+
+        <%= f.fields_for :plan_services do |plan_service| %>
+        <div class="row multi-plan-service align-items-end">
+            <%= render 'plans/plan_services/plan_service_field', f: f, plan_service: plan_service  %>
+            <%= render 'common_pages/delete_multiple_relation', remove_path: delete_plan_service_path(model_id: plan_service.object.id), object: plan_service.object, object_text: 'plan_service'  %>
+        </div>
+        <% end %>
+
+    </div>
+
+    <!-- Botão de adicionar -->
+    <div class="col-12">
+        <%= render 'common_pages/add_multiple_relation', object_text: 'plan_service' %>
+    </div>
+</div>
+
+<%
+# End of file _plan_services.html.erb
+# Path: ./app/views/common_pages/_plan_services.html.erb
+%>

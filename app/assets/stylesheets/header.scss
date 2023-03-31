@@ -1,0 +1,22 @@
+.drop-custom {
+	margin-top: 2px!important;		
+}
+
+.btn-drop {
+	font-size: 1rem;
+}
+
+.sub-menu-mobile {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+}
+
+.drop-desk:hover .dropdown-menu {
+    display: block;
+    margin-top: 1; // remove the gap so it doesn't close
+}
+
+.logo-css img {
+    max-width: 100%;
+}

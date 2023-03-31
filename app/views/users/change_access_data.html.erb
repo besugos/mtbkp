@@ -1,0 +1,37 @@
+<% 
+
+if @current_user.admin?
+  if @user.profile_id == Profile::USER_ID
+    objects_path = users_user_path
+    page_title = User.human_attribute_name(:common_users)
+  elsif @user.profile_id == Profile::ADMIN_ID
+    objects_path = users_admin_path
+    page_title = User.human_attribute_name(:admin_users)
+  end 
+  form_to_render = 'users/forms/change_access_data'
+
+  breadcrumbs = [
+    {active: false, href: root_path, text: t('menu.initial_page')},
+    {active: false, href: objects_path, text: page_title},
+    {active: false, href: edit_user_path(@user), text: @user.get_name},
+    {active: false, href: '#', text: User.human_attribute_name(:change_access_data)}
+  ]
+elsif @current_user.user?
+  objects_path = nil
+  form_to_render = 'users/forms/change_access_data'
+  page_title = User.human_attribute_name(:common_users)
+  breadcrumbs = [
+    {active: false, href: edit_user_path(@user), text: @user.get_name},
+    {active: false, href: '#', text: User.human_attribute_name(:change_access_data)}
+  ]
+end
+
+%>
+
+<%= 
+render 'common_pages/edit', 
+objects_path: objects_path, 
+page_title: page_title, 
+form_to_render: form_to_render,
+breadcrumbs: breadcrumbs
+%>

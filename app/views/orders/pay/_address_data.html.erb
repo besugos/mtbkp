@@ -1,0 +1,44 @@
+<div class="col-12">
+    <h5><%= Order.human_attribute_name(:address_data) %></h5>
+
+    <%= simple_form_for current_order, url: save_address_to_buy_path(id: current_order.id), method: :post do |f| %>
+        <% if defined?(use_my_address) %>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <label><%= Order.human_attribute_name(:use_my_address) %></label>
+                    <%= f.input :address_id,
+                    as: :select,
+                    collection: Address.by_ownertable_type(ActiveModel::Name.new(User).to_s).by_ownertable_id(current_order.user.id)
+                    .by_address_area_ids([AddressArea::ENDERECO_ENTREGA_ID, AddressArea::GENERAL_ID]),
+                    label_method: :get_address_value_until_district,
+                    label: false, input_html: { class: 'form-control' },
+                    include_blank: Service.human_attribute_name(:new_address) %>
+                </div>
+            </div>
+        <% end %>
+        
+        <div id="order-address">
+            <%= hidden_field_tag 'show_address_data', params[:show_address_data] %>
+            
+            <%= f.fields_for :address do |address| %>
+                <%= address.input :id, as: :hidden, input_html:{value: address.object.id} %>
+                <%= address.input :validate_to_order, as: :hidden, input_html: {value: true} %>
+                <%= render 'orders/pay/address_field', f: f, address: address %>
+            <% end %>
+        </div>
+
+        <div class="row">
+            <div class="col text-end">
+                <button type="submit" class="btn btn-sm btn-primary d-block mt-3 text-white">
+                    <%= Order.human_attribute_name(:go_to_payment) %>
+                </button>
+            </div>
+        </div>
+
+    <% end %>
+</div>
+
+<%
+# End of file _address_data.html.erb
+# Path: ./app/views/orders/pay/_address_data.html.erb
+%>

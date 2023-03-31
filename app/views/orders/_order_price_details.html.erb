@@ -1,0 +1,20 @@
+<div class="container bg-cart">
+    <div class="row">
+        <% if @total_discount_value_all_sellers > 0 %>
+            <div class="col-12 text-end text-success">
+                <b><%= Order.human_attribute_name(:total_discount) %>: </b><%= CustomHelper.to_currency(@total_discount_value_all_sellers) %>
+            </div>
+        <% end %>
+        <div class="col-12 text-end text-danger">
+            <b><%= Order.human_attribute_name(:total_freight_value) %>: </b><%= CustomHelper.to_currency(current_order.total_freight_value) %>
+        </div>
+        <% if @total_discount_value_all_sellers > 0 %>
+            <div class="col-12 text-end">
+                <b><%= Order.human_attribute_name(:original_price) %>: </b><%= CustomHelper.to_currency(current_order.price) %>
+            </div>
+        <% end %>
+        <div class="col-12 text-end">
+            <b><%= Order.human_attribute_name(:price) %>: </b><%= CustomHelper.to_currency(current_order.get_total_price) %>
+        </div>
+    </div>
+</div>

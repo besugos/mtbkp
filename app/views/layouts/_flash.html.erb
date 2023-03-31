@@ -1,0 +1,47 @@
+<%
+=begin
+Este template monta o "toast" de notificação para erro, informação, alerta e sucesso.
+É utilizado o template "toast" do bootstrap 5.
+
+Link da documentação: https://getbootstrap.com/docs/5.0/components/toasts/
+
+Para habilitar, basta utilizar o próprio método "flash" do rails.
+    Exemplos:
+        flash[:success] = 'Deu tudo certo! O formulário foi salvo'
+        flash[:error]   = 'Ooops... ocorreu um erro'
+        flash[:notice]  = 'É importante você saber disso...'
+        flash[:alert]   = 'Atenção! Algo pode dar errado.'
+=end
+%>
+
+<div class="flash-notifications">
+
+    <% flash.each do |key, value| %>
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+
+            <div class="toast-header <%= flash_class key %>">
+                <% 
+                    if !@system_configuration.favicon.attached? 
+                        image_url = "image_path 'favicon/favicon-16x16.png'"
+                    else
+                        image_url = @system_configuration.favicon.variant(resize_to_limit: [16, 16]).processed.url
+                    end 
+                %>
+                <img src="<%= image_url %>" class="rounded me-2" alt="Logotipo">
+                <strong class="me-auto"><%= flash_title key %></strong>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+
+            <div class="toast-body">
+                <%= value.html_safe unless value.nil? %>
+            </div>
+        </div>
+    <% end %>
+
+</div>
+
+<%
+# End of file _flash.html.erb
+# Path: ./app/views/layouts/_flash.html.erb
+%>

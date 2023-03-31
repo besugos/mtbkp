@@ -1,0 +1,26 @@
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+
+<div class="container my-5">
+	<div class="row">
+
+		<header class="col-12 text-center mb-5">
+			<h1 class="mt-5"><%= @page_name_to_show %></h1>
+		</header>
+
+		<!-- Page content -->
+		<section class="col-12 mb-5">
+			<%= @text_to_show.html_safe %>
+		</section>
+
+	</div>
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>
+<%
+# End of file show_text.html.erb
+# Path: ./app/views/visitors/system_configurations/show_text.html.erb
+%>

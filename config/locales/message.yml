@@ -1,0 +1,44 @@
+pt-BR:
+  activerecord:
+    models:
+      message:
+        one: "Mensagem"
+        other: "Mensagens"
+    attributes:
+      message:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        sender_id: 'Remetente'
+        sender: 'Remetente'
+        receiver_id: 'Destinatário'
+        receiver: 'Destinatário'
+        content: 'Mensagem'
+        chat: 'Chat'
+        order: "Pedido"
+        order_id: "Pedido"
+        admin: "Administrador"
+        admin_id: "Administrador"
+en:
+  activerecord:
+    models:
+      message:
+        one: "Mensagem"
+        other: "Mensagens"
+    attributes:
+      message:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        sender_id: 'Remetente'
+        sender: 'Remetente'
+        receiver_id: 'Destinatário'
+        receiver: 'Destinatário'
+        content: 'Mensagem'
+        chat: 'Chat'
+        order: "Pedido"
+        order_id: "Pedido"
+        admin: "Administrador"
+        admin_id: "Administrador"

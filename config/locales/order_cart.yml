@@ -1,0 +1,42 @@
+pt-BR:
+  activerecord:
+    models:
+      order_cart:
+        one: "Item"
+        other: "Itens"
+    attributes:
+      order_cart:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        order_id: 'Carrinho'
+        order: 'Carrinho'
+        product_id: 'Produto'
+        product: 'Produto'
+        quantity: 'Quantidade'
+        total_value: 'Valor total'
+        seller_coupon: "Cupom de desconto"
+        discount_coupon_value: "Valor de desconto pelo cupom"
+        discount_coupon_text: "Texto do cupom de desconto"
+en:
+  activerecord:
+    models:
+      order_cart:
+        one: "Item"
+        other: "Itens"
+    attributes:
+      order_cart:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        order_id: 'Carrinho'
+        order: 'Carrinho'
+        product_id: 'Produto'
+        product: 'Produto'
+        quantity: 'Quantidade'
+        total_value: 'Valor total'
+        seller_coupon: "Cupom de desconto"
+        discount_coupon_value: "Valor de desconto pelo cupom"
+        discount_coupon_text: "Texto do cupom de desconto"

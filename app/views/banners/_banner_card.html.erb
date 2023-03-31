@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-12">
+		<a href="<%= banner.get_image %>" target="_blank">
+			<%= image_tag banner.get_image, width: "100%", height: 100 %>
+		</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-md-6">
+		<b><%= banner.title.truncate(20) %></b>
+		<br>
+		<%= Banner.human_attribute_name(:banner_area_id) %>: <%= banner.banner_area.name unless banner.banner_area.nil? %>
+		<br>
+		<%= banner.position %>ª <%= Banner.human_attribute_name(:position).downcase %>
+		<br>
+		<% 
+			if banner.active 
+				current_class =  "success"
+			else
+				current_class =  "danger"
+			end
+		%>
+		<span class="text-<%= current_class %>"><%= banner.get_actived? %></span>
+		<br>
+		<span><%= Banner.human_attribute_name(:disponible_date) %>: <%= CustomHelper.get_text_date(banner.disponible_date, "date", :default) %></span>
+	</div>
+	<div class="col-12 col-md-6 text-end">
+		<%= link_to edit_banner_path(banner), method: :get, data: {title: t('model.edit')} do %>
+			<small>
+				<%= t('model.edit') %>
+			</small>
+		<% end if policy(banner).edit? %>
+		|
+		<%= link_to banner_path(banner), method: :delete, data: {title: t('model.delete'), confirm: t('model.confirm_action')} do %>
+			<small>
+				<%= t('model.delete') %>
+			</small>
+		<% end if policy(banner).destroy? %>
+		|
+		<%= link_to destroy_image_banner_path(id: banner.id), method: :delete, data: {title: t('model.delete'), confirm: t('model.confirm_action')} do %>
+			<small>
+				Remover imagem
+			</small>
+		<% end if policy(banner).destroy_image_banner? %>
+		|
+		<%= link_to active_banner_path(id: banner.id), method: :post, data: {title: banner.action_active, confirm: t('model.confirm_action')} do %>
+			<small>
+				<%= banner.action_active %>
+			</small>
+		<% end if policy(banner).active_banner? %>
+	</div>
+</div>

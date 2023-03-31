@@ -1,0 +1,46 @@
+pt-BR:
+  activerecord:
+    models:
+      professional_avaliation:
+        one: "Avaliação do vendedor"
+        other: "Avaliações do vendedor"
+    attributes:
+      professional_avaliation:
+        id: "ID"
+        created_at: 'Data da compra'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        professional: "Profissional"
+        professional_id: "Profissional"
+        client: "Cliente"
+        client_id: "Cliente"
+        order: "Pedido"
+        order_id: "Pedido"
+        deadline_avaliation: "Prazo"
+        quality_avaliation: "Qualidade"
+        problems_solution_avaliation: "Solução de problemas"
+        comment: "Comentário ou sugestão"
+        send: "Enviar"
+en:
+  activerecord:
+    models:
+      professional_avaliation:
+        one: "Avaliação do vendedor"
+        other: "Avaliações do vendedor"
+    attributes:
+      professional_avaliation:
+        id: "ID"
+        created_at: 'Data da compra'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        professional: "Profissional"
+        professional_id: "Profissional"
+        client: "Cliente"
+        client_id: "Cliente"
+        order: "Pedido"
+        order_id: "Pedido"
+        deadline_avaliation: "Prazo"
+        quality_avaliation: "Qualidade"
+        problems_solution_avaliation: "Solução de problemas"
+        comment: "Comentário ou sugestão"
+        send: "Enviar"

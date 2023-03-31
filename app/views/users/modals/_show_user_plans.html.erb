@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal fade" id="show_user_plans_<%=user.id%>" tabindex="-1">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Cabeçalho -->
+            <div class="modal-header">
+
+                <!-- Título -->
+                <h5 class="modal-title" id="show_user_plans_label_<%=user.id%>">
+                    <small class="text-muted"><%= user.name.upcase %></small>
+                </h5>
+
+                <!-- Botão fechar -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="modal-body">
+                <p><b><%= Service.model_name.human(count: 2) %></b></p>
+                <%= render "common_pages/my_plan_data", plan_type: PlanType::SERVICOS_NAME, professional: user %>
+                <hr>
+                <p><b><%= Product.model_name.human(count: 2) %></b></p>
+                <%= render "common_pages/my_plan_data", plan_type: PlanType::PRODUTOS_NAME, professional: user %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%
+# End of file _show_user_plans.html.erb
+# Path: ./app/views/categories/modals/_show_user_plans.html.erb
+%>

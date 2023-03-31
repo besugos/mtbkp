@@ -1,0 +1,28 @@
+<%
+label = Order.human_attribute_name(:bought_plans)
+
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: bought_plans_path, text: label},
+	{active: true, href: '#', text: t('model.list')},
+]
+
+url_new_path = buy_plan_path
+policy_true = true
+add_new_text = t("site.buy_plan")
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: label,
+		url_new_path: url_new_path,
+		policy_true: policy_true,
+		add_new_text: add_new_text,
+		objects: @orders,
+		objects_path: bought_plans_path,
+		object_name: label,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: bought_plans_path(format: "csv", bought_plans_grid: (params[:bought_plans_grid].nil? ? "" : params[:bought_plans_grid].to_enum.to_h))
+	}
+%>

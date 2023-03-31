@@ -1,0 +1,31 @@
+<div class="text-center">
+	<%
+		if current_order.user_id == @current_user.id
+			user = "vendedor"
+			user_id = seller.id
+			messages = Message.where(order_id: current_order.id)
+			.where(receiver_id: @current_user.id, sender_id: seller.id)
+			.unread(@current_user)
+		else
+			user = "cliente"
+			user_id = current_order.user_id
+			messages = Message.where(order_id: current_order.id)
+			.where(receiver_id: seller.id, sender_id: @current_user.id)
+			.unread(@current_user)
+		end
+		if messages.length > 0
+			span_class = "badge bg-danger"
+		else
+			span_class = ""
+		end 
+	%>
+	<a class="text-decoration-none" href="<%= chats_path(id: current_order.id, user_id: user_id) %>"><i class="bi bi-chat fs-1"></i> <br>
+		Fale com o <%= user %>
+	</a>
+	<span class="mx-1 rounded-circle d-inline-block align-middle <%= span_class %>" id="user-cards-unread-count-<%=@current_user.id.to_s%>-<%= user_id.to_s %>">
+		<% if messages.length > 0 %>
+			<%= messages.length %>
+		<% end %>
+	</span>
+
+</div>

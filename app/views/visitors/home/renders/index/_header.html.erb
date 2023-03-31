@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom pt-2 pb-2 ps-4 pe-4 text-center">
+	<div class="container-fluid">
+	    <%= render 'layouts/logo', width: 200, height: 37 %>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      	<ul class="navbar-nav ms-auto me-lg-4 mt-3 mt-lg-0">
+	        	<li class="nav-item">
+	          		<%= render "visitors/home/renders/index/header_categories", text_color: "text-primary" %>
+	        	</li>
+	      	</ul>
+	      	<div class="me-0 me-lg-4 mt-3 mt-lg-0">
+				<a class="btn btn-primary text-white" href="<%= buy_plan_path %>"><%= t("site.buy_plan") %></a>
+			</div>
+	      	<div  class="me-0 me-lg-4 mt-3 mt-lg-0">
+				<a class="text-decoration-none" href="<%= visitors_new_site_contact_path %>">
+					<i class="bi bi-chat-right-fill"></i>
+					<%= t("site.talk_with_us") %>
+				</a>
+			</div>
+			<% if !@order.nil? && policy(@order).show_order_cart? %>
+				<div  class="me-0 me-lg-4 mt-3 mt-lg-0">
+					
+					<a href="<%= show_order_cart_path %>" class=" btn-link  text-decoration-none" title="<%= Order.human_attribute_name(:cart) %>">
+						<i class="bi bi-cart text-primary "></i>
+						<span class="text-primary"><%= Order.human_attribute_name(:cart) %></span>
+						<span class="d-inline-block badge bg-danger ms-1 align-middle" id="order-carts-quantity">
+							<%= @order.order_carts.length.to_s %>
+						</span>
+					</a>
+					
+				</div>
+			<% end %>
+			
+			<div  class="mt-3 mt-lg-0">
+				<% if @current_user.nil? %>
+					<a href="<%= login_path %>" class="text-decoration-none">
+						<i class="bi bi-person-circle"></i>
+						<%= t("site.login_or_register") %>
+					</a>
+				<% else %>
+					<button
+	                    class="btn btn-primary text-white"
+	                    type="button"
+	                    data-bs-toggle="offcanvas"
+	                    data-bs-target="#offcanvasRight"
+	                    aria-controls="offcanvasRight">
+	                    <i class="bi bi-list"></i>
+	                    <%= t("menu.menu") %>
+	                </button>
+				<% end %>
+			</div>
+	    </div>
+	</div>
+</nav>
+

@@ -1,0 +1,39 @@
+<div class="col-12 my-5 text-center">
+    <div class="bg-light p-3 rounded border">
+
+        <b><%= professional_avaliation.client.name %></b><br>
+
+        <small class="text-muted">
+            <%= CustomHelper.get_text_date(professional_avaliation.updated_at, "datetime", :full) %>
+        </small>
+
+        <div class="row py-2">
+            <div class="col-4">
+                <p class="text-primary">
+                    <label for=""><%= ProfessionalAvaliation.human_attribute_name(:deadline_avaliation) %></label><br>
+                    <%= render "common_pages/rating", rating: professional_avaliation.deadline_avaliation %>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="text-primary">
+                    <label for=""><%= ProfessionalAvaliation.human_attribute_name(:quality_avaliation) %></label><br>
+                    <%= render "common_pages/rating", rating: professional_avaliation.quality_avaliation %>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="text-primary">
+                    <label for=""><%= ProfessionalAvaliation.human_attribute_name(:problems_solution_avaliation) %></label><br>
+                    <%= render "common_pages/rating", rating: professional_avaliation.problems_solution_avaliation %>
+                </p>
+            </div>
+        </div>
+        <p class="text-muted m-0">
+            <%= professional_avaliation.comment %>
+        </p>
+    </div>
+</div>
+
+<%
+# End of file _professional_avaliation_card.html.erb
+# Path: ./app/views/visitors/users/curriculum/_professional_avaliation_card.html.erb
+%>

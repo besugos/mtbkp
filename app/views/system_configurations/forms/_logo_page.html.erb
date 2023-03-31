@@ -1,0 +1,40 @@
+<div class="row">
+
+  <div class="col-12 col-md-2 mb-3">
+    <%= render "common_pages/image_input", image: f.object.client_logo, form: f, label: SystemConfiguration.human_attribute_name(:client_logo), attribute: :client_logo %>
+  </div>
+
+  <div class="col-12 col-md-2 mb-3">
+    <%= render "common_pages/image_input", image: f.object.favicon, form: f, label: SystemConfiguration.human_attribute_name(:favicon), attribute: :favicon %>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-4 mb-3">
+    <%= render "common_pages/image_input", image: f.object.footer_image, form: f, label: SystemConfiguration.human_attribute_name(:footer_image), attribute: :footer_image %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-4 mb-3">
+    <%= f.input :size_banner_link %>
+  </div>
+  <div class="col-12 col-md-4 mb-3">
+    <%= render "common_pages/image_input", image: f.object.size_banner_image, form: f, label: SystemConfiguration.human_attribute_name(:size_banner_image), attribute: :size_banner_image %>
+  </div>
+  <div class="col-12 col-md-4 mb-3">
+    <%= render "common_pages/image_input", image: f.object.size_banner_image_mobile, form: f, label: SystemConfiguration.human_attribute_name(:size_banner_image_mobile), attribute: :size_banner_image_mobile %>
+  </div>
+</div>
+
+<div hidden class="row">
+  <div class="col-12 col-md-4 mb-3">
+    <%= f.input :page_title %>
+  </div>
+
+  <div class="col-12 col-md-8 mb-3">
+    <%= f.input :page_description %>
+  </div>
+</div>
+<!-- / -->

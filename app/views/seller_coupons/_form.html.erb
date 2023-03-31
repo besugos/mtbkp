@@ -1,0 +1,52 @@
+<%= simple_form_for(@seller_coupon) do |f| %>
+
+<%= f.input_field :coupon_area_id, as: :hidden, value: f.object.coupon_area_id %>
+
+<div class="row">
+
+    <div class="col-12">
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    </div>
+    <div class="col-12 col-md-4">
+        <%= f.input :name, input_html: {class: "no-space text-uppercase"} %>
+    </div>
+    <div class="col-12 col-md-4">
+        <%= f.input :quantity %>
+    </div>
+    <div class="col-12 col-md-4">
+        <%= f.input :validate_date, as: :string, input_html: {class: 'datepicker', :value => CustomHelper.get_text_date(f.object.validate_date, 'date', :default), autocomplete: :off, type: "tel"} %>
+    </div>
+    <div class="col-12 col-md-4">
+        <%= f.association :coupon_type, collection: CouponType.all, as: :select, include_blank: false %>
+    </div>
+    <div class="col-12 col-md-4">
+        <%= f.input :value %>
+    </div>
+    <% if f.object.coupon_area_id == CouponArea::CUPOM_VENDEDOR_ID %>
+        <div class="col-12 col-md-4">
+            <%= f.input :quantity_months %>
+        </div>
+    <% end %>
+</div>
+
+<% if f.object.coupon_area_id == CouponArea::CUPOM_DESCONTO_ID %>
+    <div class="row">
+        <!-- Título -->
+        <div class="col-12">
+            <h4 class="mt-4"><%= SellerCoupon.human_attribute_name(:users) %></h4>
+        </div>
+
+        <div class="col-12 mb-2">
+            <input id="users_seller_coupons_filter" type="text" style="width: 100%;" placeholder="Pesquisar...">
+        </div>
+
+        <div class="col-12">
+            <%= f.association :users, collection: User.user.is_professional_validated.order(:name), as: :check_boxes, include_blank: false, legend_tag: false, input_html: {class: 'form-control users_seller_coupons_linked'}, label_method: :get_formatted_text_to_select %>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'common_pages/save', f: f, return_path: f.object.coupon_area_id == CouponArea::CUPOM_VENDEDOR_ID ? coupons_to_seller_path : coupons_to_discount_path %>
+
+<% end %>

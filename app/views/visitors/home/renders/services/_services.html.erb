@@ -1,0 +1,32 @@
+<div class="row mt-5">
+	<% if services.length > 0 %>
+		<div class="col-12 text-start">
+			<!-- Texto buscado -->
+			<h3><b><%= params[:service_text] %></b></h3>
+		</div>
+		<% services.each do |service| %>
+			<div class="col-12 col-md-3">
+				<%
+					if service.instance_of?(Service)
+						service = service
+						distance_value = nil
+					else
+						distance_value = service[:distance_value]
+						service = service[:service]
+					end
+				%>
+				<%= render "visitors/home/renders/services/service_card", service: service, distance_value: distance_value %>
+			</div>
+		<% end %>
+
+		<div class="col-12">
+			<% if !services.instance_of?(Array) %>
+				<%= paginate services %>
+			<% end %>
+		</div>
+	<% else %>
+		<div class="col-12 text-center">
+			<h3><%= t("site.no_one_service") %></h3>
+		</div>
+	<% end %>
+</div>

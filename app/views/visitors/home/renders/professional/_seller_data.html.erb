@@ -1,0 +1,44 @@
+<div class="row mt-2">
+	<div class="col-12 border">
+		<div class="p-3">
+			<div class="d-flex justify-content-between">
+				<h4><%= User.human_attribute_name(:seller_data) %></h4>
+				<%= render 'visitors/services/renders/modal_show_seller_data', seller: professional %>
+				<button class="btn btn-link btn-sm" data-bs-toggle="modal" data-bs-target="#show_seller_contact_data_<%=professional.id%>">
+					<%= User.human_attribute_name(:show_contacts) %>
+				</button>
+			</div>
+			<div class="mt-3">
+				<span><b><%= DataProfessional.human_attribute_name(:profession) %>:</b> <%= professional.data_professional.profession %></span>
+			</div>
+			<div class="mt-3">
+				<span><b><%= DataProfessional.human_attribute_name(:register_type) %>:</b> <%= professional.data_professional.register_type %></span>
+			</div>
+			<div class="mt-3">
+				<span><b><%= DataProfessional.human_attribute_name(:register_number) %>:</b> 
+					<% if professional.seller_verified %>
+						<i title="Verificado" class="bi bi-check-circle-fill text-info ms-2"></i>
+					<% end %>
+				</span>
+			</div>
+			<div class="mt-3">
+				<span><b><%= Address.model_name.human %>:</b> <%= professional.data_professional.address.get_address_value unless professional.data_professional.address.nil? %> </span>
+			</div>
+			<!-- <div class="mt-3">
+				<span><b>Raio de Atendimento:</b> Todo o país</span>
+			</div> -->
+			<div class="mt-3">
+				<span>
+					<b><%= User.human_attribute_name(:description) %>:</b> <br> 
+					<%= simple_format(professional.description) %>
+				</span>
+			</div>
+			<div class="mt-3">
+				<span>
+					<b><%= User.human_attribute_name(:work_experience) %>:</b> <br> 
+					<%= simple_format(professional.work_experience) %>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

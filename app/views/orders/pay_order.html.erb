@@ -1,0 +1,32 @@
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+<%= render "visitors/home/renders/index/filter_by_text" %>
+
+<!-- Conteúdo central -->
+<div class="container">
+	<div class="row">
+		<%= render 'orders/pay/detail_order', order: @current_order %>
+		<!-- Conteúdo primário -->
+		<section class="col-12 col-md-9 border rounded py-3">
+			<div class="row">
+
+				<% if !@current_order.user.is_valid_to_buy? || !params[:show_data_user].nil? %>
+					<!-- Formulário de dados do usuários -->
+					<%= render "orders/pay/user_data", current_order: @current_order %>
+				<% elsif (!@current_order.is_address_valid? || !params[:show_address_data].nil?) && (@current_order.order_status_id == OrderStatus::EM_ABERTO_ID || @current_order.order_status_id == OrderStatus::EM_ABERTO_COMPRA_PLANOS_ID) %>
+					<!-- Formulário do endereço de entrega -->
+					<%= render "orders/pay/address_data", current_order: @current_order, use_my_address: true %>
+				<% else %>
+					<!-- Formulário do cartão de crédito -->
+					<%= render "orders/pay/payment_data", current_order: @current_order %>
+				<% end %>
+
+			</div>
+		</section>
+	</div>
+</div>
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

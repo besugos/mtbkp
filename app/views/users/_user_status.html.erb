@@ -1,0 +1,12 @@
+<div class="table-actions">
+	
+	<% if record.is_blocked %>
+	<% span_class = 'bg-danger' %>
+	<% else %>
+	<% span_class = 'bg-success' %>
+	<% end %>
+
+	<% span_text = record.get_is_blocked? %>
+	<span class="badge <%= span_class %>"><%= span_text %></span>
+
+</div>

@@ -1,0 +1,22 @@
+<%= simple_form_for @user, url: visitors_create_user_path, method: :post do |f| %>
+
+	<%= f.input :profile_id, as: :hidden, input_html: {value: Profile::USER_ID} %>
+	<%= f.input :new_user, as: :hidden, input_html: {value: true} %>
+
+	<h3><%= t('session.register') %></h3>
+
+	<%= f.input :name, input_html: {autocomplete: 'off'} %>
+
+	<%= f.input :email, input_html: {autocomplete: 'off'} %>
+	<%= f.input :phone, input_html: {class: 'complete-phone-ddd', type: "tel"} %>
+	<%= f.input :password, input_html: {autocomplete: 'new-password'} %>
+	<%= f.input :password_confirmation, input_html: {autocomplete: 'new-password'} %>
+
+	<%= render "users/forms/accept_therm", f: f %>
+
+	<%= f.button :submit, value: t("session.register"), class: "text-white" %>
+
+<% end %>
+
+<% # End of file %>
+<% # Path: ./app/views/visitors/users/_form.html.erb %>

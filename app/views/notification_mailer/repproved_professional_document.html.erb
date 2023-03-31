@@ -1,0 +1,11 @@
+<h2>Olá, <%= @user.name %>!</h2>
+
+<p>Infelizmente sua documentação no cadastro da Mercado Topográfico foi <b>REPROVADA</b></p>
+
+<p>
+	<b><%= DataProfessional.human_attribute_name(:repprovation_reason) %></b>
+	<br>
+	<%= simple_format(@user.data_professional.repprovation_reason) %>
+</p>
+
+<%= render "notification_mailer/default_footer" %>

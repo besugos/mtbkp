@@ -1,0 +1,34 @@
+<%
+	breadcrumbs = [
+		{active: false, href: root_path, text: t('menu.initial_page')},
+		{active: false, href: services_path, text: Service.model_name.human(count: 2)},
+		{active: true, href: '#', text: t('model.list')},
+	]
+	
+	if policy(Service).create?
+		url_new_path = new_service_path
+		policy_true = policy(Service).new?
+		add_new_text = Service.human_attribute_name(:add_ad)
+	else
+		url_new_path = buy_plan_path
+		policy_true = true
+		add_new_text = t("site.buy_plan")
+	end
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: Service.model_name.human(count: 2),
+		url_new_path: url_new_path,
+		policy_true: policy_true,
+		add_new_text: add_new_text,
+		objects: @services,
+		objects_path: services_path,
+		object_name: Service.model_name.human,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: services_path(format: "csv", services_grid: (params[:services_grid].nil? ? "" : params[:services_grid].to_enum.to_h)),
+		custom_table_data: (render "services/services", services: @services.assets),
+		objects_path_export: false
+	}
+%>

@@ -1,0 +1,28 @@
+<!-- DDD -->
+<!-- <div class="col-1">
+  <%# phone.input :phone_code, label: Phone.human_attribute_name(:phone_code), input_html: {class: 'phone-code'} %>
+</div> -->
+
+<!-- Telefone -->
+<div class="col-12 col-md-3">
+  <%= phone.input :phone, label: Phone.human_attribute_name(:phone), input_html: {class: 'complete-phone-ddd', type: "tel"} %>
+</div>
+
+<!-- Telefone -->
+<div class="col-12 col-md-3">
+  <%= phone.input :responsible, label: Phone.human_attribute_name(:responsible), input_html: {class: 'insert_just_letter'} %>
+</div>
+
+<!-- Tipo de telefone -->
+<div class="col-12 col-md-2">
+  <%= phone.association :phone_type,
+  collection: PhoneType.all,
+  as: :select,
+  label: Phone.human_attribute_name(:phone_type_id),
+  include_blank: t('model.select_option') %>
+</div>
+
+<!-- É WhatsApp? -->
+<div class="col-12 col-md-2">
+  <%= phone.input :is_whatsapp, label: Phone.human_attribute_name(:is_whatsapp), checkbox_inline: true %>
+</div>

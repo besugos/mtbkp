@@ -1,0 +1,23 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: "#", text: Plan.model_name.human(count: 2)},
+	{active: false, href: plans_path(plan_type_id: params[:plan_type_id]), text: @page_name},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: Plan.model_name.human(count: 2),
+		url_new_path: new_plan_path(plan_type_id: params[:plan_type_id]),
+		policy_true: policy(Plan).new?,
+		objects: @plans,
+		objects_path: show_plans_by_plan_type_path(plan_type_id: params[:plan_type_id]),
+		object_name: Plan.model_name.human,
+		breadcrumbs: breadcrumbs,
+		paginate_url: paginate(@plans.assets, params: {plan_type_id: params[:plan_type_id]}),
+		objects_path_export: false
+	}
+%>

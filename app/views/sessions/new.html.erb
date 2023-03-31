@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+
+        <!-- Logo -->
+        <div class="col-12 text-center my-5">
+            <%= render 'layouts/logo', width: 540, height: 100 %>
+        </div>
+
+        <% #Para estar na metade da tela: col-12 col-md-4 offset-md-4 %>
+        
+        <!-- Sign in -->
+        <div class="col-12 col-md-4 offset-md-2">
+            <%= render "sessions/session_form" %>
+        </div>
+
+        <!-- Sign up -->
+        <div class="col-12 col-md-4 offset-md-1">
+            <%= render "sessions/user_form" %>
+        </div>
+
+    </div>
+</div>
+
+<%
+# End of file new.html.erb
+# Path: ./app/views/sessions/new.html.erb
+%>

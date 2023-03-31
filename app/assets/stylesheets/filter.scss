@@ -1,0 +1,9 @@
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback):focus {
+	border-color: #cdd3db;
+	box-shadow: 0px 0px 0px #cdd3db;
+}
+
+.input-group .btn:focus {
+	border-color: #cdd3db;
+	box-shadow: 0px 0px 0px #cdd3db;
+}

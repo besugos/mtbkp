@@ -1,0 +1,36 @@
+pt-BR:
+  activerecord:
+    models:
+      freight_order_option:
+        one: "Frete"
+        other: "Fretes"
+    attributes:
+      freight_order_option:
+        id: "ID"
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'
+        actions: "Ações"
+        tracking_code: "Código de rastreio"
+        freight_order_status_id: "Status de envio"
+        melhor_envio_service_id: "ID do serviço na Melhor Envio"
+        melhor_envio_complete_data: "Dados completos do resultado"
+        melhor_envio_order_data: "Dados do pedido na Melhor Envio"
+        melhor_envio_checkout_data: "Dados do check-out na Melhor Envio"
+en:
+  activerecord:
+    models:
+      freight_order_option:
+        one: "Frete"
+        other: "Fretes"
+    attributes:
+      freight_order_option:
+        id: "ID"
+        created_at: 'Created at'
+        updated_at: 'Updated at'
+        actions: "Actions"
+        tracking_code: "Código de rastreio"
+        freight_order_status_id: "Status de envio"
+        melhor_envio_service_id: "ID do serviço na Melhor Envio"
+        melhor_envio_complete_data: "Dados completos do resultado"
+        melhor_envio_order_data: "Dados do pedido na Melhor Envio"
+        melhor_envio_checkout_data: "Dados do check-out na Melhor Envio"

@@ -1,0 +1,18 @@
+<a class="text-decoration-none" href="<%= @system_configuration.size_banner_link %>" target="_blank">
+	<figure class="pt-5">
+		<div class="mobile-none">
+			<% if @system_configuration.size_banner_image.attached? %>
+					<img style="width: 400px; height: 600px;" class="img-fluid" src="<%= @system_configuration.size_banner_image.url %>" alt="">
+			<% else %>
+				<img style="height: 100%; max-height: 100%;" class="img-fluid" src="https://via.placeholder.com/400x1200" alt="">
+			<% end %>
+		</div>
+		<div class="desktop-none text-center">
+			<% if @system_configuration.size_banner_image_mobile.attached? %>
+				<img style="width: 376px; height: 600px;" class="img-fluid" src="<%= @system_configuration.size_banner_image_mobile.url %>" alt="">
+			<% else %>
+				<img style="height: 100%; max-height: 100%;" class="img-fluid" src="https://via.placeholder.com/400x1200" alt="">
+			<% end %>
+		</div>
+	</figure>
+</a>

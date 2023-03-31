@@ -1,0 +1,14 @@
+<!-- Botão de ação -->
+<div class="row my-3">
+    <div class="col-12 mb-3">
+        <%= f.button :submit, value: t('model.save'), class: "text-white" %>
+        <% if defined?(return_path) && !return_path.nil? %>
+            <a href="<%= return_path %>" class="btn btn-link"><%= t('model.back') %></a>
+        <% end %>
+    </div>
+</div>
+
+<%
+# End of file _save.html.erb
+# Path: ./app/views/common_pages/_save.html.erb
+%>

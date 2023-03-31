@@ -1,0 +1,40 @@
+<div class="row mt-2">
+	<div class="col-12 col-md-4">
+		<%= render "visitors/home/renders/index/swiper/swiper_banners", banners_to_show: @array_images %>
+	</div>
+	<div class="col-12 col-md-8 mt-3">
+		<div class="d-flex align-self-end">
+			<% #TODO @lascasas aqui sempre irá pegar a class product-condition-1 (novo) ou product-condition-2 (usado) %>
+			<small class="product-condition-<%= product.product_condition.id.to_s %>"><%= product.product_condition.name %></small>
+			<p class="span-product-title ms-2"><b><%= product.title %></b></p>
+		</div>
+		<% render "common_pages/rating", rating: product.avaliation_value %>
+		<div class="mt-3">
+			<%= t("site.seller_by") %>: <a class="text-decoration-none" href="<%= show_professional_path(id: product.user_id) %>"><%= product.user.name %></a>
+			<br>
+			<% current_address = product.get_correct_address %>
+			<% if !current_address.nil? %>
+		 		<span><b><%= Address.model_name.human %>:</b> <%= current_address.get_city_and_state %></span>
+			 	<br>
+		 	<% end %>
+		 	<b><%= product.quantity_stock %></b> <%= Product.human_attribute_name(:units_in_stock).downcase %>
+		</div>
+	 	
+	</div>
+</div>
+<div class="col-12 mt-2">
+	<b><%= Product.human_attribute_name(:description) %>:</b>
+	<br>
+	<%= product.description %>
+</div>
+<div class="col-12 mt-2">
+	<b><%= Product.human_attribute_name(:dimensions) %>:</b>
+	<br>
+	<%= Product.human_attribute_name(:width) %>: <%= product.width %>
+	<br>
+	<%= Product.human_attribute_name(:height) %>: <%= product.height %>
+	<br>
+	<%= Product.human_attribute_name(:depth) %>: <%= product.depth %>
+	<br>
+	<%= Product.human_attribute_name(:weight) %>: <%= product.weight %>
+</div>

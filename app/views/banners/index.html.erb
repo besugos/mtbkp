@@ -1,0 +1,22 @@
+<%
+breadcrumbs = [
+	{active: false, href: root_path, text: t('menu.initial_page')},
+	{active: false, href: banners_path, text: Banner.model_name.human(count: 2)},
+	{active: true, href: '#', text: t('model.list')},
+]
+%>
+
+<%= 
+	render 'common_pages/index',
+	attributes: {
+		page_title: Banner.model_name.human(count: 2),
+		url_new_path: new_banner_path,
+		policy_true: policy(Banner).new?,
+		objects: @banners,
+		objects_path: banners_path,
+		object_name: Banner.model_name.human,
+		breadcrumbs: breadcrumbs,
+		objects_path_export: banners_path(format: "csv", banners_grid: (params[:banners_grid].nil? ? "" : params[:banners_grid].to_enum.to_h)),
+		custom_table_data: (render "banners/banners", banners: @banners.assets)
+	}
+%>

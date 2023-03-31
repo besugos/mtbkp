@@ -1,0 +1,22 @@
+<div class="col-12">
+    <h6><%= t("site.send_your_message").upcase %></h6>
+    <%= simple_form_for @site_contact, url: visitors_create_site_contact_path, method: :post do |f| %>
+        <div class="row">
+            <div class="col-12 col-lg-3 pt-3">
+                <%= f.input :name, label: SiteContact.human_attribute_name(:name), input_html: {value: (@current_user.name unless @current_user.nil?)}, input_html: {class: "form-control"} %>
+            </div>
+            <div class="col-12 col-lg-3 pt-3">
+                <%= f.input :email, label: SiteContact.human_attribute_name(:email), input_html: {value: (@current_user.email unless @current_user.nil?)}, input_html: {class: "form-control", type: "email"} %>
+            </div>
+            <div class="col-12 col-lg-6 pt-3">
+                <%= f.association :site_contact_subject, collection: SiteContactSubject.all, as: :select, include_blank: false %>
+            </div>
+            <div class="col-12 mt-3">
+                <%= f.text_area :message, class: "col-12 form-control", rows: "5", label: SiteContact.human_attribute_name(:message) %>
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary col-2 text-white"><%= I18n.t("model.send") %></button>
+            </div>
+        </div>
+    <% end %>
+</div>

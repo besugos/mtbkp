@@ -1,0 +1,49 @@
+<div class="border border-1 p-3 mt-2 card-custom shadow" > 
+	<div class="text-start d-flex align-items-center">
+		<% 
+			if service.principal_image.attached?
+				image_link = service.principal_image.url
+			else
+				image_link = "https://via.placeholder.com/50/?text=Sem imagem"
+			end
+		%>
+		<figure class="mb-0">
+			<img class="img-fluid" src="<%= image_link %>" alt="" width="50" height="50">
+		</figure>
+		<a class="text-decoration-none text-reset" href="<%= show_service_path(id: service.id) %>">
+			<div class="text-start ps-2 hg-service-name">
+				<b><span title="<%= service.name %>"><%= service.name.truncate(35) %></span></b><br>
+				<span><%= service.user.name %></span>
+			</div>
+		</a>
+	</div>
+	<div class="text-start">
+		<% if !service.activate_budget %>
+			<div class="pt-1">
+				<b>A partir de: <%= CustomHelper.to_currency(service.price) %></b>
+			</div>
+		<% end %>
+		<div class="pt-1 hg-service-address">
+			<% current_address = service.get_correct_address %>
+			<% if !current_address.nil? %>
+				<small><b><%= Address.model_name.human %>:</b> <%= current_address.get_address_value %></small>
+				<br>
+			<% end %>
+		</div>
+		<div class="pt-1">
+			<small><b><%= Service.human_attribute_name(:radius_service_id) %>:</b> <%= service.radius_service.name unless service.radius_service.nil? %></small>
+		</div>
+		<% if defined?(distance_value) && (!distance_value.nil? && !distance_value.blank?) %>
+			<br>
+			<div class="pt-1">
+				<small><b><%= Service.human_attribute_name(:current_distance) %>: </b> <%= (distance_value/1000).to_f.round(0) %> Km</small>
+			</div>
+		<% end %>
+	</div>
+	<div class="pt-1">
+		<a class="btn btn-primary text-white col-12" href="<%= show_service_path(id: service.id) %>">
+			<%= t("site.details") %>
+		</a>
+	</div>
+	
+</div>

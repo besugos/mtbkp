@@ -1,0 +1,24 @@
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+<%= render "visitors/home/renders/index/filter_by_text" %>
+<%= render "visitors/home/renders/index/top_banners" %>
+<!-- Conteúdo central -->
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md-10">
+			<div class="row mt-4 text-center">
+				<%= render "visitors/home/renders/index/products" %>
+				<%= render "visitors/home/renders/index/services" %>
+			</div>
+		</div>
+		<div class="col-12 col-md-2">
+			<%= render "visitors/home/renders/index/side_banners" %>
+		</div>
+	</div>
+</div>
+
+
+<!-- Footer -->
+<%= render "visitors/home/renders/footer/top_footer" %>
+<%= render "visitors/home/renders/footer/middle_footer" %>
+<%= render "visitors/home/renders/footer/bottom_footer" %>

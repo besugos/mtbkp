@@ -1,0 +1,58 @@
+<div class="row border-bottom border-light py-2">
+
+    <!-- Imagem do produto -->
+    <div class="col-2 d-none d-lg-block">
+        <a href="#">
+            <figure>
+                <%= image_tag order_cart.object.ownertable.get_image, class: 'img-fluid', alt: "" %>
+            </figure>
+        </a>
+    </div>
+
+    <!-- Nome do produto -->
+    <div class="col-5 col-lg-4 align-self-center">
+        <a href="<%= show_product_path(id: order_cart.object.ownertable_id) %>" class="text-reset text-decoration-none">
+            <small>
+                <span class="font-weight-bold">
+                    <%= order_cart.object.ownertable.get_title %>
+                </span>
+            </small>
+        </a>
+    </div>
+
+    <!-- Quantidade -->
+    <div class="col-2 text-center align-self-center">
+        <% if open %>
+            <%= order_cart.input_field :quantity, wrapper: false, label: false, class: ' change_quantity_product text-center text-auxiliar border border-light rounded', style: 'width: 50px;'%>
+            <br>
+        <% else %>
+            <%= order_cart.object.quantity %>
+        <% end %>
+    </div>
+
+    <!-- Remover -->
+    <% if open %>
+        <div class="col-2 text-center align-self-center">
+            <a data-confirm="<%= t('model.confirm_action') %>" data-method="delete" href="<%= remove_item_to_order_path(order_cart_id: order_cart.object.id) %>" class="btn btn-link btn-sm text-dark align-self-center p-0" id="remove_order_cart_quantity_<%=order_cart.object.id.to_s%>">
+                <i class="bi bi-x-lg fs-5 text-danger"></i>
+            </a>
+        </div>
+    <% end %>
+
+    <!-- Valor unitário / Preço -->
+    <div class="col-1 text-center align-self-center d-none d-lg-block">
+        <small class="text-secondary font-weight-bold">
+            <%= CustomHelper.to_currency(order_cart.object.unity_price) %>
+        </small>
+    </div>
+
+    <!-- Sub-total -->
+    <div class="col-3 col-lg-1 text-center align-self-center">
+        <small class="text-secondary font-weight-bold">
+            <% total_value += order_cart.object.total_value %>
+            <% @total_value_seller += order_cart.object.total_value %>
+            <%= CustomHelper.to_currency(order_cart.object.total_value) %>
+        </small>
+    </div>
+
+</div>

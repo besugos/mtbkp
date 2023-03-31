@@ -1,0 +1,61 @@
+<div class="row mx-1">
+	<div class="col-12">
+		<% if !@current_user_chat.nil? %>
+			
+			<%= hidden_field_tag 'current_user_id', @current_user.id %>
+			<%= hidden_field_tag 'receiver_id', @current_user_chat.id %>
+			<%= hidden_field_tag 'sender_id', @current_user.id %>
+
+			<div class="row">
+				<div class="border border-1 bg-light py-2 mt-2">
+					<div class="col-12 fs-14">
+						<%= render "orders/chat/profile_image", user: @current_user_chat %>
+						<%= @current_user_chat.name.upcase %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="border border-1" id="message-container" style="height: 43vh; overflow-y: scroll; overflow-x: hidden;">
+					<div class="col-12" id="div_messages">
+						<% @messages.each do |message| %>
+							<%
+								div_class = ""
+								span_class = ""
+								if @current_user.id == message.sender_id
+									div_class = "float-end"
+									span_class = "text-white btn-primary box-message-right"
+								else
+									div_class = "float-start"
+									span_class = "btn-secondary box-message-left"
+								end
+							%>
+							<div class="row my-1">
+								<div class="col-12">
+									<div class="py-1 <%= div_class %>">
+										<span class="btn <%= span_class %> <%= div_class %>"><%= message.content %></span> <br>
+										<span class="fs-10 <%= div_class %>">
+											<%= CustomHelper.get_text_date(message.created_at, 'datetime', :full) %>
+										</span>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-11 px-0">
+					<textarea rows="4" type="textarea" data-behavior="room_speaker_chat" class="w-100 form-control my-2" data-emojiable="true" placeholder="Digite a mensagem aqui"></textarea>
+				</div>
+				<div class="col-1 mt-5 text-center">
+					<button type="button" id="send-new-chat-message" class="btn btn-dark rounded px-1 py-0">
+						<i class="bi bi-send-fill fs-5"></i>
+					</button>
+				</div>
+			</div>
+			
+		<% end %>
+	</div>
+</div>

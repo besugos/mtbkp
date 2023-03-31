@@ -1,0 +1,16 @@
+<!-- Cabeçalho -->
+<%= render "visitors/home/renders/index/header" %>
+<%= render "visitors/home/renders/index/filter_by_text" %>
+
+<!-- Conteúdo central -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="row">
+				<div class="col-12">
+					<%= render 'orders/details', current_order: @current_order %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

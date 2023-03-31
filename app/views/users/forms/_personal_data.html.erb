@@ -1,0 +1,42 @@
+<div class="row">
+
+    <% 
+        if f.object.profile_id == Profile::USER_ID
+            label_name = User.human_attribute_name(:service_provider)
+        else
+            label_name = User.human_attribute_name(:name)
+        end
+    %>
+    <!-- Nome -->
+    <div class="col-12 col-md-6 mb-3">
+        <%= f.input :name, label: label_name %>
+    </div>
+
+    <% if f.object.profile_id == Profile::USER_ID %>
+        <!-- CPF -->
+        <div class="col-12 col-md-3 mb-3">
+            <%= f.input :cpf, input_html: {class: 'cpf-cnpj', type: "tel"} %>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <%= f.association :icms_contribution, collection: IcmsContribution.all.order(:id), as: :select, include_blank: false %>
+        </div>
+    <% end %>
+
+    <!-- Telefone -->
+    <div class="col-12 col-md-2 mb-3">
+        <%= f.input :phone, input_html: {class: 'complete-phone-ddd', type: "tel"} %>
+    </div>
+
+    <% if policy(f.object).block? %>
+        <div class="col-12 col-md-2 mb-3">
+            <%= f.input :is_blocked, as: :select, collection: [[User.human_attribute_name(:active), false],[User.human_attribute_name(:inactive), true]], include_blank: false, label: User.human_attribute_name(:status) %>
+        </div>
+    <% end %>
+
+</div>
+
+<%
+# End of file _personal_data.html.erb
+# Path: ./app/views/users/forms/_personal_data.html.erb
+%>

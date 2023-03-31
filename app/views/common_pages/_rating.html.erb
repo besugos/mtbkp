@@ -1,0 +1,11 @@
+<%
+  # Aqui se deve passar o rating que é a nota média deste produto
+  # As estrelinhas são preenchidas de acordo
+%>
+
+<% (1..5).each do |number| %>
+    <i class="bi bi-star<%= rating >= number ? '-fill' : '' %> text-primary"></i>
+<% end %>
+
+<% # End of file _rating.html.erb %>
+<% # Path: ./app/views/visitors/common/_rating.html.erb %>

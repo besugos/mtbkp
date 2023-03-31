@@ -1,0 +1,71 @@
+
+<div class="row  mobile-none">
+	<div class="col-12 col-lg-6">
+		<ul class="p-0">
+			<li class="nav-item dropdown drop-desk ps-3 pe-2" style="list-style: none;">
+		        <a class="nav-link dropdown-toggle pb-0 mt-1 p-0 <%= text_color %>" href="#" id="navbarDropdownMenuLink" role="button"   aria-expanded="false">
+		        <%= Category.human_attribute_name(:services_category) %>
+		        </a>
+		        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		        	<% Category.by_category_type_id(CategoryType::SERVICOS_ID).each do |category| %>
+						<li>
+							<a class="dropdown-item" href="<%= services_by_category_path(category_id: category) %>"><%= category.name %></a>
+						</li>
+					<% end %>
+		        </ul>
+	    	</li>
+		</ul>
+	</div>
+	<div class="col-12 col-lg-6">
+		<ul class="p-0 ">
+			<li class="nav-item dropdown drop-desk ps-3 pe-2" style="list-style: none;">
+		        <a class="nav-link dropdown-toggle pb-0 mt-1 p-0 <%= text_color %>" href="#" id="navbarDropdownMenuLink" role="button"   aria-expanded="false">
+		        <%= Category.human_attribute_name(:products_category) %>
+		        </a>
+		        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		        	<% Category.by_category_type_id(CategoryType::PRODUTOS_ID).each do |category| %>
+						<li>
+							<a class="dropdown-item" href="<%= products_by_category_path(category_id: category) %>"><%= category.name %></a>
+						</li>
+					<% end %>
+		        </ul>
+	    	</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row d-flex justify-content-center desktop-none">
+	<div class="col-12 col-lg-6 pt-3">
+		<ul class="p-0">
+			 <li class="nav-item dropdown ps-3 pe-2" style="list-style: none;">
+		        <a class="nav-link dropdown-toggle pb-0 mt-1 p-0 <%= text_color %>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+		            <%= Category.human_attribute_name(:services_category) %>
+		        </a>
+		        <ul class="dropdown-menu teste" aria-labelledby="navbarDropdown">
+		            <% Category.by_category_type_id(CategoryType::SERVICOS_ID).each do |category| %>
+						<li>
+							<a class="dropdown-item" href="<%= services_by_category_path(category_id: category) %>"><%= category.name %></a>
+						</li>
+					<% end %>
+		        </ul>
+	        </li>
+			
+		</ul>
+	</div>
+	<div hidden  class="col-12 col-lg-6 pt-3">
+		<ul class="p-0 ">
+			<li class="nav-item dropdown  ps-3 pe-2" style="list-style: none;">
+		        <a class="nav-link dropdown-toggle pb-0 mt-1 p-0 <%= text_color %>" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
+		        <%= Category.human_attribute_name(:products_category) %>
+		        </a>
+		        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		        	<% Category.by_category_type_id(CategoryType::PRODUTOS_ID).each do |category| %>
+						<li>
+							<a class="dropdown-item" href="<%= products_by_category_path(category_id: category) %>"><%= category.name %></a>
+						</li>
+					<% end %>
+		        </ul>
+	    	</li>
+		</ul>
+	</div>
+</div>
